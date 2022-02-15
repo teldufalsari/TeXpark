@@ -4,18 +4,18 @@
     Рассмотрим движение одной частицы с произвольной скоростью без ограничения $v \ll c$. Воспользуемся выражением для векторного потенциала в
     следующей форме:
     \begin{equation}
-        \vec{A}(\vec{r}, t) = \frac 1c \iiiint G^R(\vec{r} - \vec{r}', \: t - t') \vec{j}(\vec{r}', t')d\vol'dt', \label{vec_pot_rel}
+        \vec{A}(\vec{r}, t) = \frac 1c \iiiint G^R(\vec{r} - \vec{r'}, \: t - t') \vec{j}(\vec{r'}, t')d\vol'dt', \label{vec_pot_rel}
     \end{equation}
     
     где плотность тока и функция Грина заданы известными выражениями:
     \begin{gather*}
-        \vec{j}(\vec{r}', t') = e\vec{v}(t')\delta(\vec{r}' - \vec{r}(t')),\\
-        G^R(\vec{r}, \vec{r}', t, t') = \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}.
+        \vec{j}(\vec{r'}, t') = e\vec{v}(t')\delta(\vec{r'} - \vec{r}(t')),\\
+        G^R(\vec{r}, \vec{r'}, t, t') = \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r'}}}{c}}}{\abs{\vec{r} - \vec{r'}}}.
     \end{gather*}
     Проинтегрируем уравнение (\ref{vec_pot_rel}) по объёму:
     \begin{gather*}
-        \vec{A}(\vec{r}, t) = \frac 1c \iiiint \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}
-        e\vec{v}(t')\delta(\vec{r}' - \vec{r}(t')) d\vol'dt' = \\ =
+        \vec{A}(\vec{r}, t) = \frac 1c \iiiint \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r'}}}{c}}}{\abs{\vec{r} - \vec{r'}}}
+        e\vec{v}(t')\delta(\vec{r'} - \vec{r}(t')) d\vol'dt' = \\ =
         \frac 1c \int \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}(t')}}{c}}}{\abs{\vec{r} - \vec{r}(t')}} r\vec{v}(t')dt'.
     \end{gather*}
     Величина $\vec{r}$, как и прежде, есть радуис-вектор точки наблюдения, а $\vec{r}(t')$ --- положение частицы в момент $t'$ (а $\vec{r}(t)$ --- траектория частицы).
@@ -46,7 +46,7 @@
     \end{equation}
     Формулы (\ref{LV_A}) и (\ref{LV_F}) называют \textit{потенциалами Лиенара-Вихерта}. Вместе с системой уравнений
     \begin{gather*}
-        \vec{R}(t') = \vec{r} - \vec{r}'\\
+        \vec{R}(t') = \vec{r} - \vec{r}(t')\\
         t = t' + \frac{R(t')}{c}\\
         \vec{n}(t) = \frac{\vec{R}(t')}{R(t')}
     \end{gather*}

@@ -12,32 +12,32 @@
 
     Введём функцию Грина:
     \[
-        G(\vec{r}, \vec{r}', t, t') : \frac 1{c^2}\pardd{G}{t} - \Delta_{\vec{r}}G = 4\pi\delta(\vec{r} - \vec{r}')\delta(t - t').
+        G(\vec{r}, \vec{r'}, t, t') : \frac 1{c^2}\pardd{G}{t} - \Delta_{\vec{r}}G = 4\pi\delta(\vec{r} - \vec{r'})\delta(t - t').
     \]
     Если функцию, удовлетворяющую этим условиям, удастся найти, решения уравнений будут иметь вид
     \begin{gather*}
-        \phee(\vec{r}, t) = \int G(\vec{r}, \vec{r}', t, t') \rho(\vec{r}', t') d\vol'dt',\\
-        \vec{A}(\vec{r}, t) = \frac 1c \int G(\vec{r}, \vec{r}', t, t') \vec{j}(\vec{r}', t') d\vol'dt'.
+        \phee(\vec{r}, t) = \int G(\vec{r}, \vec{r'}, t, t') \rho(\vec{r'}, t') d\vol'dt',\\
+        \vec{A}(\vec{r}, t) = \frac 1c \int G(\vec{r}, \vec{r'}, t, t') \vec{j}(\vec{r'}, t') d\vol'dt'.
     \end{gather*}
     Легко проверить, что эти решения удовлетворяют волновым уравнениям, например
     \[
-        \Box\phee = \int \Box G \cdot\rho(\vec{r}', t')d\vol'dt' = 
-        \int 4\pi\delta(\vec{r} - \vec{r}')\delta(t - t') \rho(\vec{r}', t')d\vol'dt' = 4\pi\rho(\vec{r}, t).
+        \Box\phee = \int \Box G \cdot\rho(\vec{r'}, t')d\vol'dt' = 
+        \int 4\pi\delta(\vec{r} - \vec{r'})\delta(t - t') \rho(\vec{r'}, t')d\vol'dt' = 4\pi\rho(\vec{r}, t).
     \]
 
     Ещё одно необходимое условие --- выполнение условий калибровки Лоренца. Чтобы его проверить, необходимо сделать упрощение. Условимся работать
     в однородном неограниченном пространстве, где нет краевых эффектов и областей с разными свойствами среды. В таких условиях разные положения в
-    пространстве эквивалентны, и функция Грина может быть функцией не четырёх переменных, а только двух разностей $\vec{r} - \vec{r}'$ и $t - t'$,
+    пространстве эквивалентны, и функция Грина может быть функцией не четырёх переменных, а только двух разностей $\vec{r} - \vec{r'}$ и $t - t'$,
     которые мы обозначим как $\vec{R}$ и $\tau$ соответственно:
     \[
         G(\vec{R}, \tau) : \frac 1{c^2} \pardd{G}{\tau} - \Delta_{\vec{R}}G = 4\pi\delta(\vec{R})\delta\brackets{\tau}.
     \]
-    Вычислим производную $\pard{\phee}{\tau} = \int \pard{G}{t}\rho(\vec{r}', t')d\vol'dt'$. Так как $\pard{G}{t} = -\pard{G}{t'}$, имеем
+    Вычислим производную $\pard{\phee}{\tau} = \int \pard{G}{t}\rho(\vec{r'}, t')d\vol'dt'$. Так как $\pard{G}{t} = -\pard{G}{t'}$, имеем
     \[
-        \pard{\phee}{t} = -\iiiint\limits_{-\infty}^{+\infty} \pard{G}{t'}\rho(\vec{r}', t')d\vol'dt' = 
+        \pard{\phee}{t} = -\iiiint\limits_{-\infty}^{+\infty} \pard{G}{t'}\rho(\vec{r'}, t')d\vol'dt' = 
         -\iiiint\limits_{-\infty}^{+\infty} \pard{\brackets{G\rho}}{t'}d\vol'dt' + \iiiint\limits_{-\infty}^{+\infty} G\pard{\rho}{t'}d\vol'dt'
     \]
-    (Мы прибывили и вычли интеграл от $G\pard{\rho}{t'}$). Первое слагаемое при интегрировании по времени сведётся к нулю, так как скорость
+    (Мы прибавили и вычли интеграл от $G\pard{\rho}{t'}$). Первое слагаемое при интегрировании по времени сведётся к нулю, так как скорость
     распространения отклика конечна (помним, что функция Грина есть отклик на единичное воздействие), и сигнал от бесконечно удалённого во времени
     события никогда не достигнет точки наблюдения:
     \[
@@ -50,14 +50,14 @@
     \]
     Теперь вычислим дивергенцию векторного потенциала:
     \begin{gather*}
-        \Div\vec{A} = \ynt \nabla_{\vec{r}} G \vec{j}(\vec{r}', t')d\vol'dt' =
-        -\frac 1c \ynt \nabla_{\vec{r'}} G\vec{j}(\vec{r}', t')d\vol'dt' = \\ =
-        -\frac 1c \ynt \Div_{\vec{r'}}\brackets{G\vec{j}}d\vol'dt' + \frac{1}{c}\ynt G\Div_{\vec{r'}}\vec{j}(\vec{r}', t')d\vol'dt'.
+        \Div\vec{A} = \ynt \nabla_{\vec{r}} G \vec{j}(\vec{r'}, t')d\vol'dt' =
+        -\frac 1c \ynt \nabla_{\vec{r'}} G\vec{j}(\vec{r'}, t')d\vol'dt' = \\ =
+        -\frac 1c \ynt \Div_{\vec{r'}}\brackets{G\vec{j}}d\vol'dt' + \frac{1}{c}\ynt G\Div_{\vec{r'}}\vec{j}(\vec{r'}, t')d\vol'dt'.
     \end{gather*}
     По теореме Гаусса-Острограского сводим первое слагаемо к интегралу по бесконечно удалённой поверхности, который равен нулю. 
     Окончательно получаем
     \[
-        \Div\vec{A} = \frac{1}{c}\ynt G\cdot\Div_{\vec{r'}}\vec{j}(\vec{r}', t')d\vol'dt'.
+        \Div\vec{A} = \frac{1}{c}\ynt G\cdot\Div_{\vec{r'}}\vec{j}(\vec{r'}, t')d\vol'dt'.
     \]
     Сложим то, что получилось:
     \[
@@ -117,14 +117,14 @@
         \frac{C_1\delta\brackets{\tau - \frac Rc} + C_2\delta\brackets{\tau + \frac Rc}}{R}.
     \end{gather*}
 
-    Воспользуемся физическими соображениями: время $t'$ соответствует моменту действия источника, когда он находился в точке $\vec{r}'$.
+    Воспользуемся физическими соображениями: время $t'$ соответствует моменту действия источника, когда он находился в точке $\vec{r'}$.
     Это действие фиксируется в точке $\vec{r}$ в момент времени $t$. В силк принципа причинности $t > t'$, то есть,
     $t - t' = \tau > 0$. Естественно потребовать, чтобы при $\tau < 0$ функция Грина обращалась в ноль:
     \[
         G = G^R(\vec{R}, \tau) \: : \: G^R(\vec{R}, \tau)\Bigm|_{\tau < 0} = 0.
     \]
     Функцию $G^R$ называют \textit{запаздывающей} (retarded) функцией Грина.
-    У нашей функции Грина слагаемое $C_1\delta\brackets{\tau - \frac Rc}$ может быть ненулевым при $\tau < 0$,
+    У нашей функции Грина слагаемое $C_2\delta\brackets{\tau + \frac Rc}$ может быть ненулевым при $\tau < 0$,
     поэтому необходимо потребовать $C_2 = 0$. Отсюда $C_1 = 1$, и, следовательно,
     \begin{equation}
         \boxed{G^R(\vec{R}, \tau) = \frac 1R \delta\brackets{\tau - \frac Rc}} \label{Retarded_func}
@@ -132,31 +132,31 @@
 
     В обычных координатах:
     \[
-        G^R(\vec{r}, \vec{r}', t, t') = \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}.
+        G^R(\vec{r}, \vec{r'}, t, t') = \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r'}}}{c}}}{\abs{\vec{r} - \vec{r'}}}.
     \]
     Теперь мы можем вычислить потенциалы:
     \begin{gather*}
-        \phee(\vec{r}, t) = \ynt G^R(\vec{r} - \vec{r}', t - t')\rho(\vec{r}', t')d\vol'dt' = \\ =
-        \ynt \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}\rho(\vec{r}', t')d\vol'dt' = \\ =
-        \iiint\limits_{-\infty}^{+\infty} \frac{\rho(\vec{r}', t - \frac{\abs{\vec{r} - \vec{r}'}}{c})}{\abs{\vec{r} - \vec{r}'}}d\vol'.
+        \phee(\vec{r}, t) = \ynt G^R(\vec{r} - \vec{r'}, t - t')\rho(\vec{r'}, t')d\vol'dt' = \\ =
+        \ynt \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r'}}}{c}}}{\abs{\vec{r} - \vec{r'}}}\rho(\vec{r'}, t')d\vol'dt' = \\ =
+        \iiint\limits_{-\infty}^{+\infty} \frac{\rho(\vec{r'}, t - \frac{\abs{\vec{r} - \vec{r'}}}{c})}{\abs{\vec{r} - \vec{r'}}}d\vol'.
     \end{gather*}
     \begin{equation}
-        \vec{A}(\vec{r}, t) = \frac 1c \iiint\limits_{-\infty}^{+\infty} \frac{\vec{j}(\vec{r}', t - \frac{\abs{\vec{r} - \vec{r}'}}{c})}{\abs{\vec{r} - \vec{r}'}}d\vol'. \label{RetardedPotent}
+        \vec{A}(\vec{r}, t) = \frac 1c \iiint\limits_{-\infty}^{+\infty} \frac{\vec{j}(\vec{r'}, t - \frac{\abs{\vec{r} - \vec{r'}}}{c})}{\abs{\vec{r} - \vec{r'}}}d\vol'. \label{RetardedPotent}
     \end{equation}
     
 \subsection{Поле ограниченной системы зарядов на большом расстоянии}
     Рассмотрим уже классический случай: система имеет размер порядка $l$, малый по сравнению с расстоянием до точки наблюдения:
-    $\abs{\vec{r}'} \sim l \ll \abs{\vec{r}}$. Разложим разность расстояний до первого порядка:
+    $\abs{\vec{r'}} \sim l \ll \abs{\vec{r}}$. Разложим разность расстояний до первого порядка:
     \[
-        \abs{\vec{r} - \vec{r}'} = \sqrt{r^2 - 2\brackets{\vec{r}\cdot\vec{r}'} + (\vec{r}')^2}
-        \approx r - \brackets{\vec{n}\cdot\vec{r}'}.
+        \abs{\vec{r} - \vec{r'}} = \sqrt{r^2 - 2\brackets{\vec{r}\cdot\vec{r'}} + (\vec{r'})^2}
+        \approx r - \brackets{\vec{n}\cdot\vec{r'}}.
     \]
-    В знаменателе формулы (\ref{RetardedPotent}) примем $\abs{\vec{r} - \vec{r}'} \approx r$:
+    В знаменателе формулы (\ref{RetardedPotent}) примем $\abs{\vec{r} - \vec{r'}} \approx r$:
     \begin{equation}
         \vec{A}(\vec{r}, t) \approx \frac{1}{cr}\iiint\limits_{-\infty}^{+\infty}
-        \vec{j}\brackets{\vec{r}', t - \frac rc + \frac{\brackets{\vec{n}\cdot\vec{r}'}}{c}} \label{ApproxPotent}
+        \vec{j}\brackets{\vec{r'}, t - \frac rc + \frac{\brackets{\vec{n}\cdot\vec{r'}}}{c}} \label{ApproxPotent}
     \end{equation}
-    Поправкой $\frac{\brackets{\vec{n}\cdot\vec{r}'}}{c} \sim \frac lc$ можно пренебречь, если выполнено условие
+    Поправкой $\frac{\brackets{\vec{n}\cdot\vec{r'}}}{c} \sim \frac lc$ можно пренебречь, если выполнено условие
     \begin{equation}
         \frac lc \ll T = \frac{2\pi}{\omega}, \label{Criterion}
     \end{equation}
@@ -168,20 +168,20 @@
     \end{enumerate}
     При выполнении условия (\ref{Criterion}) потенциал можно разложить по малому параметру $\frac l{\lambda}$:
     \[
-        \vec{A}(\vec{r}, t) = \frac{1}{cr} \iiint\limits_{-\infty}^{+\infty} \vec{j}(\vec{r}', t') d\vol' + 
-        \frac{1}{c^2r} \iiint\limits_{-\infty}^{+\infty} \brackets{\vec{n}\cdot\vec{r}'}\dot{\vec{j}}(\vec{r}', t')d\vol' + \ldots
+        \vec{A}(\vec{r}, t) = \frac{1}{cr} \iiint\limits_{-\infty}^{+\infty} \vec{j}(\vec{r'}, t') d\vol' + 
+        \frac{1}{c^2r} \iiint\limits_{-\infty}^{+\infty} \brackets{\vec{n}\cdot\vec{r'}}\dot{\vec{j}}(\vec{r'}, t')d\vol' + \ldots
     \]
     где $t'(\vec{r}) \equiv t - \frac{r}{c}$ --- запаздывающее время.
 
 \subsection{Дипольное излучение}
     Рассмотрим разложение потенциала $\vec{A}$ в нулевом приближении:
     \begin{equation}
-        \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint\limits_{-\infty}^{+\infty} \vec{j}(\vec{r}', t')d\vol' \label{ZeroOrderA}
+        \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint\limits_{-\infty}^{+\infty} \vec{j}(\vec{r'}, t')d\vol' \label{ZeroOrderA}
     \end{equation}
     Подставим в (\ref{ZeroOrderA}) выражение для плотности тока в виде суммы по точечным зарядам (частицам):
     \begin{gather}
         \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint\limits_{-\infty}^{+\infty}
-        \sum_a e_a \vec{v}_a(t')\cdot\delta\brackets{\vec{r}' - \vec{r}_a(t')}d\vol' = \\ =
+        \sum_a e_a \vec{v}_a(t')\cdot\delta\brackets{\vec{r'} - \vec{r}_a(t')}d\vol' = \\ =
         \frac{1}{cr}\sum_a e_a\vec{v}_a(t') = \frac{1}{cr} \frac{d}{dt}\brackets{\sum_ae_a\vec{r}_a(t')}. \label{ZeroOrderS}
     \end{gather}
     Дипольный момент такой системы будет функцией времени:
@@ -233,7 +233,7 @@
     \begin{gather*}
         \grad\Div\frac{\vec{d}}{r} - \Delta\frac{\vec{d}}{r} = \rot\rot\frac{\vec{d}}{r};\\
         \pard{\vec{d}\brackets{t - \frac{r}{c}}}{t} = \pard{\vec{d}\brackets{t - \frac{r}{c}}}{\brackets{-r / c}} \: \Rightarrow \\
-        \Rightarrow \: \Delta\frac{\vec{d}}{r} - \frac{\vec{d}}{r} - \frac{1}{c^2r}\ddot{\vec{d}} =
+        \Rightarrow \: \Delta\frac{\vec{d}}{r} - \frac{1}{c^2r}\ddot{\vec{d}} =
         \frac 1r \pardd{\vec{d}\brackets{t - \frac{r}{c}}}{r} - \\ - \frac{1}{c^2r}\pardd{\vec{d}\brackets{t - \frac{r}{c}}}{t}=
         \frac 1r \pardd{\vec{d}}{r} - \frac 1r \pardd{\vec{d}}{r} = 0.
     \end{gather*}
@@ -258,7 +258,7 @@
     Такая же связь наблюдалась в поле плоской электромагнитной волны.
 
 \subsection{Интенсивность излучения}
-    По определению интенчивность $I$ равна интегралу от вектора Пойнтинга по полному телесному углу:
+    По определению, интенcивность $I$ равна интегралу от вектора Пойнтинга по полному телесному углу:
     \begin{gather}
         \vec{S} = \frac{c\vecp{E}{H}}{4\pi} = \frac{c\sqbrk{\vecp{H}{n} \times \vec{H}}}{4\pi} = \notag \\ =
         \vec{n}\frac{c\abs{H}^2}{4\pi} = \vec{n}\frac{c\sqbrk{\ddot{\vec{d}}_{t'} \times \vec{n}}^2}{4\pi c^4r^2}; \notag \\
@@ -284,7 +284,7 @@
     \[
         \frac{1}{c^3}\langle \left[ \ddot{\vec{d}}_{t'} \times \vec{n} \right]^2 \rangle,
     \]
-    где $\langle \ldots \rangle \equiv \int \frac{d\Omega}{4\pi}(\ldots)$. Для любого вектора $\vec{a}$, имеем:
+    где $\langle \ldots \rangle \equiv \int \frac{d\Omega}{4\pi}(\ldots)$. Для любого вектора $\vec{a}$ имеем:
     \[
         \langle \vecp{a}{n}^2 \rangle = \langle a^2 - \dotp{a}{n}^2 \rangle = a^2 - a_{\alpha}a_{\beta}n_{\alpha}n_{\beta} = 
         a^2 - a_{\alpha}a_{\beta}\frac 13 \delta_{\alpha\beta} = a^2 - \frac{1}{3}a_{\alpha}a_{\alpha} = \frac 23 a^2.
@@ -316,14 +316,14 @@
 
     Обратимся к следующему порядку разложения:
     \begin{gather*}
-        \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint \vec{j}\brackets{\vec{r}',\: t - \frac{r}{c} + \frac{\brackets{\vec{n}\cdot \vec{r}'}}{c}}d\vol = \\ =
-        \frac{1}{cr}\iiint \vec{j}(\vec{r}', t') d\vol + \frac 1{c^2r}\iiint \brackets{\vec{n}\cdot \vec{r}'}\dot{\vec{j}}(\vec{r}', t')d\vol + \ldots = \\ =
-        \frac{1}{c^2r}\iiint \brackets{\vec{n}\cdot \vec{r}'}\dot{\vec{j}}(\vec{r}', t')d\vol, 
+        \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint \vec{j}\brackets{\vec{r'},\: t - \frac{r}{c} + \frac{\brackets{\vec{n}\cdot \vec{r'}}}{c}}d\vol = \\ =
+        \frac{1}{cr}\iiint \vec{j}(\vec{r'}, t') d\vol + \frac 1{c^2r}\iiint \brackets{\vec{n}\cdot \vec{r'}}\dot{\vec{j}}(\vec{r'}, t')d\vol + \ldots = \\ =
+        \frac{1}{c^2r}\iiint \brackets{\vec{n}\cdot \vec{r'}}\dot{\vec{j}}(\vec{r'}, t')d\vol, 
     \end{gather*}
     --- вместо общего случая разложения до второго порядка ограничимся рассмотрением случая с нулевым дипольным слагаемым.
     Подставляя формулу плотности тока
     \[
-        \vec{j}(\vec{r}', t') = \sum_ae_a\vec{v}_a(t')\delta(\vec{r}' - \vec{r}(t'))
+        \vec{j}(\vec{r'}, t') = \sum_ae_a\vec{v}_a(t')\delta(\vec{r'} - \vec{r}(t'))
     \]
     в полученное уравнения, получаем
     \begin{gather}
