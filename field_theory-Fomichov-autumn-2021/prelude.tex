@@ -1,0 +1,167 @@
+%%% Работа с русским языком
+\usepackage{cmap}					          % поиск в PDF
+\usepackage[T2A]{fontenc}			      % кодировка
+\usepackage[utf8]{inputenc}               % кодировка исходного текста
+\usepackage[english, russian]{babel}   % локализация и переносы
+\usepackage{breqn}
+
+
+%%% Страница 
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry}  
+\geometry{left=20mm,right=20mm,top=25mm,bottom=30mm} % задание полей текста
+
+\usepackage{titleps}      % колонтитулы
+\newpagestyle{main}{
+	\setheadrule{.4pt}                      
+	\sethead{\CourseName}{}{\hyperlink{intro}{\;Назад к содержанию}}
+	\setfootrule{.4pt}                       
+	\setfoot{\CourseDate \; ФРКТ МФТИ}{}{\thepage} 
+}      
+\pagestyle{main}    % Устанавливает контитулы на странице
+
+
+%%%  Текст (Тут вообще всё можно настроить как надо, но вообще стандарт есть стандарт)
+\setlength\parindent{0pt}         % Устанавливает длину красной строки 0pt (А я не уверен, что это нужно (!))
+\sloppy                                        % строго соблюдать границы текста
+\linespread{1.3}                           % коэффициент межстрочного интервала
+\setlength{\parskip}{0.5em}                % вертик. интервал между абзацами
+%\setcounter{secnumdepth}{0}                % отключение нумерации разделов (Я бы не стал трогать, но вообще почему нет)
+\usepackage{multicol}				          % Для текста в нескольких колонках (Можно сразу и multirow подключить)
+%\usepackage{soul}
+\usepackage{soulutf8} % Модификаторы начертания
+
+
+%%% Гиперссылки
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+	unicode=true,           % русские буквы в раздела PDF\\
+	pdfstartview=FitH,
+	pdftitle={Заголовок},   % Заголовок
+	pdfauthor={Автор},      % Автор
+	pdfsubject={Тема},      % Тема
+	pdfcreator={Создатель}, % Создатель
+	pdfproducer={Производитель}, % Производитель
+	pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+	colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+	linkcolor=blue,          % внутренние ссылки
+	citecolor=green,        % на библиографию
+	filecolor=magenta,      % на файлы
+	urlcolor=NavyBlue,           % на URL
+}
+
+%%% Делать римские цифры:
+\newcommand{\Romannum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+%%% Для формул
+\usepackage{amsmath}          
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{gensymb}
+\usepackage{extarrows}
+
+%%% Дополнительные математические операции
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Ln}{Ln}
+\DeclareMathOperator{\Div}{div}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\cum}{cum}
+\DeclareMathOperator{\Cum}{Cum}
+\DeclareMathOperator{\trace}{trace}
+
+
+%%%%%% theorems
+\usepackage{amsthm}  % for theoremstyle
+
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{prop}[theorem]{Утверждение}
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{sug}{Предположение}[section]
+
+\theoremstyle{definition} % "Определение"
+\newtheorem{Def}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+\newtheorem*{defenition}{Def}
+\newtheorem*{example}{Пример}
+\newtheorem*{note}{Замечание}
+
+
+%%% Работа с картинками
+\usepackage{graphicx}                           % Для вставки рисунков
+\graphicspath{{images/}{images2/}}        % папки с картинками
+\setlength\fboxsep{3pt}                    % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt}                    % Толщина линий рамки \fbox{}
+\usepackage{wrapfig}                     % Обтекание рисунков текстом
+\graphicspath{{images/}}                     % Путь к папке с картинками
+
+\newcommand{\drawsome}[1]{            % Для быстрой вставки картинок
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.7]{#1}
+		\label{fig:first}
+	\end{figure}
+}
+\newcommand{\drawsomemedium}[1]{
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.45]{#1}
+		\label{fig:first}
+	\end{figure}
+}
+\newcommand{\drawsomesmall}[1]{
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.3]{#1}
+		\label{fig:first}
+	\end{figure}
+}
+
+%%% Графека
+\usepackage{tikz}
+\usetikzlibrary{angles, babel}
+
+
+%%% облегчение математических обозначений
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Cc}{\mathbb{C}}
+\newcommand{\Cex}{\overline{\mathbb{C}}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Dh}{\mathfrak{D}}
+\newcommand{\phee   }{\varphi}
+\newcommand{\pard}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\pardd}[2]{\frac{\partial^2#1}{\partial{#2}^2}}
+\newcommand{\brackets}[1]{\left({#1}\right)}      % автоматический размер скобочек
+\newcommand{\braces}[1]{\left\{{#1}\right\}}
+\newcommand{\sqbrk}[1]{\left[{#1}\right]}
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\cnj}{\overline}
+\newcommand{\Relroot}{\sqrt{1 - V^2 \big/ c^2}}
+\newcommand{\relroot}{\sqrt{1 - v^2 \big/ c^2}}
+\newcommand{\vecp}[2]{\sqbrk{\vec{#1}\times\vec{#2}}}
+\newcommand{\wecp}[2]{\sqbrk{\vec#1\times\vec#2}}
+\newcommand{\dotp}[2]{\brackets{\vec{#1}\cdot\vec{#2}}}
+\newcommand{\sotp}[2]{\brackets{\vec#1\cdot\vec#2}}
+\newcommand{\lch}{e_{\alpha\beta\gamma}}
+\newcommand{\vol}{\mathcal{V}}
+\newcommand{\erg}{\mathcal{E}}
+\newcommand{\mixd}[3]{\frac{\partial^2#1}{\partial#2\partial#3}}
+\newcommand{\med}[1]{\overline{#1}}
+\newcommand{\medv}[1]{\overline{\vec{#1}}}
+\newcommand{\ynt}{\iiiint\limits_{-\infty}^{+\infty}}
+\newcommand{\eent}{\int\limits_{-\infty}^{+\infty}}
+\newcommand{\vt}{\bigm|_{t'}}
+% Здесь можно добавить ваши индивидуальные сокращения
+

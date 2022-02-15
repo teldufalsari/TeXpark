@@ -1,0 +1,246 @@
+\newpage
+\section{Излучение релятивистских частиц}
+\subsection{Потенциалы Лиенара-Вихерта}
+    Рассмотрим движение одной частицы с произвольной скоростью без ограничения $v \ll c$. Воспользуемся выражением для векторного потенциала в
+    следующей форме:
+    \begin{equation}
+        \vec{A}(\vec{r}, t) = \frac 1c \iiiint G^R(\vec{r} - \vec{r}', \: t - t') \vec{j}(\vec{r}', t')d\vol'dt', \label{vec_pot_rel}
+    \end{equation}
+    
+    где плотность тока и функция Грина заданы известными выражениями:
+    \begin{gather*}
+        \vec{j}(\vec{r}', t') = e\vec{v}(t')\delta(\vec{r}' - \vec{r}(t')),\\
+        G^R(\vec{r}, \vec{r}', t, t') = \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}.
+    \end{gather*}
+    Проинтегрируем уравнение (\ref{vec_pot_rel}) по объёму:
+    \begin{gather*}
+        \vec{A}(\vec{r}, t) = \frac 1c \iiiint \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}
+        e\vec{v}(t')\delta(\vec{r}' - \vec{r}(t')) d\vol'dt' = \\ =
+        \frac 1c \int \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}(t')}}{c}}}{\abs{\vec{r} - \vec{r}(t')}} r\vec{v}(t')dt'.
+    \end{gather*}
+    Величина $\vec{r}$, как и прежде, есть радуис-вектор точки наблюдения, а $\vec{r}(t')$ --- положение частицы в момент $t'$ (а $\vec{r}(t)$ --- траектория частицы).
+    Введём вспомогательные функции $\vec{R}(t') = \vec{r} - \vec{r}(t')$, $g(t') = t' + \frac{R(t')}{c}$. Преобразуем полученное уравнение:
+    \begin{gather*}
+        \vec{A}(\vec{r}, t) = \int \frac{e \vec{v}(t')}{cR(t')} \delta\brackets{t - t' \frac{R(t')}{c}} dt'= \\ =
+        \int \frac{e\vec{v}(t')}{cR(t')}\delta(t - g(t')) dt' = \int \frac{e\vec{v}(t')}{cR(t')}\delta(t - g)\frac{dg}{\dot{g}(t')}; \\
+        \dot{g}(t') = 1 - \frac{\sotp{R(t')}{v(t')}}{cR(t')} \equiv \left. \brackets{1 - \frac{\dotp{n}{v}}{c}} \right|_{t'},
+    \end{gather*}
+    где $\vec{n} = \vec{n}(t') = \frac{\vec{R}(t')}{R(t')}$. Окончательно для векторного потенциала получаем
+    \begin{equation}
+        \vec{A}(\vec{r}, t) = \left. \frac{e\vec{v}}{cR(t') \brackets{1 - \frac{\dotp{n}{v}}{c}}} \right|_{t'}, \label{LV_A}
+    \end{equation}
+    где $t'$ находится из уравнения
+    \begin{equation}
+        t = g(t') = t' + \frac{R(t')}{c} \label{rel_abs_time}
+    \end{equation}
+    в котором $t$ --- время, связанное с наблюдателем. 
+    \begin{figure}[t]
+        \centering{
+            \input{figures/figRelRadiation.tex}
+        }
+        \caption{К выводу потенциалов Лиенара-Вихерта}
+    \end{figure}
+    Аналогичным образом получается формула скалярного потенциала релятивистской частицы:
+    \begin{equation}
+        \phee(\vec{r}, t) = \left. \frac{e}{R(t')\brackets{1 - \frac{\dotp{n}{v}}{c}}} \right|_{t'}. \label{LV_F}
+    \end{equation}
+    Формулы (\ref{LV_A}) и (\ref{LV_F}) называют \textit{потенциалами Лиенара-Вихерта}. Вместе с системой уравнений
+    \begin{gather*}
+        \vec{R}(t') = \vec{r} - \vec{r}'\\
+        t = t' + \frac{R(t')}{c}\\
+        \vec{n}(t) = \frac{\vec{R}(t')}{R(t')}
+    \end{gather*}
+    они описывают излучение отдельной релятивисткой частицы. Зная потенциалы, можно найти величины полей: $\vec{H} = \rot\vec{A}$, $\vec{E} = -\frac 1c \pard{\vec{A}}{t} - \nabla\phee$.
+    Вывод этих формул отличается крайней громоздкостью, поэтому не приводится и (скорее всего) не спрашивается на экзамене. Да и сами формулы не самые компактные:
+    \begin{gather*}
+        \vec{E}(\vec{r}, t) = \left. \frac{e\sqbrk{\vec{n} \times \sqbrk{\brackets{\vec{n} - \frac{v}{c}} \times \vec{w}}}}{c^2R\brackets{1 - \frac{\dotp{n}{v}}{c}}^3} \right|_{t'} +
+        \left. \frac{e \brackets{1 - \frac{v^2}{c^2}} \brackets{\vec{n} - \frac{\vec{v}}{c}}}{R^2 \brackets{1 - \frac{\dotp{n}{v}}{c}}^3} \right|_{t'} \\
+        \vec{H}(\vec{r}, t) = \wecp{n(t')}{E(\vec{r}, t)}
+    \end{gather*}
+    Здесь $\vec{w} = \dot{\vec{v}}$ --- ускорение частицы. Обратим внимание, что второе слагаемое при $v = 0$ превращается в закон Кулона.
+
+\subsection{Поле на больших расстояниях}
+    Рассмотрим поле на расстоянии от точки, достаточно большом, чтобы <<кулоновское>> слагаемое можно было считать пренебрежимо малым:
+    \begin{equation*}
+        \vec{E}(\vec{r}, t) = \left. \frac{e\sqbrk{\vec{n} \times \sqbrk{\brackets{\vec{n} - \frac{v}{c}} \times \vec{w}}}}{c^2R\brackets{1 - \frac{\dotp{n}{v}}{c}}^3} \right|_{t'}
+    \end{equation*}
+    Найдём угловое распределение такого излучения:
+    \begin{gather*}
+        \frac{dI}{d\Omega} = c\frac{E^2}{4\pi}R^2 = \frac{e^2}{4\pi c^3}
+        \frac{\sqbrk{\vec{n} \times \sqbrk{\brackets{\vec{n} - \frac{v}{c}} \times \vec{w}}}^2}{\brackets{1 - \frac{\dotp{n}{v}}{c}}^6}.
+    \end{gather*}
+    При $v \ll c$ получаем уже знакомую формулу:
+    \begin{equation*}
+        \frac{dI}{d\Omega} \approx \frac{e^2}{4\pi c} \wecp{n}{w}^2 = \frac{e^2w^2\sin^2\theta}{4\pi c^3} = \frac{\ddot{\vec{d}}^2\sin^2\theta}{4\pi c^3}.
+    \end{equation*}
+    Пусть теперь $v \approx c$, тогда угол между векторамb $\vec{n}$ и $\vec{v}$ мал: $\vartheta \ll 1$. Следовательно,
+    \begin{gather*}
+        1 - \frac{\dotp{n}{v}}{c} = 1 - \frac{v \cos\vartheta}{c}  \approx 1 - \frac vc \brackets{1 - \frac{\vartheta^2}{2}} = 1 - \frac vc + \frac vc \frac{\vartheta^2}2,
+    \end{gather*}
+    Далее:
+    \begin{gather*}
+        \gamma^2 = \frac{1}{1 - v^2 / c^2} \approx \frac{1}{2\brackets{1 - \frac vc}} \: \Rightarrow \: 1 - \frac vc \approx \frac{1}{2\gamma},
+    \end{gather*}
+    и, с учётом этого,
+    \begin{equation*}
+        1 - \frac{\dotp{n}{v}}{c} \approx \frac 12 \brackets{\gamma^{-2} + \vartheta^2}.
+    \end{equation*}
+    Пусть также $\vec{v} \parallel \vec{w}$ или $\angle(\vec{v}, \vec{w}) \approx 0$. Окончательно для углового распределения получаем:
+    \begin{equation*}
+        \frac{dI}{d\Omega} = \frac{e^2}{4\pi c^3} \frac{w\vartheta^22^6}{\brackets{\gamma^{-2} + \vartheta^2}^6} = \frac{16e^2}{\pi c^3} \frac{w\vartheta^2}{\brackets{\gamma^{-2} + \vartheta^2}^6}
+    \end{equation*}
+    Функция $\frac{dI}{d\Omega}(\vartheta)$ ведёт себя очень резко в области малых углов $\vartheta$. Она имеет провал при $\vartheta = 0$ и максимумы при
+    $\vartheta = \pm \frac{1}{\sqrt{5}\gamma}$. Основное излучение испускается в узкий конус шириной порядка $\frac{1}{\gamma}$.
+
+\subsection{Мощность излучения}
+    Порция энергии, излучаемая в телесный угол $d\Omega$ за время $dt$, воспринимаемая в точке наблюдения, может быть записана как
+    \begin{equation*}
+        -d^2\erg = dI \cdot dt.
+    \end{equation*}
+    Однако скорость потерь энергии частицы можно связать с собственным временем частицы: энергия, полученная наблюдателем в промежуток времени от $t$ до $t + dt$ была
+    испущена частицей за время от $t'$ до $t' + dt'$. Таким образом,
+    \begin{equation*}
+        -\frac{d^2\erg}{dt'd\Omega} = \frac{dI}{d\Omega} \cdot \frac{dt}{dt'}.
+    \end{equation*}
+    Выразим отсюда скорость потерь энергии:
+    \begin{equation*}
+        -\frac{d\erg}{dt'} = \int d\Omega\cdot\frac{dI}{d\Omega}\cdot\frac{dt}{dt'}.
+    \end{equation*}
+    В силу уравнения (\ref{rel_abs_time}) получаем
+    \begin{equation*}
+        \frac{dt}{dt'} = 1 - \frac{\dotp{n}{v}}{c},
+    \end{equation*}
+    откуда после подстановки формулы углового распределения излучения имеем
+    \begin{equation*}
+        -\frac{d\erg}{dt'} = \int d\Omega \frac{e^2}{4\pi c^3} \frac{\sqbrk{\vec{n} \times \sqbrk{\brackets{\vec{n} - \frac{\vec{v}}{c}} \times \vec{w}}}^2}
+        {\brackets{1 - \frac{\dotp{n}{v}}{c}}^5}.
+    \end{equation*}
+    Заметим, что величина $-\frac{d\erg}{dt'}$ является релятивистским инвариантом. В системе $K = K_0$ (системе покоя частицы) для неё справедливо нерелятивистское
+    приближения, которое для покоящейся частицы совпадает с точным решением:
+    \begin{equation}
+        - \frac{d\erg}{dt'} = \int d\Omega \frac{e^2}{4\pi c^3} w_0^2\sin^2\theta = \frac{2e^2w_0^2}{3c^3} = - \frac{d\erg_0}{dt_0'}, \label{rel_rad_self}
+    \end{equation}
+    индекс <<$0$>> обозначает величины в системе $K_0$. Рассмотрим 4-вектор потерь энергии-импульса частицы:
+    \begin{gather*}
+        dp^i = \brackets{-\frac{d\erg}{c},\: -d\vec{p}}, \\
+        \left. dp^i \right|_{K = K_0} = \brackets{-\frac{d\erg_0}{c},\: d\vec{p}_0}.
+    \end{gather*} 
+    Заметим, что в $K_0$-системе $dI \sim \sin^2\theta d\theta$, а это выражение симметрично относительно замены $\theta \:\rightarrow\: \pi - \theta$.
+    То есть, в одном направлении излучается то же количество энергии, что и в противоположном, и, как следствие, $dp_0 = 0$, и
+    $\left. dp^i \right|_{t'} = \brackets{-\frac{d\erg_0}{c}, \:0}$ Переходя в произвольную $K$-систему,
+    \begin{equation*}
+        d\erg = \frac{d\erg_0}{\relroot} \:\Rightarrow\: -\frac{d\erg}{dt'} = -\frac{d\erg_0}{dt'\relroot},
+    \end{equation*}
+    и в силу того, что собственное время частицы $d\tau \equiv dt'_0 = dt'\relroot$, получаем утверждение об инвариантности потерь энергии в системе покоя:
+    \[
+        -\frac{d\erg}{dt'} = -\frac{d\erg_0}{dt_0'}.
+    \]
+    Учитывая уравнение (\ref{rel_rad_self}), приходим к \textit{формуле Лармора}
+    \begin{equation*}
+        \boxed{-\frac{d\erg}{dt'} = \frac{2e^2w_0^2}{3c^3}}
+    \end{equation*}
+    Энергию потерь можно выразить через величины текущей системы отсчёта, использую свойство (\ref{four_acc_feature}) 4-ускорения:
+    \begin{equation*}
+        -\frac{d\erg}{dt'} = -\frac{2e^2c}{3}w^iw_i.
+    \end{equation*}
+    В явном виде квадрат 4-ускорения равен
+    \begin{gather*}
+        w^iw_i = \frac{\gamma^8}{c^6}\dotp{v}{w}^2 - \frac{\gamma^8}{c^8}v^2\dotp{v}{w}^2 - 2\frac{\gamma^6}{c^6} \dotp{v}{w}^2 - \frac{\gamma^4}{c^4}w^2 = \\ =
+        \frac{\gamma^8}{c^6}\dotp{v}{w}\brackets{1 - \frac{v^2}{c^2}} - 2\frac{\gamma^6}{c^6}\dotp{v}{w}  - \frac{\gamma^4}{c^4}w^2 = \\ =
+        -\frac{\gamma^6}{c^4}\brackets{w^2\gamma^2 + \frac{1}{c^2}\dotp{v}{w}^2} = \\ =
+        -\frac{\gamma^6}{c^4}\brackets{w^2\brackets{1 - \frac{v^2}{c^2}} + \frac{1}{c^2}\dotp{v}{w}^2} = \\ =
+        -\frac{\gamma^4}{c^4}\brackets{w^2 - \frac{1}{c^2}\brackets{v^2w^2 - \dotp{v}{w}^2}} = \\ =
+        -\frac{\gamma^4}{c^4}\brackets{w^2 - \frac{\vecp{v}{w}^2}{c^2}}.
+    \end{gather*}
+    Мощность излучения в системе покоя равна
+    \begin{equation*}
+        -\frac{d\erg}{dt'} = \frac{2e^2\gamma^6}{3c^3}\brackets{w^2 - \frac{\vecp{v}{w}^2}{c^2}}.
+    \end{equation*}
+    Ожидаемо при $v \ll c$ получаем нерелятивистскую формулу
+    \[
+        -\frac{d\erg}{dt'} = \frac{2e^2w^2}{3c^3}.
+    \]
+
+\newpage
+\subsection{Синхротронное излучение}
+    \begin{figure}[h]
+        \centering{
+            \input{figures/figCircus.tex}
+        }
+    \end{figure}
+    Применим полученные формулы к частице, движущейся по окружности в магнитном поле, считая, что потери на излучение малы и не влияют на движение частицы.
+    \begin{gather}
+        -\frac{d\erg}{dt'} = \frac{2e^2\gamma^6}{3c^3}\brackets{w^2 - \frac{v^2w^2}{c^2}} = \notag \\ = 
+        \frac{2e^2\gamma^2w^2}{3c^3}\brackets{1 - \frac{v^2}{c^2}} = \frac{2e^2\gamma^4w^2}{3c^3}. \label{smol_losses}
+    \end{gather}
+    Уравнение движения частицы при малых потерях
+    \begin{equation}
+        \frac{d\vec{p}}{dt} = \frac ec \vecp{v}{H}, \: \abs{p} = const \label{lossless_motion}
+    \end{equation}
+    С учётом релятивисткой формулы для импульса
+    \[
+        \vec{p} = \frac{m\vec{v}}{\relroot} = m\gamma\vec{v}
+    \]
+    уравнение (\ref{lossless_motion}) примет вид
+    \begin{equation*}
+        m\gamma\vec{w} = \frac ec \vecp{v}{H} \: \Rightarrow \: w^2 = \frac{e^2v^2H^2}{m^2c^2\gamma^2}.
+    \end{equation*}
+    Подставим квадрат ускорения в формулу (\ref{smol_losses}):
+    \begin{equation*}
+        -\frac{d\erg}{dt'} = \frac{2e^4\gamma^2v^2H^2}{3m^2c^5}.
+    \end{equation*}
+    Так как радиус обращения частицы равен
+    \begin{equation*}
+        R = \frac{cp_{\perp}}{|e|H} = \frac{mc\gamma v}{|e|H} \overset{v \approx c}{\approx} \frac{mc^2\gamma}{|e|H},
+    \end{equation*}
+    то мощность излучения можно записать в виде
+    \begin{equation*}
+        -\frac{d\erg}{dt'} \approx \frac{2\gamma^4}{3}c\frac{e^2}{R^2}.
+    \end{equation*}
+
+    Обсудим критерий применимости приближения малых потерь: если период обращения частицы равен $T$, то условие малости потерь
+    можно сформулировать как
+    \begin{equation}
+        \abs{\frac{d\erg}{dt'}}\cdot T \ll \erg. \label{smollness_criterion}
+    \end{equation}
+    Далее, учитывая, что
+    \begin{equation*}
+        T = \frac{2\pi}{\omega} = \frac{2\pi}{eHc} = \frac{2\pi\erg}{eHc},
+    \end{equation*}
+    преобразуем условие (\ref{smollness_criterion}):
+    \begin{gather*}
+        \frac{2e^4\gamma^2v^2H^2}{3m^2c^5} \cdot \frac{2\pi\erg}{eHc} \ll \erg \: \Rightarrow \: \gamma\frac{v}{c} \ll \sqrt{\frac{H}{H_0}},
+    \end{gather*}
+    где $\displaystyle H_0 \sim \frac{m^2c^4}{e^3} \sim 0,6 \cdot 10^{12} \:\textrm{Тл}$ . Для полей порядка 1 Тл допустимая величина $\gamma \ll 10^6$,
+    что соответствует энергии частицы $\erg \ll 10^{12} \: \textrm{эВ} = 1 \:\textrm{ТэВ}$.
+
+    \begin{figure}[t]
+        \centering{
+            \input{figures/figRadiation.tex}
+        }
+        \caption{К определению длины когерентности. Конусы перекрываются, когда $\vartheta \lesssim \theta$.}
+    \end{figure}
+    В пункте №2 было установлено, что при $v \sim c$ частица излучает в узкий конус угловой шириной $\vartheta \sim 1/\gamma$.
+    Будем наблюдать излучение частицы в некоторой удалённой точке. В направлении на точку наблюдения частица излучает не мгновенно,
+    а некоторый промежуток времени, в течении которого её конус излучения <<захватывает>> это направление. Ясно, что за это время частица
+    проходит угол $\theta$ по окружности. Длина отрезка, который частица проходит за это время
+    \[
+        l = R\phee = R\theta \sim\frac{E}{\gamma}
+    \]
+    называют \textit{длиной когерентности}. Посмотрим, как изменяется фаза волны за это время:
+    \begin{gather*}
+        \phee = \omega t - \dotp{k}{r}, \:\: \vec{k} = \frac{\omega}{c}\vec{r};\\
+        \Delta\varphi = \omega\Delta t - \brackets{\vec{k} \cdot \Delta\vec{r}} = \omega\Delta t\brackets{1 - \frac{v}{c}} = \\ =
+        \omega\frac{l}{c}\cdot\frac{1}{2\gamma^2} = \frac{\omega R}{2\gamma^3 c}.
+    \end{gather*}
+    Здесь учтено, что $\abs{\Delta\vec{r}} \ll R$ и , следовательно, $\vec{k} \sim \vec{n} \parallel \Delta \vec{r}$. Если $\Delta\phee > 2\pi$, то
+    волны с разных участков уничтожают друг друга --- происходит деструктивная интерференция. Для того, чтобы излучение было наблюдаемым, необходимо
+    \[
+        \frac{\omega R}{2\gamma^3c} \lesssim 2\pi \: \Rightarrow \: \omega \sim \frac{c}{R}\gamma^3.
+    \]
+    Подставим радиус обращения частицы $R = \frac{mc^2\gamma}{\abs{e}H}$:
+    \begin{equation*}
+        \omega \sim \frac{\abs{e}H}{mc}\gamma^2.
+    \end{equation*}
+    Эта формула выражает зависимость спектрального максимума синхротронного излучения от заданного магнитного поля.
+    

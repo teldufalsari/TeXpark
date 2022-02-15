@@ -1,0 +1,214 @@
+\newpage
+\section{4-векторный аппарат теории поля}
+\subsection{4-векторы.}
+    Рассмотрим величину $A^i = \brackets{A^0, A^1, A^2, A^3}$. Говорят, что $A^0, \ldots , A^3$ образуют {\it 4-вектор}, если
+    \begin{enumerate}
+        \item При смене систем отсчёта они преобразуются следующим образом:
+            \[ \begin{cases}
+                A^{0'} = A^0 \ch \psi - A^1 \sh \psi, \\
+                A^{1'} = -A^0 \sh \psi + A^1 \ch \psi, \\
+                A^{2'} = A^2, \\
+                A^{3'} = A^3. \tag{\Romannum{4}} \label{fvec}
+            \end{cases} \]
+        \item Последние три компоненты 4-вектора  можно рассматривать как обычный трёхмерный вектор по отношению к преобразованиям \underline{в рамках текущей системы отсчёта}:
+        \[
+            \vec{A} = \brackets{A_1, A_2, A_3}, \ A^i = \brackets{A^0, \vec A}.
+        \]
+        Иными словами, при исключительно геометрических преобразованиях трёхмерного пространства, не затрагивающим относительность движения 
+        (например, при параллельном переносе или повороте системы координат) вектор $\vec{A}$ преобразуется так же, как и любой другой вектор трёхмерного пространства.
+    \end{enumerate}
+
+    \textit{Квадрат} 4-вектора можно было бы определить так:
+    \[
+        \sum_{i=0}^3 A^i A^i = \brackets{A^0}^2 + \brackets{A^1}^2 + \brackets{A^2}^2 + \brackets{A^3}^2,
+    \]
+    Однако в данном случае квадрат не будет инвариантом преобразований Лоренца и будет зависеть от выбора системы отсчёта. Это нетрудно проверить, подставив значения преобразованных по формулам \ref{fvec} компонент в формулу выше: останутся несократившиеся величины $\sh \psi$ и $\ch \psi$, зависящие от системы отсчёта. Попробуем найти такое определение, при котором скалярное произведение будет инвариантом:
+    \begin{gather*}
+        \brackets{A^{0'}}^2 - \brackets{A^{1'}}^2 - \brackets{A^{2'}}^2 - \brackets{A^{3'}}^2 = \\ 
+        = \brackets{A^0 \ch \psi - A^1 \sh \psi}^2 - \brackets{A^1 \ch \psi - A^0 \sh \psi}^2 - \brackets{A^2}^2  -  \brackets{A^3}^2 =  \\
+        = \brackets{A^0}^2 \brackets{\ch^2\psi - \sh^2\psi} - \brackets{A^1}^2 \brackets{\ch^2\psi - \sh^2\psi} - \brackets{A^2}^2  -  \brackets{A^3}^2 = \\
+        =\brackets{A^0}^2 - \brackets{A^1}^2 - \brackets{A^2}^2 - \brackets{A^3}^2 = inv.
+    \end{gather*}
+
+    Введём два представления одного и того же 4-вектора:
+    \begin{itemize}
+        \item $A^i = \brackets{A^0, A^1, A^2, A^3} $ --- в \textit{контрвариантных} координатах;
+        \item $A_i = \brackets{A_0, A_1, A_2, A-3} $ --- в \textit{ковариантных} координатах,
+    \end{itemize}
+    где $A_0 = A^0, A_1 = -A^1, A_2 = -A^2, A_3 = -A^3, A^i = \brackets{A^0, \vec A}, A_i = \brackets{A_0, -\vec A}$.
+    Преобразования \ref{fvec} для ковариантных координат запишутся так:
+        \[ \begin{cases}
+            A^{0'} = A^0 \ch \psi + A^1 \sh \psi, \\
+            A^{1'} = A^0 \sh \psi + A^1 \ch \psi, \\
+            A^{2'} = A^2, \\
+            A^{3'} = A^3. \tag{\Romannum{5}} \label{cfvec}
+        \end{cases} \]
+    \begin{Def}
+        \textit{Квадратом} 4-вектора называется величина $\displaystyle \sum_{i=0}^3 A_i A^i \equiv A_i A^i = A_0 A^0 + A_1 A^1 + A_2 A^2 + A_3 A^3 = 
+        \brackets{A^0}^2 - \brackets{A^1}^2 - \brackets{A^2}^2 - \brackets{A^3}^2$.
+    \end{Def}
+        \begin{note}
+        При записи записи вида $\displaystyle \sum_i A_i A^i$ (повторяющийся индекс снизу и сверху) знак суммы опускают:
+        $\displaystyle A_i A^i \equiv \sum_i A_i A^i$.
+    \end{note}
+
+    Матричная запись:
+    \[
+        \begin{bmatrix} A^{0'} \\ A^{1'} \\ A^{2'} \\ A^{3'} \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \ch \psi & -\sh\psi & 0 & 0 \\
+            -\sh\psi & \ch \psi & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix} A^0 \\ A^1 \\ A^2 \\ A^3 \end{bmatrix}
+        \longleftrightarrow
+        A^{i'} = {\alpha^i}_k A^k \ \brackets{\equiv \sum_{k=0}^3 {\alpha^i}_k A^k}.
+    \]
+    \[
+        \begin{bmatrix} A_0'  \\ A_1' \\ A_2' \\ A_3' \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \ch\psi & \sh\psi & 0 & 0 \\
+            \sh\psi & \ch\psi & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix} A_0 \\ A_1 \\ A_2 \\ A_3 \end{bmatrix}
+        \longleftrightarrow
+        A_i' = {\alpha_i}^k A_k \ \brackets{\equiv \sum_{k=0}^3 {\alpha_i}^k A_k}.
+    \]
+
+    В этих выражениях матрицы преобразования обозначены как 
+    \[
+        {\alpha^i}_k = 
+        \begin{bmatrix}
+            \ch \psi & -\sh\psi & 0 & 0 \\
+            -\sh\psi & \ch \psi & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        \  {\alpha_i}^k = 
+        \begin{bmatrix}
+            \ch\psi & \sh\psi & 0 & 0 \\
+            \sh\psi & \ch\psi & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}.
+    \]
+    \begin{note}
+        Обратите внимание на то, как записаны верхний и нижний индексы матриц: первый индекс --- индекс строки,
+    а второй, написанный со сдвигом вправо, --- индекс столбца.
+    \end{note}
+    \begin{note}
+        Матрицы ${\alpha^i}_k$ и ${\alpha^k}_i$ являются взаимно обратными:
+        \begin{gather*}
+            {\alpha^i}_k \cdot {\alpha^k}_l = \delta^i_l = \begin{cases} 1, \ i = l \\ 0, \ i \not= l \end{cases} \\
+            {\alpha_i}^k \cdot {\alpha^i}_l = \delta^k_l
+        \end{gather*}
+    \end{note}
+    
+    Используя только что введённую запись, можно легко показать инвариантность квадрата 4-вектора:
+    \[
+        \brackets{A^i A_i}' = \brackets{A^{i}}' A_i' = {\alpha^i}_k A^k {\alpha_i}^m A_m =
+        {\alpha^i}_k {\alpha_i}^m A^k A_m = \delta^m_k A^k A_m = A^m A_m.
+    \]
+
+    \begin{Def}
+        \textit{Скалярным произведением} двух 4-векторов $A^i$ и $B^i$ называется величина
+        \[
+            A_i B^i = A_0 B^0 + A_1 B^1 + A_2 B^2 + A_3 B^3 = A^0 B^0 - A^1 B^1 - A^2 B^2 - A^3 B^3 = A^0 B^0 - \brackets{\vec{A}\cdot\vec{B}}.
+        \]
+    \end{Def}
+    \begin{prop}
+        Скалярное произведение двух 4-векторов есть релятивистский инвариант.
+    \end{prop}
+    \begin{proof}
+        \[
+        \brackets{A^i B_i}' = \brackets{A^{i}}' B_i' = {\alpha^i}_k A^k {\alpha_i}^m B_m =
+        {\alpha^i}_k {\alpha_i}^m A^k B_m = \delta^m_k A^k B_m = A^m B_m.
+        \]
+    \end{proof}
+
+\subsection{Оператор градиента}
+    Вспомним определение градиента из курса кратных интегралов:
+    \[
+        \pard{f}{x^i} = \brackets{\pard{f}{x^1}, \pard{f}{x^2}, \ldots, \pard{f}{x^n}}.
+    \]
+    Рассмотрим вычисление градиента в преобразованных координатах:
+    \[
+        \pard{f}{\brackets{x^{i}}'} = \pard{f}{x^k}\pard{x^k}{\brackets{x^{i}}'},
+    \]
+    тогда:
+    \begin{gather*}
+        x^k = {\alpha_i}^k \brackets{x^{i}}',\\
+        \pard{x^k}{\brackets{x^{i}}'} = {\alpha_i}^k,\\
+        \pard{}{\brackets{x^{i}}'} = \pard{x_k}{\brackets{x^{i}}'} \pard{}{x^k} = {\alpha_i}^k \pard{}{x^k}.
+    \end{gather*}
+    \textit{Оператором градиента в пространстве 4-векторов} называется формальный 4-вектор
+    \[
+        \nabla_i \equiv \pard{}{x^i} = \brackets{\frac{1}{c}\pard{}{t}, \vec \nabla},
+    \]
+    где $\vec \nabla = \brackets{\pard{}{x}, \pard{}{y}, \pard{}{z}}$. В ковариантных координатах оператор градиента записывается как
+    \[
+        \nabla^i \equiv \pard{}{x_i} = \brackets{\frac{1}{c} \pard{}{t}, - \vec\nabla}.
+    \]
+    \begin{example}
+        \[
+            \nabla_i A^i = \frac{1}{c} \pard{A^0}{t} + \pard{A_x}{x} + \pard{A_y}{y} + \pard{A_z}{z} = \frac{1}{c} \pard{A_0}{t} + \Div \vec A.
+        \]
+    \end{example}
+    \begin{example} (Оператор Даламбера):
+        \[
+            \nabla_i \nabla^i = \frac{1}{c^2} \pardd{}{t} - \pardd{}{x} - \pardd{}{y} - \pardd{}{z} = \frac{1}{c^2} \pardd{}{t} - \Delta \equiv \Box.
+        \]
+    \end{example}
+
+\subsection{4-скорость}
+    \textit{4-скоростью} точки с координатным 4-вектором $x^i$ называется 4-вектор $u^i$:
+    \[
+        u^i = \frac{dx^i}{ds} = \frac{1}{c} \frac{dx^i}{d\tau},
+    \]
+    где $d\tau$ определяется равенством $ds^2 = c^2 d\tau^2$. Подробнее:
+    \[
+        ds^2 = c^2dt^2 - dx^2 -dy^2 -dz^2 \equiv dx^i dx_i = c^2dt^2 - d\brackets{\vec r}^2 = c^2 dt^2 \brackets{1 - \frac{1}{c} \frac{d\brackets{\vec r}^2}{dt^2}} =
+        c^2 dt^2 \brackets{1 - \frac{V^2}{c^2}}.
+    \]
+    Тогда $\displaystyle ds = cdt\sqrt{1 - \frac{V^2}{c^2}}$, а сам 4-вектор скорости запишется так:
+    \[
+        u^i = \frac{1}{cdt\Relroot} \cdot \brackets{cdt, d\vec r} = \brackets{\frac{1}{\Relroot}, \  \frac{\vec V}{c\Relroot}}.
+    \]
+    Заметим, что $u^i u_i = \frac{dx^i dx_i}{ds^2} \equiv 1$. В системе покоя точки, то есть в системе,
+    где $\vec{v} = 0$, её 4-скорость $u^i = \brackets{1, 0, 0, 0}$.
+
+\subsection{4-ускорение}
+    \begin{Def}
+        \textit{4-ускорением} точки называется величина
+        \begin{gather*}
+            w^i = \frac{du^i}{ds} = \frac{1}{c\relroot} \cdot \frac{d}{dt} \brackets{\frac{1}{\relroot} \:,\: \frac{\vec{v}}{c\relroot}} = \\
+            = \frac{1}{c\relroot}\brackets{\frac{\brackets{\vec{v}\cdot\vec{w}}}{c^2\brackets{1-v^2 \big/ c^2}^{\frac{3}{2}}} \:,\:
+                \frac{\vec{w}}{c\relroot} + \frac{\vec{v} \brackets{\vec{v} \cdot \vec{w}}}{c^3 \brackets{1 - v^2 \big/ c^2}^{\frac{3}{2}}}} = \\
+            = \brackets{\frac{\brackets{\vec{v} \cdot \vec{w}}}{c^3 \brackets{1 - v^2 \big/ c^2}^{2}} \:,\:
+                \frac{\vec{w}}{c^2 \brackets{1 - v^2 \big/ c^2}} + \frac{\vec{v} \brackets{\vec{v} \cdot \vec{w}}}{c^4 \brackets{1 - v^2 \big/ c^2}^2}} = \\ =
+            \brackets{\frac{\gamma^4}{c^3}\dotp{v}{w},\: \frac{\gamma^2}{c^2}\vec{w} + \frac{\gamma^4}{c^4}\vec{v}\dotp{v}{w}}.
+        \end{gather*}
+    \end{Def}
+    Здесь $\vec{w} = \frac{d\vec{v}}{dt}$ --- обычное трёхмерное ускорение.
+
+    Используя тождество $u^iu_i = 1$, можно получить следующее соотношение:
+    \[
+        \frac{d\brackets{u^iu_i}}{ds} = \frac{di^i}{ds}u_i + u^i\frac{du_i}{ds} = 2u_i\frac{du^i}{ds}= 2u_iw^i = \frac{d\brackets{1}}{ds},
+    \]
+    откуда $u_i w^i \equiv 0$.
+
+    \begin{note}
+        Пусть в системе, где точка (частица) локально покоится ($\vec{v} = 0$), её трёхмерное ускорение равно $\vec{w_0}$.
+        Тогда её 4-ускорение равно $w^i = \brackets{0, \frac{\vec{w_0}}{c^2}}$, а квадрат 4-ускорения равен
+        \begin{equation}
+            w^iw_i~=~-\frac{w_0^2}{c^4} \label{four_acc_feature}
+        \end{equation}
+        во всех системах отсчёта.
+    \end{note}

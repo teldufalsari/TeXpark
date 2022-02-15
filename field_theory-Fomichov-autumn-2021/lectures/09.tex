@@ -1,0 +1,244 @@
+\newpage
+\section{Следствия уравнений Максвелла}
+\subsection{Закон сохранения энергии}
+    Умножим уравнение (\ref{max_rote}) скалярно на $\vec{H}$, а (\ref{max_roth}) на $\vec{E}$ и вычтем одно из другого:
+    \begin{gather*}
+        \vec{E}\cdot\rot\vec{H} - \vec{H}\cdot\rot\vec{E} = \frac 1c \vec{E}\cdot\pard{\vec{E}}{t} + \frac 1c \vec{H}\pard{\vec{H}}{t}
+        +\frac{4\pi}{c}\dotp{j}{E}.
+    \end{gather*}
+    По известной формуле из векторного анализа (есть в задании), $\vec{E}\cdot\rot\vec{H} - \vec{H}\cdot\rot\vec{E} = \Div\vecp{H}{E}$,
+    и тогда, путём несложных преобразований, получаем
+    \[
+        \frac{1}{2c}\pard{}{t}\brackets{E^2 + H^2} + \Div\vecp{E}{H} = -\frac{4\pi}{c}\dotp{j}{E}.
+    \]
+    Умножим на скорость света и поделим на $4\pi$:
+    \[
+        \pard{}{t}\frac{E^2 + H^2}{8\pi} + \Div\frac{c\vecp{E}{H}}{4\pi} = -\dotp{j}{E}
+    \]
+    Обозначим $w \equiv \frac{E^2 + H^2}{8\pi}$, $\vec{S} \equiv \frac{c\vecp{E}{H}}{4\pi}$, --- плотность энергии
+    и вектор Пойнтинга (плотность потока энергии) соответственно. Уравнение в новых обозначениях:
+    \begin{equation}
+        \boxed{\pard{w}{t} + \Div\vec{S} = -\dotp{j}{E}} \label{erg_cons}
+    \end{equation}
+    Оно выражает закон сохранения энергии для поля и системы заряженных частиц. Проинтегрируем (\ref{erg_cons}) по объёму $\vol$:
+    \begin{gather*}
+        \int \pard{w}{t} d\vol + \int \Div\vec{S} d\vol = -\int\dotp{j}{E} d\vol; \\
+        \frac{d}{dt}\int wd\vol + \oint \vec{S}d\vec{f} =
+        -\int \vec{E}\brackets{\vec{r}, t}\sum_{a=1}^N e_a\vec{v}_a\delta\brackets{\vec{r} - \vec{r}_a(t)}d\vol = \\
+        = -\sum_{a=1}^N e_a\brackets{\vec{v}_a \cdot\vec{E}\brackets{\vec{r}_a(t), t}} = -\sum_{a=1}^N\frac{d\erg_a}{dt}.
+    \end{gather*}
+    Обозначение $d\vec{f}$ --- элемент поверхности, по которой ведётся интегрирование. $\erg_a$ --- энергия частицы,
+    было использовано соотношение (\ref{de_dt}).
+    \[
+        \frac{d}{dt}\brackets{\int wd\vol + \sum_{a=1}^N \erg_a} = -\oint\vec{S}d\vec{f}.
+    \]
+    Рассмотрим замкнутую систему заряженных частиц, которые взаимодействуют только между собой. Считая, что на 
+    бесконечности поле от частиц, а следовательно и поверхностный интеграл, обращаются в ноль, получаем
+    \[
+        \frac{d}{dt}\brackets{\iiint\limits_{-\infty}^{+\infty}wd\vol + \sum_{a=1}^N\erg_a} = 0.
+    \]
+    Под величиной $W = \iiint\limits_{-\infty}^{+\infty}wd\vol$ естественно понимать энергию электромагнитного поля; $w$, как
+    было сказано ранее, есть плотность этой энергии.
+    \[
+        W + \sum_{a=1}^N\erg_a = const
+    \]
+    Это соотношение выражает закон сохранения энергии для замкнутой системы заряженных частиц.
+
+    Если интегрирование ведётся по конечному объёму, то суммарная энергия в объёме изменяется за счёт <<протекания>> энергии через
+    ограничивающую поверхность с величиной потока $\oint_S\vec{S}d\vec{f}$. Здесь элемент $d\vec{f}$ направлен по внешней нормали,
+    и если вектор $\vec{S}$ направлен туда же, то интеграл положителен, что как раз соответствует уменьшению энергии в объёме.
+
+\subsection{Закон сохранения импульса}
+    Выделим в пространстве малый объём $\Delta\vol$, в котором движется некоторое количество заряженных частиц.
+    Плотность потока энергии этих частиц по определению равна:
+    \[
+        \vec{S}_{\textrm{част}} = \frac{\sum_{a\in \Delta\vol} \erg_a\vec{v}_a}{\Delta\vol}.
+    \]
+    Воспользуемся связью энергии и импульса $\vec{p_a} = \erg_a\vec{v}_a \big/c^2$. Тогда
+    \[
+        \vec{S}_{\textrm{част}} = c^2 \frac{\sum_{a\in \Delta\vol} \vec{p}_a}{\Delta\vol} = c^2 \vec{g}_{\textrm{част}},
+    \]
+    где $\vec{g}_{\textrm{част}}$ --- плотность импульса частиц. Предположим, что для электромагнитного поля данное
+    соотношение также справедливо:
+    \[
+        \vec{g} = \frac{\vec{S}}{c^2} = \frac{\vecp{E}{H}}{4\pi c}.
+    \]
+    Посмотрим, чему равно $\pard{\vec{g}}{t}$:
+    \begin{gather*}
+        \pard{\vec{g}}{t} = \frac{1}{4\pi c} \pard{\vecp{E}{H}}{t} = 
+        \frac{1}{4\pi c} \vecp{\pard{E}{t}}{H} + \frac{1}{4\pi c} \vecp{E}{\pard{H}{t}} = \\
+        = \frac{1}{4\pi c}\sqbrk{\rot\vec{H} \times \vec{H}} - \frac 1c \vecp{j}{H} - 
+        \frac{1}{4\pi}\sqbrk{\vec{E} \times \rot\vec{E}} = \\
+        = -\frac{1}{4\pi}\braces{\sqbrk{\vec{E} \times \rot\vec{E}} + \sqbrk{\vec{H} \times \rot\vec{H}}}
+        - \frac 1c \vecp{j}{H}.
+    \end{gather*}
+    Воспользуемся формулой 
+    $\nabla\dotp{a}{b} = \sqbrk{\vec{a} \times \rot\vec{b}} + \sqbrk{\vec{b} \times \rot\vec{a}} + \dotp{a}{\nabla}\vec{b} + \dotp{b}{\nabla}\vec{a}$.
+    Положим $\vec{a} = \vec{b} = \vec{E}$:
+    \begin{gather*}
+        \nabla\brackets{E^2} = 2\sqbrk{\vec{E} \times \rot\vec{E}} + 2\dotp{E}{\nabla}\vec{E}; \\
+        \dotp{\nabla}{E}\vec{E} = \vec{E}\dotp{\nabla}{E} + \dotp{E}{\nabla}\vec{E}; \\
+        \sqbrk{\vec{E} \times \rot\vec{E}} = \nabla\frac{E^2}{2} - \dotp{\nabla}{E}\vec{E} + \vec{E}\dotp{\nabla}{E}.
+    \end{gather*}
+    Учтём, что $\dotp{\nabla}{E} = 4\pi\rho$, и таким образом,
+    \[
+        \sqbrk{\vec{E} \times \rot\vec{E}} = \nabla\frac{E^2}{2} -  \dotp{\nabla}{E}\vec{E} + 4\pi\rho\vec{E}.
+    \]
+    Аналогично для магнитного поля имеем
+    \[
+        \sqbrk{\vec{H} \times \rot\vec{H}} = \nabla\frac{H^2}{2} -  \dotp{\nabla}{H}\vec{H}.
+    \]
+    Таким образом,
+    \[
+        \pard{\vec{g}}{t} = -\frac{1}{4\pi}
+        \braces{\nabla\frac{E^2 + H^2}{2} -  \dotp{\nabla}{E}\vec{E} - \dotp{\nabla}{H}\vec{H}} - \rho\vec{E} -\frac{1}{c}\vecp{j}{H}.
+    \]
+    Это же уравнение в компонентах:
+    \[
+        \pard{g_{\alpha}}{t}
+        = -\frac{1}{4\pi}
+        \braces{\pard{}{x_{\alpha}}\frac{E^2 + H^2}{2} - \nabla_{\beta}\vec{E}_{\beta}\vec{E}_{\alpha} - \nabla_{\beta}\vec{H}_{\beta}\vec{H}_{\alpha}}
+        - \braces{\rho\vec{E} -\frac{1}{c}\vecp{j}{H}}_{\alpha}.
+    \]
+    Обозначим $\displaystyle T_{\alpha\beta} = \delta_{\alpha\beta}\frac{E^2 + H^2}{8\pi} - \frac{E_{\alpha}E_{\beta} + H_{\alpha}H_{\beta}}{4\pi}$.
+    Уравнения примет более компактный вид:
+    \[
+        \pard{g_{\alpha}}{t} + \pard{T_{\alpha\beta}}{x_{\beta}} =
+        -\braces{\rho\vec{E} + \frac 1c \vecp{j}{H}}_{\alpha} = -f_{\alpha},
+    \]
+    где $f_{\alpha}$ --- плотность силы Лоренца. Полученное соотношение можно проинтегрировать по объёму:
+    \[
+        \int \pard{g_{\alpha}}{t} d\vol + \int\pard{T_{\alpha\beta}}{x_{\beta}} d\vol = -\int d\vol \braces{\rho\vec{E} + \frac 1c \vecp{j}{H}}_{\alpha}
+    \]
+    Используем теорему Гаусса-Остроградского и определения плотности заряда и тока:
+    \begin{gather*}
+        \frac{d}{dt} \int g_{\alpha}d\vol + \oint T_{\alpha\beta}df_{\beta} = \\
+        = -\int d\vol \braces{\vec{E}\brackets{\vec{r}, t}\sum_{a\in\vol} e_a\delta\brackets{\vec{r} - \vec{r}_a(t)}
+        + \frac{1}{c}\sqbrk{\sum_{a\in\vol} e_a\vec{v}_a\delta\brackets{\vec{r} - \vec{r}_a(t)} \times \vec{H}\brackets{\vec{r}, t}}}_{\alpha} = \\
+        = -\sum_{a\in\vol} \brackets{e_a\vec{E}(\vec{r}_a(t), t) + \frac{e_a}{c}\sqbrk{\vec{v}_a \times \vec{H}(\vec{r}_a, t)}}_{\alpha}
+        = -\sum_{a\in\vol} \brackets{\frac{d\vec{p}_a}{dt}}_{\alpha}
+    \end{gather*}
+    (Только зачем мы всё это расписывали явно, если и так понятно, что если проинтегрировать плотность электромагнитной силы по объёму,
+    то естественно получится электромагнитная сила, которая и равна $\frac{d\vec{p}_a}{dt}$?)
+
+    Аналогично закону сохранения энергии, если система частиц замкнута, имеет место
+    \[
+        \frac{d}{dt}\brackets{\iiint\limits_{-\infty}^{+\infty} g_{\alpha}d\vol + \brackets{\sum_{a = 1}^N\vec{p}_a}_{\alpha}} = 0.
+    \]
+    Величина $\iiint\limits_{-\infty}^{+\infty} g_{\alpha}d\vol$ есть полный импульс поля. В конечном объёме:
+    \[
+        \frac{d}{dt}\brackets{\int\limits_{\vol} g_{\alpha}d\vol + \brackets{\sum_{a = 1}^N\vec{p}_a}_{\alpha}} = 
+        -\oint\limits_S T_{\alpha\beta}df_{\beta}
+    \]
+    Тензорную величину $T_{\alpha\beta}$ называют \textit{плотностью потока импульса}. Скалярной величине $W$ соответствует вектор $\vec{S}$,
+    поэтому вектору импульса должен соответствовать уже тензор второго ранга. Наряду с $T_{\alpha\beta}$ иногда вводят 
+    $\sigma_{\alpha\beta} = -T_{\alpha\beta}$ --- \textit{тензор напряжения Максвелла}.
+
+    \begin{note}
+        Обратите внимание на схожесть записи законов сохранения в дифференциальной форме.
+
+        Закон сохранения энергии в отсутствие зарядов ($\vec{j} = 0$):
+        \[
+            \pard{w}{t} + \Div\vec{S} = \pard{w}{t} + \pard{S_{\beta}}{x_{\beta}} = 0
+        \]
+        Закон сохранения импульса:
+        \[
+            \pard{g_{\alpha}}{t} + \pard{T_{\alpha\beta}}{x_{\beta}} = 0
+        \]
+        Закон сохранения заряда:
+        \[
+            \pard{\rho}{t} + \pard{j_{\beta}}{x_{\beta}} = 0
+        \]
+    \end{note}
+
+\subsection{Четырёхмерный вид законов сохранения}
+    Попробуем без строгого вывода понять, как законы сохранения записываются в четырёхмерной форме.
+    Введём величину $T^{ik}$ --- \textit{тензор энергии-импульса}:
+    \[
+        T^{ik} = \begin{bmatrix}
+            w & \vec{S} / {c} \\
+            \vec{S} / {c} & T_{\alpha\beta}
+        \end{bmatrix} = 
+        \begin{bmatrix}
+            w & c\vec{g} \\
+            c\vec{g} & T_{\alpha\beta}
+        \end{bmatrix}
+    \]
+    Это симметричный тензор, в котором $T^{00} = w$. $T^{0\alpha} = T^{\alpha 0} =  {S_{\alpha}}/{c}$. Легко проверить,
+    что тензор энергии-импульса можно записать через тензор электромагнитного поля:
+    \[
+        T^{ik} = \frac{1}{4\pi}\braces{-F^{il}{F^k}_l + \frac 14 g^{ik}F_{lm}F^{lm}}
+    \]
+    Например, для нулевой компоненты,
+    \[
+        T^{00} = \frac{1}{4\pi}\braces{-F^{0\alpha}{F^0}_{\alpha} + \frac 14 \cdot 2\brackets{H^2 - E^2}} =
+        \frac{1}{4\pi}\braces{E^2 + \frac 12 \brackets{H^2 - E^2}} = \frac{E^2 + H^2}{8\pi} = w
+    \]
+
+    Общее уравнение для законов сохранения, выраженное через тензор энергии-импульса, имеет вид
+    \begin{equation}
+        \boxed{\pard{T^{ik}}{x^k} = -\frac 1c F^{ik}j_k}
+    \end{equation}
+    Например, для компоненты $T^{0k}$ имеем:
+    \[
+        \frac 1c \pard{T^{00}}{t} + \pard{T^{0\alpha}}{x^{\alpha}} = -\frac{1}{c}F^{0\alpha}j_{\alpha},
+    \]
+    что в трёхмерной записи соответствует уравнению
+    \[
+        \pard{w}{t} + \Div\vec{S} = -\dotp{j}{E},
+    \]
+    то есть закону сохранения энергии.
+
+\subsection{Уравнения потенциалов электромагнитного поля}
+    Удобно вместо уравнений на векторы электромагнитного поля решать уравнения на потенциалы --- всего четыре уравнения на потенциалы против
+    шести на два трёхмерных вектора поля. Выведем эти уравнения из четырёхмерных уравнений Максвелла:
+    \begin{gather*}
+        \pard{F^{ik}}{x^k} = -\frac{4\pi}{c}j^i \: \Rightarrow \: \pard{F_{ik}}{x_k} = -\frac{4\pi}{c}j_i;\\
+        F_{ik} = \pard{A_k}{x^i} - \pard{A_i}{x^k}, \: \textrm{тогда}\\
+    \end{gather*}
+    \begin{equation}
+        \mixd{A_k}{x^i}{x_k} - \mixd{A_i}{x_k}{x^k} = -\frac{4\pi}{c}j_i \label{potent}
+    \end{equation}
+    Это выражение представляет собой наиболее общее уравнение на потенциалы. Как известно, по заданным полям $\vec{E}$ и $\vec{H}$ 
+    потенциалы определяются неоднозначно: их можно подвергать калибровочному преобразованию, при этом оставляя поля неизменными.
+    Этим свойством пользуются, накладывая на потенциалы условия, позволяющие определить поля однозначно и при этом 
+    позволяющие упростить уравнения. Одним из таких условий является калибровочное условие Лоренца:
+    \[
+        \pard{A^k}{x^k} = 0 \: \leftrightarrow \: \displaystyle \pard{A_k}{x_k} = 0\\
+    \]
+    Это же условие в трёхмерной записи:
+    \[
+        \frac 1c \pard{\phee}{t} + \Div\vec{A} = 0
+    \]
+    При этом условии уравнение (\ref{potent}) принимает вид
+    \begin{equation}
+        \mixd{A_i}{x_k}{x^k} = \frac{4\pi}{c}j_i \label{some_4dim_shit}
+    \end{equation}
+    Вспомним определение оператора Даламбера:
+    \[
+        \mixd{}{x_k}{x^k} = \frac{1}{c^2}\pardd{}{t} - \Delta = \Box
+    \]
+    С использованием этого оператора можно переписать (\ref{some_4dim_shit}) в более приятной форме:
+    \[
+        \boxed{
+            \begin{matrix}
+                \displaystyle \Box\phee = 4\pi\rho \\
+                \displaystyle \Box\vec{A} = \frac{4\pi}{c}\vec{j}
+            \end{matrix}
+        }
+    \]
+    Эти соотношения называют \textit{неоднородными волновыми уравнениями}.
+
+    Калибровка Лоренца, разумеется, не является единственно возможной. В частности, интересна \textit{кулоновская калибровка}:
+    $\Div\vec{A} = 0$. Запишем уравнение (\ref{some_4dim_shit}) в трёхмерном виде:
+    \begin{gather*}
+        \frac 1c \pard{}{t} \brackets{\frac 1c \pard{\phee}{t} + \Div\vec{A}} - \frac{1}{c^2}\pardd{\phee}{t} + \Delta\phee = -4\pi\rho \\
+        \nabla\brackets{\frac 1c \pard{\phee}{t} + \Div\vec{A}} + \frac{1}{c^2}\pardd{\vec{A}}{t} - \Delta\vec{A} = \frac{4\pi}{c}\vec{j},
+    \end{gather*}
+    после чего положим $\Div\vec{A} = 0$:
+    \begin{gather*}
+        \boxed{\Delta\phee = -4\pi\rho}\\
+        \frac{1}{c^2}\pardd{\vec{A}}{t} - \Delta\vec{A} = -\frac 1c \pard{\nabla\phee}{t} + \frac{4\pi}{c}\vec{j}
+    \end{gather*}
+    Преимущество этой калибровки в очень простом уравнении на скалярный потенциал $\phee$, называемое
+    \textit{уравнением Пуассона}.

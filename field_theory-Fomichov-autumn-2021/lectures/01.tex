@@ -1,0 +1,315 @@
+\newpage
+\section{Принцип относительности. Преобразования Лоренца}
+\subsection{Преобразования Лоренца}
+
+Основные положения специальной теории относителььности:
+\begin{enumerate}
+    \item Инерциальные системы отсчёта существуют;
+    \item Пространство-время обладает однородностью и изотропией (теорема Нётер);
+    \item Принцип относительности (какой!!?);
+    \item Скорость распространения взаимодействий конечна и равнв скорости света, причём она одинакова во всех системах отсчёта (!);
+    \item Уравнения движения инвариантны относительно преобразований Лоренца.
+\end{enumerate}
+
+Пункт №5 представляет наибольший интерес. Приведём вывод преобразований Лоренца.
+\begin{figure}[h]
+    \centering
+    \input{figures/figLorentz.tex}
+    \caption{к выводу преобразований Лоренца}
+\end{figure}
+\begin{enumerate}
+    \item Из однородности пространства-времени следует, что преобразования должны быть линейными. Здесь и далее мы всегда будем считать, что движение происходит только вдоль оси $X$,
+    соответственно, преобразуется только ось $X$, а две другие остаются неизменными. С учётом сказанного, преобразования должны иметь вид
+        \begin{numcases}{}
+            x' = \alpha x + \beta y + p, \label{x1} \\
+            y' = y, \notag \\
+            z' = z, \notag \\
+            t' = \sigma x + \delta t + q. \label{t2}
+        \end{numcases}
+
+    \item Константы $p$ и $q$ положим равными нулю, так как они связаны с выбором начальных условий, то есть $x_0 = p,\: t_0 = q$.
+    
+    \item Пусть $V$ --- скорость системы отсчёта $K'$ относительно $K$-системы. Тогда $\alpha = \alpha(V), \beta = \beta(V), \sigma = \sigma(V), \delta = \delta(V).$
+    Также имеем
+    \[
+        x' = 0 \leftrightarrow x = V \cdot t
+    \] --- это по определению того, что начало отсчёта $0'$ движется вдоль оси $X$ со скоростью $V$ в системе $K$. Подставим это в уравнение (\ref{x1}):
+    \[
+        0 = \alpha V t + \beta t \Rightarrow \beta = - \alpha V.
+    \]
+    Тогда уравнения (\ref{x1}) и (\ref{t2}) примут вид:
+    \[ \begin{cases}
+        x' = \alpha(V)\brackets{x - V t}; \\
+        t' = \sigma(V)x + \delta(V) \tag{\Romannum{1}}\label{strI}
+    \end{cases} \]
+    Сразу сделаем оговорку об {\it обратных} преобразованиях Лоренца, которые получаются из {\it прямых} преобразований заменой $V$ на $-V$:
+    \[ \begin{cases}
+        x = \alpha(-V)\brackets{x' + V t'}; \\
+        t = \sigma(-V)x' + \delta(-V) t' \tag{\Romannum{2}}\label{revII}
+    \end{cases} \]
+
+    \item Подставим формулы (\ref{strI}) в систему (\ref{revII}):
+    \begin{multline*}
+        x = \alpha(-V) \Bigl[\alpha(V) \brackets{x - V t} + V \brackets{\sigma(V) + \delta(V) t}\Bigr] = \\
+        = x\Bigl[\alpha(-V)\alpha(V) + \alpha(-V)V \cdot \sigma(V)\Bigr] + t \cdot \alpha(-V) \Bigl[V\delta(V) - V\alpha(V)\Bigr].
+    \end{multline*}
+    В силу того, что написанное выше уравнение верно для всех $t$, множитель при $t$ полагаем равным нулю, откуда следует:
+    \begin{gather*}
+        \delta(V) = \alpha(V); \\
+        \alpha(-V)\alpha(V) + \alpha(-V)\sigma(V) = 1.
+    \end{gather*}
+
+    \item Из изотропии пространства следует, что $\alpha(V) = \alpha(-V)$, и поэтому
+    \begin{equation}
+        \alpha^2(V) + \alpha(V) \sigma(V) = 1 \label{alpha3}
+    \end{equation}
+
+    \item Пусть из точки $0$ в момент совпадения точек $0$ и $0'$ испущен световой сигнал, направленный по оси $X$. Из свойства №4 следует
+    \[
+        \frac{x}{t} = \frac{x'}{t'} = c 
+        = \frac{\alpha\brackets{x - V t}}{\sigma x + \alpha t} = \frac{\alpha\brackets{\frac{x}{t} - V}}{\sigma \frac{x}{t} + \alpha}
+        = \overset{\textrm{\it замена}}{\left| \frac{x}{t} = c \right|} = \frac{\alpha \brackets{c - V}}{\sigma c + \alpha},
+    \]
+    откуда следует
+    \[
+        \sigma c^2 + \alpha c = \alpha c - \alpha V \Rightarrow \sigma = -\frac{V}{c^2}.
+    \]
+    Подстановкой последнего равенства в (\ref{alpha3}) получаем
+    \[
+        \alpha^2 - \frac{V^2}{c^2} \alpha^2 = 1 \Rightarrow \alpha(V) = \frac{1}{\sqrt{1 - V^2 \big/ c^2}}.
+    \]
+    \begin{note}
+        Формально, $\displaystyle \alpha(V) = \frac{\pm 1}{\sqrt{1 - V^2 \big/ c^2}}$. Случай со знаком <<минус>> называется {\it несобственным преобразованием Лоренца}, при котором производится инверсия по координатам.
+    \end{note}
+\end{enumerate}
+
+Мы получили всё необходимое, чтобы выписать {\it преобразования Лоренца}.
+
+    \[
+        \begin{cases} 
+            \displaystyle x' = \frac{x - V t}{\sqrt{1 - V^2 \big/ c^2}} \\
+            \displaystyle y' = y \\
+            \displaystyle z' = z \\
+            \displaystyle t' = \frac{t - \frac{V}{c^2} \cdot x}{\sqrt{1 - V^2 \big/ c^2}}
+        \end{cases}
+        \longleftrightarrow \hspace{0.8cm}
+        \begin{cases}
+            \displaystyle x = \frac{x' + V t'}{\sqrt{1 - V^2 \big/ c^2}} \\
+            \displaystyle y = y' \\
+            \displaystyle z = z' \\
+            \displaystyle t = \frac{t' + \frac{V}{c^2} \cdot x'}{\sqrt{1 - V^2 \big/ c^2}}
+        \end{cases}
+    \]
+
+    Для простоты вводят обозначения $\displaystyle \beta = \frac{\beta}{c}, \ \gamma = \frac{1}{\sqrt{1 - V^2 \big/ c^2}}$ --- \textit{относительная скорость} и \textit{релятивистский фактор} соответственно. Преобразования примут вид (выписаны только нетривиальные уравнения):
+    \[
+        \begin{cases}
+            x' = \gamma\brackets{x - \beta c t} \\
+            ct' = \gamma\brackets{ct - \beta x}
+        \end{cases}
+        \longleftrightarrow \hspace{0.8 cm}
+        \begin{cases}
+            x = \gamma\brackets{x' + \beta c t'} \\
+            ct = \gamma\brackets{ct' + \beta x'}
+        \end{cases}
+    \]
+    Рассмотрим также матричную запись преобразований Лоренца:
+    \[
+    \begin{aligned}
+        \begin{bmatrix} ct' \\ x' \\ y' \\ z' \end{bmatrix}
+            = &
+        \begin{bmatrix}
+            \gamma & -\gamma \beta & 0 & 0 \\
+            -\gamma \beta & \gamma & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        \cdot 
+        \begin{bmatrix} ct \\ x \\ y \\ z \end{bmatrix}
+        \textrm{--- прямое преобразование} \\
+        \begin{bmatrix} ct \\ x \\ y \\ z \end{bmatrix}
+            = &
+        \begin{bmatrix}
+            \gamma & \gamma \beta & 0 & 0 \\
+            \gamma \beta & \gamma & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        \cdot 
+        \begin{bmatrix} ct' \\ x' \\ y' \\ z' \end{bmatrix}
+        \textrm{--- обратное преобразование}
+    \end{aligned}
+    \]
+
+\subsection{Следствия преобразований Лоренца}
+\begin{enumerate}
+    \item {\bf Сокращение длин.}
+        Рассмотрим две точки $x_1$ и $x_2$, положения которых были зафиксированы в один и тот же момент времени: $t_1 = t_2$. Расстояние между точками в неподвижной системе обозначим как $l_0 = x_1 - x_2$. Координаты этих точек в $K'$"--~системе равны соответственно
+        \begin{gather*}
+            x_1' = \frac{x_1 - V t_1}{\sqrt{1 - V^2 \big/c^2 }}, \\
+            x_2' = \frac{x_2 - V t_2}{\sqrt{1 - V^2 \big/c^2 }}.
+        \end{gather*} 
+        Расстояние между этими точками в $K'$"--~системе равно
+        \[
+            l = x_1' - x_2' = \frac{x_1 - x_2}{\sqrt{1 - V^2 \big/ c^2}} \Rightarrow l = l_0 \sqrt{1 - V^2 \big/ c^2}.
+        \]
+        \begin{note}
+            Так как координаты $y$ и $z$ остаются неизменными, объёмы и площади преобразуются так же:
+            \[ \begin{aligned}
+                \mathcal{V} = \mathcal{V}_0 \sqrt{1 - V^2 \big/ c^2}, \\
+                S = S_0 \sqrt{1 - V^2 \big/ c^2}.
+            \end{aligned} \]
+        \end{note}
+
+    \item {\bf Относительность одновременности.} Пусть в точках $x_1'$ и $x_2'$ произошли события, одновременные в $K'$"--~системе: $t_1' = t_2'$. Но в $K$"--~системе
+        \begin{gather*}
+            t_1 = \frac{t_1' + \frac{V}{c^2} x_1'}{\sqrt{1 - V^2 \big/ c^2}}, \
+            t_2 = \frac{t_2' + \frac{V}{c^2} x_2'}{\sqrt{1 - V^2 \big/ c^2}}, \\
+            t_1 - t_2 = \frac{V}{c^2} \cdot \frac{x_1' - x_2'}{\sqrt{1 - V^2 \big/ c^2}}. 
+        \end{gather*}
+        Таким образом, эти события одновременны и в $K$"--~ системе только в том случае, если $x_1' = x_2'$.
+
+    \item {\bf Замедление времени.} Пусть в точке $x_1'$ имеются часы, которые покоятся в системе $K'$ ($x_1' = const$). Отмерим этими часами промежуток времени от $t_1'$ до $t_2'$:
+        \[
+            x_2' = x_1' \Rightarrow t_1 - t_2 = \frac{t_1' - t_2'}{\Relroot}.
+        \]
+        Величина $\Delta t' = t_1' - t_2' = \Delta \tau$ называется {\it собственным временем}, а величина $\Delta t = t_1 - t_2$ --- {\it лабораторным временем}:
+        \[
+            \Delta t = \frac{\Delta \tau}{\Relroot}, \ \Delta \tau = \Delta t \cdot \Relroot.
+        \]
+        \begin{note}
+            Для неравномерного движения формулы можно записать в интегральной форме, например
+            \[
+                \Delta \tau = \int\limits_{t_1}^{t_2} dt \sqrt{1 - \frac{V^2(t)}{c^2}}.
+            \]
+        \end{note}
+\end{enumerate}
+
+\subsection{Закон сложения скоростей.}
+    Пусть некая частица движется со скоростью $\vec{v} = \frac{\vec{dr}}{dt}$ в системе $K$, а в системе $K'$ её скорость равна $\vec{v'} = \frac{\vec{dr'}}{dt'}$. Запишем дифференциалы преобразований Лоренца:
+    \begin{gather*}
+        dx' = \frac{dx - V dt}{\Relroot}; \\
+        dy' = dy; \\
+        dz' = dz; \\
+        dt' = \frac{dt - \frac{V}{c^2} \cdot dx}{\Relroot}.
+    \end{gather*}
+    Тогда:
+    \begin{gather*}
+        v_x' = \frac{dx'}{dt'} = \frac{dx - V dt}{dt - \frac{V}{c^2} dx} = \frac{\frac{dx}{dt} - V}{1 - \frac{V}{c^2}\cdot\frac{dx}{dt}} = \frac{v_x - V}{1 - \frac{V v_x}{c^2}}; \\
+        v_y' = \frac{dy'}{dt'} = \frac{dy \cdot \Relroot}{dx - \frac{V}{c^2}dt} = v_y \cdot \frac{\Relroot}{1 - \frac{V v_x}{c^2}}; \\
+        v_z' = v_z \cdot \frac{\Relroot}{1 - \frac{V v_x}{c^2}}.
+    \end{gather*}
+    Обратные преобразования получаются заменой $V$ на $-V$:
+    \begin{gather*}
+        v_x = \frac{v_x' + V}{1 + \frac{V v_x'}{c^2}}; \\
+        v_y = v_y' \cdot \frac{\Relroot}{1 + \frac{V v_x'}{c^2}}; \\
+        v_z' = v_z' \cdot \frac{\Relroot}{1 + \frac{V v_x'}{c^2}}.
+    \end{gather*}
+
+\subsection{Преобразования углов.}
+    Рассмотрим частицу, которая движется со скоростью $\vec{v}$ в $K$-системе. Угол $\theta$ между направлением оси $x$ и скоростью назовём
+    \textit{полярным}, а угол $\phee$ между осью $y$ и проекцией скорости на плоскость $z0y$ --- \textit{азимутальным}.
+
+    \begin{figure}[h]
+        \centering
+        \input{figures/figAngles.tex}
+        \caption{Преобразование углов}
+    \end{figure}
+
+    Азимутальный угол не преобразуется:
+    \[
+        \tg \phee ' = \frac{v_y'}{v_z'} = \frac{v_y}{v_z} = \tg \phee \Rightarrow \phee' = \phee.
+    \]
+    Полярный угол $\theta$ преобразуется согласно следующим формулам:
+    \[
+        \tg \theta = \frac{\sqrt{v_y^2 + v_z^2}}{v_x} = \frac{\sqrt{v_y^{'2} + v_z^{'2}} \cdot \Relroot}{v_x' + V}.
+    \]
+    Используя равенства $v_x' = v' \cos\theta'$ и $v' \sin \theta' = \sqrt{v_y^{'2} + v_z^{'2}}$, получаем
+    \[
+        \tg \theta = \frac{v' \sin \theta' \cdot \Relroot}{v' \cos \theta' + V} = \frac{v' \sin \theta'}{\gamma \brackets{v' \cos \theta' + V}}.
+    \]
+    Применительно к пучкам света ($v' = c$) получаем
+    \[
+        \tg \theta = \frac{\sin \theta'}{\gamma \brackets{\cos\theta' + \beta}}.
+    \]
+    Используя формулы преобразования $x$-компоненты скорости ($v_x = c \cos \theta, \ v_x' = c \cos \theta'$), можно получить ещё одну форму записи:
+    \begin{gather*}
+        \cos \theta' = \frac{\cos \theta - \frac{V}{c}}{1 - \frac{V}{c}\cos\theta}; \\
+        \cos \theta = \frac{\cos \theta' + \frac{V}{c}}{1 + \frac{V}{c}\cos\theta'}.
+    \end{gather*}
+
+    Пусть $V \ll c$, тогда
+    \[
+        \cos \theta' = \cos \theta = \cos \theta' - \frac{\cos \theta' + \frac{V}{c}}{1 + \frac{V}{c} \cos \theta'} =
+        \frac{\frac{V}{c} \brackets{\cos^2\theta' - 1}}{1 + \frac{V}{c}\cos\theta'} \approx - \frac{V}{c} \sin^2\theta' \approx -\brackets{\theta' - \theta} \sin \theta.
+    \]
+    На предпоследнем шаге мы пренебрегли знаменателем ввиду условия $V \ll c$, а на последнем применили формулу Лагранжа и учли, что $\theta \approx \theta'$ из-за малости скорости.
+    Окончательный результат:
+    \[
+        \boxed{\theta' - \theta = \Delta \theta \approx \frac{V}{c} \sin \theta}
+    \]
+
+\subsection{Интервал. Пространство Минковского.}
+    Введём обозначения:
+    \[
+        x^0 = ct, \ x^1 = x, \ x^2 = y, \ x^3 = z.
+    \]
+    Преобразования Лоренца в этих обозначениях выглядят так:
+    \[ \begin{cases}
+        x^{0'} = \gamma \brackets{x^0 - \beta x^1} \\
+        x^{1'} = \gamma \brackets{x^1 - \beta x^0} \\
+        x^{2'} = x^2 \\
+        x^{3'} = x^3
+    \end{cases} \]
+    Введём также величину $\psi : \ch \psi = \gamma = \frac{1}{\Relroot}$, причём
+    \[
+        \sh \psi = \sqrt{\ch^2 \psi - 1} = \sqrt{\frac{1}{1 - \beta^2} - 1} = \frac{\beta}{\sqrt{1 - \beta^2}} = \beta \gamma.
+    \]
+    Запишем преобразования Лоренца уже в этих обозначениях:
+    \[ \begin{cases}
+        x^{0'} = x^0 \ch \psi - x^1 \sh \psi \\
+        x^{1'} = - x^0 \sh \psi + x^1 \ch \psi \tag{\Romannum{3}}\label{hyp}
+    \end{cases} \]
+    Преобразования вида (\ref{hyp}) называют {\it гиперболическим поворотом}. Очевидна аналогия с обычным ортогональным преобразованием поворота:
+    \[ \begin{cases}
+        x' = x\cos\phee + y\sin\phee \\
+        y' = -x\sin\phee + y\cos\phee
+    \end{cases} \]
+    Как обычный поворот сохраняет неизменными расстояния ($r = inv$), так и гиперболический поворот имеет инвариант, который называется {\it интервалом}. Найдём его. 
+    Пусть $\psi = i\phee$, и тогда $\ch\psi = \ch i\phee = \cos\phee$, $\sh\psi = \sh i\phee = i\sin\phee$. Преобразования примут вид, похожий на ортогональный поворот:
+
+    \[ \begin{cases}
+        x^{0'} = x^0 \cos\phee - ix^1\sin\phee \\
+        x^{1'} = -ix^0\sin\phee + x^1\cos\phee \ \leftrightarrow \ ix^{0'} = ix^0\cos\phee + x^1\sin\phee
+    \end{cases} \]
+    По аналогии с инвариантом ортогонального поворота:
+    \[
+        r_{12}^2 = \brackets{x_2 - x_1}^2 + \brackets{y_2 - y_1}^2 = \brackets{x_2' - x_1'}^2 + \brackets{y_2' - y_1'}^2,
+    \]
+    введём величину $s$:
+    \[
+        -s_{12}^2 = \brackets{ix_2^0 - ix_1^0}^2 + \brackets{x_2^1 - x_1^1}^2 = -c^2\brackets{t_2 - t_1}^2 + \brackets{x_2 - x_1}^2,
+    \]
+    которую назовём {\it интервалом}. Обобщая это определение на все координаты,
+    \[
+        \boxed{s_{12}^2 =c^2\brackets{t_2 - t_1}^2 - \brackets{x_2 - x_1}^2 - \brackets{y_2 - y_1}^2 - \brackets{z_2 - z_1}^2 = c^2 \brackets{t_2 - t_1}^2 - r_{12}^2}
+    \]
+
+    \begin{note}
+        $s_{12} = 0$ не означает совпадения событий.
+    \end{note}
+
+    Различают:
+    \begin{itemize}
+        \item $s_{12}^2 > 0$ --- временноподобный интервал, для которого $\exists K' : s_{12}^2 = c^2\brackets{t_2' - t_1'}^2, x_1' = x_2'$;
+        \item $s_{12}^2 < 0$ --- пространственноподобный интервал, для которого $\exists K' : s_{12}^2 = -r_{12}^2, t_1' = t_2'$;
+        \item $s_{12}^2 = 0$ --- светоподобный интервал.
+    \end{itemize}
+
+    \begin{figure}[h]
+        \centering
+        \input{figures/figCone.tex}
+        \caption{<<Cветовой конус>> Минковского}
+    \end{figure}
+    \newpage
+    $s_{12}^2 > 0$ отвечает наличию причинно"--~следственной связи между событиями: в любой системе отсчта можно сказать, какое из них произошло раньше.

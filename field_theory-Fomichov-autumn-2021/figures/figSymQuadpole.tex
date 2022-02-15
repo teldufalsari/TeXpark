@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+    \draw (0,0) ellipse (1.2 and 2);
+    \draw (0,0) ellipse (1.2 and 0.6);
+    \draw [->] (0,0) -- (0, 2.6) node [anchor = west] {$Z$};
+    \draw [->] (0,0) -- (2, 2.4) node [anchor = south west] {$\vec{r}$};
+    \coordinate (g1) at (0,1);
+    \coordinate (g2) at (1, 1,2);
+    \coordinate (q) at (0,0);
+    \pic [draw] {angle = g2--q--g1};
+    \node [] at (0.2, 0.7) {$\theta$};
+\end{tikzpicture}

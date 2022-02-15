@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \draw [->] (0, 0) -- (6, 0) node [anchor = north] {$Z$};
+    \draw [->] (0, 0) -- (0, 4) node [anchor = west] {$X$};
+    \draw [->] (0, 0) -- (-1.5, -1.5) node [anchor = north west] {$Y$};
+    \draw [thick, blue] (0, 0) circle(0.85cm);
+    \filldraw [black] (5.5, 3) circle (1.5pt);
+    \filldraw [black] (0.5, -0.5) circle (1.5pt);
+    \draw [->] (0,0) -- (0.5, -0.5) node [above] {$\vec{r}'$};
+    \filldraw [black] (5.5, 3) circle (1.5pt);
+    \draw [->] (0,0) -- (5.5, 3) node [above, midway] {$\vec{r}$};
+    \draw [->] (0.5, -0.5) -- (5.5, 3) node [below, midway] {$\vec{r} - \vec{r}'$};
+    \filldraw [black] (0.1, 0.4) circle (0.8pt);
+    \filldraw [black] (-0.1, -0.4) circle (0.8pt);
+    \filldraw [black] (-0.4, -0.2) circle (0.8pt);
+    \filldraw [black] (0.1, -0.4) circle (0.8pt);
+    \draw [->] (-1.2, 1.2) -- (-0.6, 0.6) node [above, midway] {$l$};
+    \draw [->] (1.2, -1.2) -- (0.6, -0.6);
+\end{tikzpicture}

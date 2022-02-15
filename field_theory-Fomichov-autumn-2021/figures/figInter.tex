@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+    \filldraw [black] (0, 0) circle (1.5 pt);
+    \filldraw [black] (5, 2) circle (1.5 pt);
+    \node [anchor = south east] at (0, 0) {$\brackets{\vec{r_1}, \vec{v_1}}$};
+    \node [below] at (0, 0) {$\brackets{1}$};
+    \node [anchor = south east] at (5, 2) {$\brackets{\vec{r_2}, \vec{v_2}}$};
+    \node [below] at (5, 2) {$\brackets{2}$};
+    \draw [->] (0, 0) -- (5, 2) node [midway, below] {$\vec{r}_{12}$};
+\end{tikzpicture}

@@ -1,0 +1,157 @@
+\newpage
+\section{Законы движения частиц в электромагнитном поле}
+Напомним, что трёхмерное уравнение движения в общем случае записывается как
+\begin{equation}
+    \frac{d\vec{p}}{dt} = e\vec{E} + \frac ec \vecp{V}{H}. \label{tri_motion}
+\end{equation}
+    
+Прежде чем решать задачу для общего случая, начнём с рассмотрения более простых частных случаев.
+\subsection{Случай чисто электрического поля}
+    Положим $\vec{H} = 0.$
+    Выберем координаты так, что $\: \vec{E} = E\vec{e}_x, \:, \abs{\vec{e}_x} = 1$ --- электрическое поле направлено влоль оси $X$.
+    Начальный импульс $\vec{p}_0 = \brackets{p_{0x}, p_{0y}, 0}$. Уравнение (\ref{tri_motion}) имеет вид $\displaystyle \frac{d\vec{p}}{dt} = \vec{E}$, и тогда
+    \begin{gather}
+        \frac{dp_x}{dt} = eE \: \Rightarrow \: p_x = eEt + p_{x0} \label{imp_x} \\
+        \frac{dp_y}{dt} = 0  \: \Rightarrow \: p_y = p_{y0}
+    \end{gather}
+    Выберем начало отсчёта времени так, чтобы $p_{x0} = 0$, и уравнение (\ref{imp_x}) примет вид
+    \[
+        p_x = Eet
+    \]
+    Вспоимни, что импульс $\vec{p}$ может быть выражен как $\vec{p} = \frac{\mathcal{E}}{c^2}\vec{v}$, откуда
+    \[
+    \mathcal{E} = \sqrt{m^2c^4 + c^2 \brackets{p_x^2 + p_y^2 + p_z^2}} = \sqrt{m^2c^4 + c^2p{y0}^2 + c^2E^2e^2t^2} = \sqrt{\mathcal{E}_0^2 + c^2E^2e^2t^2}
+    \]
+    --- мы получили уравнение изменения энергии. Здесь $\mathcal{E}_0 = \sqrt{m^2c^4 + c^2 p_{yo}^2}$ --- начальная энергия.
+
+    Чтобы отсюда найти движение, выразим $\vec{v}$ через $\vec{p}$: $\vec{v} = \frac{c^2}{\mathcal{E}}\vec{p}$. Записывая по компонентам:
+    \[ \begin{cases}
+        \displaystyle v_x = \frac{dx}{dt} = \frac{c^2p_x}{\mathcal{E}} = \frac{c^2eEt}{\sqrt{\mathcal{E}_0^2 + c^2e^2E^2t^2}} \\
+        \displaystyle v_y = \frac{dy}{dt} = \frac{c^2p_{y0}}{\mathcal{E}} = \frac{c^2p_{y0}}{\sqrt{\mathcal{E}_0^2 + c^2e^2E^2t^2}}
+    \end{cases} \tag{\Romannum{6}}\label{vxy} \]
+    Проинтегрируем соотношения (\ref{vxy}). Интегрирование составляющей по оси $X$ даёт
+    \begin{gather*}
+        x(t) = \frac 1{eE}\int\frac{\brackets{ceE}^2 tdt}{\sqrt{\mathcal{E}_0^2 + c^2e^2E^2t^2}} =
+        \frac 1{2eE}\int\frac{d\brackets{ceEt}}{\sqrt{\mathcal{E}_0^2 + c^2e^2E^2t^2}} = \\
+        = \frac 1{eE} {\sqrt{\mathcal{E}_0^2 + c^2e^2E^2t^2}} + C. \\
+        x(0) = x_0 = \frac{\mathcal{E}_0}{eE} \: \Rightarrow \: C = x_0 - \frac{\mathcal{E}_0}{eE}, \\
+        x(t) = \frac 1{eE} {\sqrt{\mathcal{E}_0^2 + c^2e^2E^2t^2}} - \frac{\mathcal{E}_0}{eE} + x_0. \\
+    \end{gather*}
+    По оси $Y$ имеем
+    \begin{gather*}
+        y(t) = \frac{cp_{0y}}{eE}\int\frac{\brackets{\frac{ceE}{\mathcal{E}_0}}dt}{\sqrt{1 + \brackets{\frac{ceEt}{\mathcal{E}_0}}^2}} =
+        \frac{cp_{0y}}{eE}\arsh\brackets{\frac{ceEt}{\mathcal{E}_0}} + C. \\
+        y(0) = 0y = C \: \Rightarrow \: y(t) = \frac{cp_{0y}}{eE}\arsh\brackets{\frac{ceEt}{\mathcal{E}_0}} + 0y.
+    \end{gather*}
+
+    Получим уравнение траектории в явном виде: выберем $x_0 = 0y = 0$
+    \begin{gather*}
+        \frac{ceEt}{\mathcal{E}_0} = \sh\frac{eEy}{cp_{0y}},\\
+        x = \frac{\mathcal{E}_0}{eE}\brackets{\sqrt{1 + \brackets{\frac{ceEt}{\mathcal{E}_0}}^2} - 1} =
+        \frac{\mathcal{E}_0}{eE} \brackets{\sqrt{1 + \sh^2\frac{eEy}{cp_{0y}}} - 1} =
+        \frac{\mathcal{E}_0}{eE} \brackets{\ch\frac{eEy}{cp_{0y}} - 1}
+    \end{gather*}
+    Отсюда получаем, что траектория движения частицы --- цепная линия в плоскости $x0y$:
+    \[
+        y(x) = \frac{cp_{0y}}{eE}\arch\brackets{\frac{eEx}{\mathcal{E}_0} + 1}
+    \]
+    Такое движение частицы --- пример релятивистского равноускоренного движения.
+
+\subsection{Случай чисто магнитного поля}
+    Положим теперь $\vec{E} = \vec{0}$, уравнение (\ref{tri_motion}) тогда принимает следующий вид:
+    \begin{equation}
+        \frac{d\vec{p}}{dt} = \frac ec \vecp{v}{H}. \label{motion_magnetic}
+    \end{equation}
+    В данном случае, как было показано ранее, $\mathcal{E} = const$.
+    Подставим $\vec{p} = \frac{\mathcal{E}}{c^2}\vec{v}$ в уравнение (\ref{motion_magnetic}):
+    \begin{gather*}
+        \frac{\mathcal{E}}{c^2} \frac{d\vec{v}}{dt} = \frac ec \vecp{v}{H}, \\
+        \frac{d\vec{v}}{dt} = \frac{ec}{\mathcal{E}}\vecp{v}{H} = \vecp{\omega}{v},
+    \end{gather*}
+    где $\displaystyle \vec{\omega} = -\frac{ec\vec{H}}{\mathcal{E}}$. Линейная скорость выражается через угловую как
+    $\displaystyle \vec{v} = \vecp{\omega}{r}$.
+    
+    Величину $$ \abs{\vec{\omega}} = \frac{\abs{e}cH}{\mathcal{E}}$$ называют \textit{циклотронной частотой}. Ясно, что полученные уравнения
+    описывают некоторое вращательное движение, к которому при интегрировании может добавиться некоторое поступательное движение с постоянной скоростью.
+    Радиус вращения можно найти по формуле
+    \[
+        R = \frac{v_{\perp}}{\abs{\vec{\omega}}} = \frac{\mathcal{E}v_{\perp}}{\abs{e}cH} = \frac{c \frac{\mathcal{E}v_{\perp}}{c^2}}{\abs{e}H} =
+        \frac{cp_{\perp}}{\abs{e}H}.
+    \]
+    $v_{\perp}$ и $p_{\perp}$ здесь обозначены составляющие скорости и импульса, перпендикулярные вектору магнитного поля $\vec{H}$.
+    В нерелятивистском случае, когда $v \ll c$, а $\mathcal{E} \approx mc^2$, получаем известную из курса общей физики формулу для циклотронной частоты:
+    \[
+        \abs{\vec{\omega}} = \frac{\abs{e}cH}{\mathcal{E}} \approx \frac{\abs{e}H}{mc}.
+    \]
+
+    Приведём более строгий и подробный вывод уравнений движения частицы. Обозначим $\omega = \frac{ecH}{\mathcal{E}}$
+    (в отличие от формулы для циклотронной частоты, здесь учитывается знак заряда частицы). Тогда
+    \begin{gather}
+        \frac{dv_x}{dt} = \omega v_y, \label{vxpot} \\
+        \frac{dv_y}{dt} = -\omega v_x, \label{vypot} \\
+        \frac{dv_z}{dt} = 0 \: \Rightarrow \: v_z = v_{\parallel} = const. \label{vzpot}
+    \end{gather}
+    Умножим уравнение (\ref{vypot}) на $i$ и сложим с уравнением (\ref{vxpot}):
+    \[
+        \frac{d}{dt}\brackets{v_x + iv_y} = -i\omega\brackets{v_x + iv_y}.
+    \]
+    Решая это дифференциальное уравнение относительно $v_x + iv_y$, получаем
+    \[
+        v_x + iv_y = Ce^{-i\omega t} = v_{o\perp}e^{-i\omega t + \alpha}, \: C = v_{o\perp}e^{-i\alpha},
+    \]
+    $v_{0\perp}$, как и ранее, является начальной составляющей скорости, перпендикулярной вектору $\vec{H}$.
+    Разделяя это уравнение на действительные координаты, получаем
+    \[ \begin{cases}
+        \displaystyle v_x = v_{0\perp}\cos\brackets{\omega t + \alpha} = \frac{dx}{dt} \\
+        \displaystyle v_y = v_{0\perp}\sin\brackets{\omega t + \alpha} = \frac{dy}{dt} \tag{\Romannum{7}}\label{vxvymag}
+    \end{cases} \]
+    Осталось проинтегрировать соотношения (\ref{vxvymag}) вместе с уравнением (\ref{vzpot}), чтобы получить параметрические уравнения движения:
+    \[ \begin{cases}
+        \displaystyle x(t) = x_0 + \frac{v_{0\perp}}{\omega}\cos\brackets{\omega t + \alpha} \\
+        \displaystyle y(t) = y_0 + \frac{v_{0\perp}}{\omega}\sin\brackets{\omega t + \alpha} \\
+        \displaystyle z(t) = z_0 + v_{\parallel}t
+    \end{cases} \]
+
+\subsection{Случай скрещённых полей}
+    Пусть теперь $\vec{E} \not= \vec{0}$ и $\vec{H} \not= \vec{0}$. Выберем оси системы отсчёта так, что вектор $\vec{H}$
+    направлен вдоль оси $Z$, а вектор $\vec{E}$ лежит в плоскости $y0z$:
+    \begin{figure*}[h]
+        \centering{
+            \input{figures/figCrossedFields.tex}
+        }
+    \end{figure*}
+    Решим задачу для нерелятивистского случая:
+    \begin{equation}
+        \frac{d\vec{p}}{dt} = m\frac{d\vec{v}}{dt} = e\vec{E} + \frac ec \vecp{v}{H} \label{notrel}
+    \end{equation}
+    Распишем уравнение (\ref{notrel}) по координатам:
+    \begin{gather}
+        m\frac{dv_x}{dt} = \frac ec v_y H \label{cross_x} \\
+        m\frac{dv_y}{dt} = eE_y - \frac ec v_x H \label{cross_y} \\
+        m\frac{dv_z}{dt} = eE_z \label{cross_z}
+    \end{gather}
+    Уравнение (\ref{cross_z}) не завист от двух других и решается аналогично случаю чисто магнитного поля.
+    Интерес представляют два оставшихся уравнения. Умножим (\ref{cross_y}) на $i$ и сложим с (\ref{cross_x}):
+    \begin{gather*}
+        m\frac{d}{dt}\brackets{v_x + iv_y = ieE_y - i\frac{eH}{c}}\brackets{v_x + iv_y}, \\
+        v_x + iv_y = Ce^{-\frac{ieH}{mc}t} + \frac{ieE_y}{\frac{eH}{c}} = v_{0\perp}e^{-i\brackets{\frac{eH}{mc}t + \alpha}} + \frac{cE_y}{H}.
+    \end{gather*}
+    Разделяя уравнение на составляющие по координатам, получаем
+    \begin{gather*}
+        v_x(t) = v_{0\perp}\cos\brackets{\frac{eH}{mc}t + \alpha} + \frac{cE_y}{H} \\
+        v_y(t) = - v_{0\perp}\sin\brackets{\frac{eH}{mc}t + \alpha}
+    \end{gather*}
+    Усредним скорость по времени:
+    \[
+        \overline{v_x} = \frac{cE_y}{H}, \: \overline{v_y} = 0.
+    \]
+    Видно, что частица совершает вращение вокруг центра, который движется поступательно в направлении оси $X$ со скоростью
+    $\overline{v_x}$, которую называют \textit{скоростью дрейфа}. В пространственном виде скорость дрейфа равна
+    \[
+        \boxed{\vec{v}_{\textrm{др}} = \frac{c\vecp{E}{H}}{H^2}}
+    \]
+    Ещё раз напомним, что это выражение получено для случая $\overline{v_x} \ll c$, что в свою очередь требует ограничения $E_y \ll H$.
+    А что в релятивистском случае? Обратите внимание, что скорость дрейфа и скорость системы. в которой обнулялся вектор $\brackets{\vec{E}}'$
+    при случае $\vec{E} \perp \vec{H}$ в исходной системе. В этой движущейся системе частица совершает вращательное движение, при котором
+    $\overline{v_x'} = \overline{v_y'} = 0$, то есть, по сути скорость такой $K'$-системы и есть скорость дрейфа. Поэтому, в случае перпендикулярных полей
+    нерелятивистская формула остаётся справедливой. В случае произвольного расположения полей формула имеет более сложный вид и на лекциях не рассматривается.

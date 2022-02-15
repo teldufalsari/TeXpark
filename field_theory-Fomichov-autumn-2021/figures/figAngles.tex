@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+    \draw [->] (0,0) -- (3,0) node [anchor=north west] {$x$};
+    \draw [->] (0,0) -- (0,2) node [anchor=south east] {$y$}; 
+    \draw [->] (0,0) -- (-1.2,-1)node [anchor=north west] {$z$};
+    \draw [->] (5,0) -- (8,0) node [anchor=north west] {$x'$};
+    \draw [->] (5,0) -- (5,2) node [anchor=south east] {$y'$}; 
+    \draw [->] (5,0) -- (3.8,-1)node [anchor=north west] {$z'$};
+
+    \node [] at (1,1.8) {\Large $K$};
+    \node [] at (6,1.8) {\Large $K'$};
+    \draw [->, thick] (7.5, 1.1) -- (8.5, 1.1);
+    \node [anchor = south] at (8, 1.2) {$\vec{V}$};
+
+    \draw [->, thick] (0,0) -- (1.5, 1) node [anchor = south west] {$\vec{v}$};
+    \draw [->, thick] (5,0) -- (6.7, 0.6) node [anchor = south west] {$\vec{v'}$};
+
+    \coordinate (a1) at (1,0);
+    \coordinate (a2) at (0.832,0.555);
+    \coordinate (o) at (0,0);
+    \pic [draw] {angle = a1--o--a2};
+    \node [] at (0.7, 0.2) {$\theta$};
+
+    \coordinate (b1) at (7,0);
+    \coordinate (b2) at (6.886,0.665);
+    \coordinate (q) at (5,0);
+    \pic [draw] {angle = b1--q--b2};
+    \node [] at (6.1, 0.2) {$\theta'$};
+    
+    \filldraw [black] (-1,1) circle (1pt);
+    \draw [thin, dashed] (-1, 1) -- (1.5,1);
+    \draw [thin, dashed] (-1, 1) -- (-1,-0.833);
+    \draw [thin, dashed] (-1, 1) -- (0,1.833);
+    \draw [thin, dashed, ->] (0,0) -- (-1, 1);
+    \coordinate (f1) at (0, 1);
+    \coordinate (f2) at (-0.7, 0.7);
+    \pic [draw] {angle = f1--o--f2};
+    \node [] at (-0.2, 0.7) {$\varphi$};
+
+    
+    \filldraw [black] (4,0.6) circle (1pt);
+    \draw [thin, dashed] (4, 0.6) -- (6.7, 0.6);
+    \draw [thin, dashed] (4, 0.6) -- (5, 1.433);
+    \draw [thin, dashed] (4, 0.6) -- (4, -0.833);
+    \draw [thin, dashed] (4, 0.6) -- (5, 0);
+    \coordinate (g1) at (5,1);
+    \coordinate (g2) at (4, 0.6);
+    \pic [draw] {angle = g1--q--g2};
+    \node [] at (4.7,0.7) {$\varphi'$};
+\end{tikzpicture}

@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \filldraw [black] (0,0) circle (2pt);
+    \draw [->] (0,0) -- (-1, 3);
+    \node [] at (-0.4, 1.6) {$\vec{r}$};
+    \filldraw [blue] (-1.02, 3.06) circle (2pt);
+    \node [anchor = west] at (0,0) {$0$};
+    \draw [->] (0, 0) -- (-1, -2);
+    \node [] at (-0.1, -1.1) {$\vec{r}(t')$};
+    \draw [brown] (-1, -2) arc (50:100:3);
+    \draw [brown] (-1, -2) arc (230:250:3);
+    \draw [->] (0, 0) -- (-2.5, -1.34);
+    \node[] at (-1.4, -0.35) {$\vec{r}(t)$};
+    \draw [dashed] (-2.5, -1.34) -- (-1, 3);
+    \draw [dashed] (-1, -2) -- (-1, 3);
+    \draw [->] (-1, -2) -- (-1, -1.4) node [anchor = east] {$\vec{n}(t')$};
+    \draw [->] (-2.5, -1.34) -- (-2.361, -0.95) node [anchor = south east] {$\vec{n}(t)$};
+    \node [] at (1.6, -2.5) {$\vec{r}(t)$ --- траектория};
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+        \draw [->] (0,0) -- (3,0) node [anchor=north west] {$x$};
+        \draw [->] (0,0) -- (0,2) node [anchor=south east] {$y$}; 
+        \draw [->] (0,0) -- (-1.2,-1)node [anchor=north west] {$z$};
+        \draw [thin, dashed] (3,0) -- (5, 0);
+        \draw [->] (5,0) -- (8,0) node [anchor=north west] {$x'$};
+        \draw [->] (5,0) -- (5,2) node [anchor=south east] {$y'$}; 
+        \draw [->] (5,0) -- (3.8,-1)node [anchor=north west] {$z'$};
+    
+        \node [anchor = south west] at (0, 0) {$0$};
+        \node [anchor = south west] at (5, 0) {$0'$};
+        \node [] at (1,1.5) {\Large $K$};
+        \node [] at (6,1.5) {\Large $K'$};
+    
+        \draw [->, thick] (7, 0.6) -- (8, 0.6);
+        \node [anchor = south] at (7.5, 0.7) {$\vec{V}$};
+    \end{tikzpicture}

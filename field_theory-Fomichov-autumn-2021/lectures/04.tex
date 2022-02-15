@@ -1,0 +1,226 @@
+\newpage
+\section{Движение заряженных частиц в электромагнитном поле}
+\subsection{Функция и уравнения Лагранжа заряженной частицы.}
+    \begin{figure}[h]
+        \centering
+        \input{figures/figInter.tex}
+    \end{figure}
+    В отличие от классической физики, электромагнитое взаимодействие передаётся не мгновенно: существует
+    характерное время взаимодействия $t = \frac{\left|\vec{r_{12}} \right|}{u}, \ u \leqslant c$ --- скорость распространения взаимодействия.
+
+    Электромагнитное поле представляет собой 4-векторное поле. Мы построим теорию этого поля исходя из принципа наименьшего действия и покажем, что она согласуется с
+    экспериментом. Действие --- аддитивная величина, и в нашем случае она равна сумме действия частиц, взаимодействия частиц с полем и самого поля:
+    \[
+        S = S_{\textrm{част}} + S_{\textrm{взаим}} + S_{\textrm{поля}}.
+    \]
+    Мы будем считать поле заданным и неизменным, в этом случае $S_{\textrm{поля}} = 0$. Действие частиц, согласно предыдущей главе, равно
+    \[
+        S_{\textrm{част}} = -\sum_a m_a c \int\limits_{(1_a)}^{(2_a)}ds_a,
+    \]
+    где $(1_a)$ и $(2_a)$ --- начальные и конечные точки траектории частицы $a$. Действие взаимодействия частицы с полем будем искать в виде
+    \[
+        S_{\textrm{взаим}} = -\frac{e}{c}\int\limits_{(1)}^{(2)}A^idx_i,
+    \]
+    где $A^i = \brackets{A^0, A^1, A^2, A^3}$ --- 4-потенциал электромагнитного поля. Таким образом, для отдельно взятой частицы
+    \[
+        S = -mc\int\limits_{(1)}^{(2)}ds = \frac{e}{c}\int\limits_{(1)}^{(2)}A^idx_i.
+    \]
+    Обозначим компоненты 4-потенциала как $A^i = \brackets{\phee, \vec{A}}$; скалярную часть $\phee = \phee\brackets{\vec{r}, t}$ называют
+    скалярным потенциалом, а трёхмерный вектор $\vec{A} = \vec{A}\brackets{\vec{r}, t} $ --- векторным потенциалом электромагнитного поля.
+    Тогда $A^idx_i = \phee\cdot cdt - \vec{A}d\vec{r}$. Вспоминая, что $ds = cdt\relroot$, получаем:
+    \begin{gather*}
+        S = \int\limits_{(1)}^{(2)}\brackets{-mc^2\relroot dt - e\phee dt + \frac{e}{c}\brackets{\vec{A}, \frac{d\vec{r}}{dt}}dt} = \\
+        = \int\limits_{(1)}^{(2)}\brackets{-mc^2\relroot + \frac{e}{c}\brackets{\vec{A}\cdot\vec{v}} - e\phee}dt \equiv \int\limits_{(1)}^{(2)}Ldt.
+    \end{gather*}
+    Мы получили \textit{функцию Лагранжа} заряженной частицы в электромагнитном поле:
+    \[
+        \boxed{L\brackets{t, \vec{r}, \vec{v}} = -mc^2\sqrt{1 - \frac{v^2}{c^2}} + \frac{e}{c}\brackets{\vec{A}\cdot\vec{v}} - e\phee}
+    \]
+    Получим уравнения движения. Как известно,
+    \[
+        \frac{d}{dt}\pard{L}{\vec{v}} = \pard{L}{\vec{r}}.
+    \]
+    Обобщённый импульс системы (в данном случае частицы) равен
+    \[
+        \vec{P} = \pard{L}{\vec{v}} = \frac{m\vec{v}}{\relroot} + \frac{e}{c}\vec{A} = \vec{p} + \frac{e}{c}\vec{A}.
+    \]
+    Тогда
+    \begin{gather*}
+        \frac{d}{dt}\pard{L}{\vec{v}} = \frac{d\vec{P}}{dt} = \frac{d\vec{p}}{dt} + \frac{e}{c}\frac{d\vec{A}}{dt} = 
+        \frac{d\vec{p}}{dt} + \frac{e}{c}\brackets{\pard{\vec{A}}{t} + \pard{\vec{A}}{x_{\alpha}}\frac{dx_{\alpha}}{dt}} = \\
+        = \frac{d\vec{p}}{dt} + \frac{e}{c}\brackets{\pard{\vec{A}}{t} + \brackets{\vec{v}\cdot\vec{\nabla}}\vec{A}} = \pard{L}{\vec{r}} \equiv \nabla L. \\
+        \nabla L = \frac{e}{c}\nabla\brackets{\vec{A}\cdot\vec{v}} - e\nabla\phee.
+    \end{gather*}
+    \begin{note}
+        Здесь и далее латинскими буквами обозначаются индексы 4-векторов, а греческими --- индексы трёхмерных векторов.
+    \end{note}
+
+    Легко проверить (есть в задании), что 
+    $\grad\brackets{\vec{a}\cdot\vec{b}} \equiv \nabla\brackets{\vec{a}\cdot\vec{b}} =\sqbrk{\vec{a}\times\rot\vec{b}} + \sqbrk{\vec{b}\times\rot\vec{a}} + \brackets{\vec{a}\cdot\vec{\nabla}}\vec{b} + \brackets{\vec{b}\cdot\vec{\nabla}}\vec{a}$.
+    Используем это соотношение:
+    \begin{gather*}
+        \nabla L = \frac{e}{c} \sqbrk{\vec{v}\times\rot\vec{A}} + \frac{e}{c}\brackets{\vec{v}\cdot\vec{\nabla}}\vec{A} - e\nabla\phee, \\
+        \frac{d\vec{p}}{dt} = \frac{e}{c} \sqbrk{\vec{v}\times\rot\vec{A}} + e \brackets{-\frac{1}{c}\pard{\vec{A}}{t} - \nabla\phee} \equiv \vec{F}.
+    \end{gather*}
+    Из общей физики известно:
+    \[
+        \frac{d\vec{p}}{dt} = e\vec{E} + \frac{e}{c}\sqbrk{\vec{c}\times\vec{H}}.
+    \]
+    Сделаем сопоставление: $\vec{H} = \rot\vec{A}, \: \vec{E} = -\frac{1}{c}\pard{\vec{A}}{t} - \nabla\phee$.
+
+    Найдём функцию Гамильтона заряженной частицы в электромагнитном поле:
+    \[
+        \mathcal{H} = \brackets{\vec{P}\cdot\vec{v}} - L = \brackets{\vec{p} + \frac{e}{c}\vec{A}}\cdot\vec{v}
+        + mc^2\sqrt{1 - \frac{v^2}{c^2}} - \frac{e}{c}\brackets{\vec{A}\cdot\vec{v}} + e\phee = \sqrt{m^2c^4 + c^2p^2}.
+    \]
+    Выражая обычный трёхмерный импульс через обобщённый, получаем:
+    \[
+        \boxed{\mathcal{H}\brackets{\vec{r}, \vec{P}, t} = \sqrt{m^2c^4 + c^2\brackets{\vec{P} - \frac{e}{c}\vec{A}}^2} + e\phee}
+    \]
+
+\subsection{Калибровочное преобразование}
+    Рассмотрим векторный потенциал, преобразованный следующим образом:
+    \[
+        \tilde{\vec{A}} = \vec{A} + \grad \chi,
+    \] в котором $\chi = \chi\brackets{\vec{r}, t}$ --- произвольная функция координат и времени. Напряжённость магнитного поля в этом случае не изменяется:
+    \[
+        \tilde{\vec{H}} = \rot\tilde{\vec{A}} = \rot{\vec{A}} + \rot\grad\chi = \rot\vec{A} = \vec{H}.
+    \]
+    Рассмотрим теперь преобразование скалярного потенциала:
+    \begin{gather*}
+        \tilde{\phee} = \phee + \delta\phee, \\
+        \tilde{\vec{E}} = -\frac{1}{c}\pard{\tilde{\vec{A}}}{t} - \nabla\tilde{\phee} =
+        -\frac{1}{c}\pard{\vec{A}}{t} - \pard{}{t}\grad\chi - \\
+        - \nabla\phee - \nabla\delta\phee = \vec{E} - \nabla\brackets{\delta\phee + \frac{1}{c}\pard{\chi}{t}} \: \Rightarrow \: \delta\phee = -\frac{1}{c}\pard{\chi}{t}
+    \end{gather*}
+    Преобразование электромагнитного поля
+    \[
+        \begin{cases} \displaystyle
+            \tilde{\phee} = \phee - \frac{1}{c}\pard{\chi}{t} \\
+            \tilde{\vec{A}} = \vec{A} + \grad{\chi}
+        \end{cases}
+    \]
+    в котором $\chi = \chi\brackets{\vec{r}, t}$ --- произвольная функция координат и времени, не изменяет уравнения движения частицы и
+    называется \textit{калибровочным преобразованием}. Говорят, что электромагнитное поле обладает калибровочной инвариантностью.
+    \begin{note}
+        Вариация действия уже является калибровочно инвариантной:
+        \[
+            S'_{\textrm{вз}} = -\frac{e}{c} \int\limits_{(1)}^{(2)} \tilde{A_i}dx^i = -\frac{e}{c} \int\limits_{(1)}^{(2)}A_idx^i
+            + \frac{e}{c} \int\limits_{(1)}^{(2)} \pard{\chi}{x^i}dx^i = S_{\textrm{вз}} + \frac{e}{c}\brackets{\chi(1) - \chi(2)}.
+        \]
+        Последнее слагаемое играет роль константы интегрирования и не изменяется при варьировании.
+    \end{note}
+
+\subsection{Уравнения движения в 4-векторном виде}
+    Выведем уравнения движения с из принципа наименьшего действия, однако в этот раз будем работать с 4-потенциалом электромагнитного поля непосредственно в
+    четырёхмерном виде.
+    \[
+        \delta S = \int\limits_{(1)}^{(2)} \brackets{-mc\delta ds - \frac{e}{c}\delta A_idx^i - \frac{e}{c}A_i\delta x^i} \boxed{=}
+    \]
+        Учитывая, что знаки вариации и дифференциала можно поменять местами, получаем $ \displaystyle \delta ds = \delta\sqrt{dx^idx_i} = \frac{dx^i\delta x_i + \delta x^idx_i}{2\sqrt{dx^idx_i}} = \frac{dx_i}{ds}\delta x^i = u_i\delta dx^i$,
+        и тогда, применяя интегрирование по частям, получаем
+    \begin{gather*}
+        \boxed{=} \int\limits_{(1)}^{(2)} \brackets{-mcu_id\delta x_i - \frac{e}{c} A_i\delta dx^i - \frac{e}{c} \delta A_i dx^i} = \\
+        =\left. -\brackets{mcu_i + \frac{e}{c}A_i}\delta x^i \right|_{(1)}^{(2)} + \int\limits_{(1)}^{(2)}\brackets{mc\frac{du_i}{ds}ds\delta x^i + \frac ec dA \delta x^i - \frac ec \delta A_i dx^i}.
+    \end{gather*}
+    Так как в нашей задаче закреплённые концы, $\delta x^i(1) = \delta x^i(2) = 0 \Rightarrow \left. -\brackets{mcu_i + \frac{e}{c}A_i}\delta x^i \right|_{(1)}^{(2)} = 0$, то есть
+    \[
+        \delta S = \int\limits_{(1)}^{(2)}\brackets{mc\frac{du_i}{ds}ds\delta x^i + \frac ec dA \delta x^i - \frac ec \delta A_i dx^i}.
+    \]
+    Далее,
+    \begin{gather*}
+        dA_i = \pard{A_i}{x^k} dx^k = \pard{A_i}{x^k} \frac{dx^k}{ds} ds, \\
+        \delta A_i = \pard{A_i}{x^k} \delta x^k. \\
+        \delta S = \int\limits_{(1)}^{(2)} \brackets{mc \frac{du_i}{ds} ds\delta x^i + \frac{e}{c} \pard{A_i}{x^k} u^k ds \delta x^i
+        - \frac{e}{c} \pard{A_i}{x^k} u^ids \delta x^k}.
+    \end{gather*}
+    В последнем слагаемом под интегралом поменяем местами индексы $i$ и $k$, чтобы вынести множитель $ds\delta x^i$ за скобку:
+    \[
+        \delta S = \int\limits_{(1)}^{(2)} \brackets{mc \frac{du_i}{ds} + \frac{e}{c} \pard{A_i}{x^k}u^k - \frac ec \pard{A_k}{x^i} u^k}ds\delta x^i.
+    \]
+    Из условия $\delta S = 0$ на произвольной вариации мировой линии $\delta s$ получаем уравнения движения:
+    \[
+        mc\frac{du_i}{ds} = \frac{e}{c}\brackets{\pard{A_k}{x^i} - \pard{A_i}{x^k}}u^k.
+    \]
+    Обозначим $F_{ik} \equiv \pard{A_k}{x^i} - \pard{A_i}{x^k}$ и запишем окончательный результат:
+    \begin{equation}
+        \boxed{mc\frac{du_i}{ds} = \frac{e}{c}F_{ik}u^k} \label{four_motion}
+    \end{equation}
+    Эти уравнения, в отличие от выведенных ранее трёхмерных уравнений, имеют один и тот же вид во всех системах отсчёта.
+
+    Рассмотрим подробнее двухиндексную величину $F_{ik}$, называемую \textit{тензором электромагнитного поля}. (подробнее о тензорах будет
+    рассказано в следующей главе). Выпишем значения некоторых компонент этого тензора:
+    \begin{gather*}
+        F_{00} = F_{11} = F_{22} = F_{33} = 0;\\
+        F_{0\alpha} = \pard{A_{\alpha}}{x^0} - \pard{A_0}{x^{\alpha}};\\
+        F_{01} = \frac 1c \pard{A_1}{x^0} - \pard{A^0}{x^ 1} = \frac 1c \pard{A_1}{t} - \pard{\phee}{x};\\
+        A_1 = -A_x = -A^1 \Rightarrow F_{01} = -\frac{1}{c} \pard{A_x}{t} - \pard{\phee}{x} = E_x.
+    \end{gather*}
+    (С учётом того, что $\displaystyle \vec{E} = \frac 1c \pard{\vec{A}}{t} - \nabla\phee$). Сделовательно, $\displaystyle F_{0\alpha} = E_{\alpha}$. Далее,
+    \[
+        F_{12} = \pard{A_2}{x^1} - \pard{A_i}{x^2} = -\pard{A_y}{x} + \pard{A_x}{y} = -\brackets{\rot\vec{A}}_z = -H_z. \\
+    \]
+    Аналогичным образом легко проверить, что $F_{23} = -H_x, F_{31} = H_y, F_{21} = H_z$ и т.д. В общем виде тензор представляет собой
+    антисимметричную матрицу:
+    \[
+        F_{ik} = \begin{bmatrix}
+            0 & E_x & E_y & E_z \\
+            -E_x & 0 & -H_z & H_y \\
+            -E_y & H_z & 0 & -H_x \\
+            -E_z & -H_y & H_z & 0
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+            0 & \vec{E} \\
+            -\vec{E} &  -e_{\alpha\beta\gamma}H_{\gamma}
+        \end{bmatrix}
+    \]
+    Посмотрим, как калибровочное преобразование подействует на тензор электромагнитного поля:
+    \[
+        \tilde{F}_{ik} = \pard{\tilde{A_k}}{x^i} - \pard{\tilde{A_i}}{x^k} = \pard{A_k}{x^i} -
+        \frac{\partial^2\chi}{\partial x^i\partial x^k} - \pard{A_i}{x^k} + \frac{\partial^2\chi}{\partial x^k\partial x^i} = 
+        \pard{A_k}{x^i} - \pard{A_i}{x^k} = F_{ik}.
+    \]
+    Как и следовало ожидать, тензор электромагнитного поля инвариантен относительно калибровочного преобразования.
+
+    Вернёмся к уравнениям движения и рассмотрим их покомпонентно. Как известно,
+    \begin{gather*}
+        u^i = \frac{dx^i}{ds} = \brackets{\frac{1}{\relroot}, \: \frac{\vec{v}}{c\relroot}} = \brackets{\gamma, \gamma\frac{\vec{v}}{c}};\\
+        ds = cdt\relroot = \frac{c}{\gamma}dt; \: \: mcu_i = p_i.
+    \end{gather*}
+    С учётом написанного уравнение (\ref{four_motion}) можно записать в виде
+    \[
+        \frac{dp_i}{ds} = \frac ec F_{ik}u^k.
+    \]
+    Учитывая, что $\displaystyle \frac{d}{ds} = \frac{\gamma}{c}\frac{d}{dt}$, запишем уравнение покомпонентно:
+    \begin{itemize}
+        \item $i = 0: \: p_0 = \frac{\mathcal{E}}{c}$, и тогда
+        \[
+            \frac{\gamma}{c} \frac{d}{dt} \frac{\mathcal{E}}{c} = \frac ec F_{0\alpha} u^k = 
+            \frac ec E_{\alpha} \frac{\gamma}{c} v_{\alpha} = \frac ec \frac{\gamma}{c}\brackets{\vec{v}\cdot\vec{E}}.
+        \]
+        Окончательно:
+        \begin{equation}
+            \boxed{\frac{d\mathcal{E}}{dt} = e\brackets{\vec{v}\cdot\vec{E}}} \label{de_dt}
+        \end{equation}
+        --- нулевая компонента уравнения (\ref{four_motion}) является уравнением изменения энергии. Видно, что магнитное поле не совершает работу,
+        так как не оно не вошло в это уравнение.
+
+        \item $i = \alpha$. Чтобы отличать от ковариантной компоненты 4-вектора $P_{\alpha}$ компоненту трёхмерного вектора $P_{\alpha}$,
+        последнюю будем обозначать $\vec{P_{\alpha}}$, причём $P_{\alpha} = -\vec{P_{\alpha}}$. Тогда
+        \begin{gather*}
+            -\frac{\gamma}{c} \frac{d \vec{P_{\alpha}}}{dt} = \frac ec F{\alpha 0}u^0  + \frac ec F_{\alpha \beta} u^{\beta} = \\
+            = -\frac ec E_{\alpha}\gamma - \frac ec e_{\alpha \beta \gamma}H_{\gamma}\frac{\gamma}{c} v_{\beta}. \\
+            \frac{\vec{P_{\alpha}}}{dt} = eE_{\alpha} + \frac ec e_{\alpha\beta\gamma}v_{\beta}H_{\gamma}.
+        \end{gather*}
+    \end{itemize}
+    Таким образом, уравнение (\ref{four_motion}) в покомпонентной записи выглядит так:
+    \[
+        \boxed{
+            \begin{matrix}
+                \displaystyle \frac{d\mathcal{E}}{dt} = e \brackets{\vec{v}\cdot\vec{E}} \\
+                \displaystyle \frac{d\vec{P}}{dt} = e\vec{E} + \frac ec \sqbrk{\vec{v}\times\vec{H}}
+            \end{matrix}
+        }
+    \]
+

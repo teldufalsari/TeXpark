@@ -1,0 +1,326 @@
+\newpage
+\section{Тензор электромагнитного поля}
+\subsection{Понятие о тензоре}
+    Рассмотрим два 4-вектора $A^i$ и $B^i$, преобразование Лоренца с матрицей 
+    ${\alpha^i}_k : \brackets{A^i}' = {\alpha^i}_k A^k, \brackets{B^i}' = {\alpha^i}_kB^k$.
+    \textit{Прямое произведение} 4-векторов есть матрица вида
+    \[
+        A^iB^k = \begin{bmatrix}
+            A^0B^0 & \dots & A^0B^3 \\
+            \vdots & \ddots & \vdots \\
+            A^3B^0 & \dots & A^3B^3
+        \end{bmatrix}
+    \]
+    Прямое произведение преобразованных векторов равно
+    \[
+        \brackets{A^iB^k}' = \brackets{A^i}'\brackets{B^k}' = {\alpha^i}_kA^m{\alpha^k}_nB^n = 
+        {\alpha^i}_m{\alpha^k}_nA^mB^n.
+    \]
+    Пусть теперь мы имеем дело с произвольной двухиндексной (типа матрицы) величиной $T^{ik}$.
+    \begin{Def} Если величина $T^{ik}$  при смене системы отсчёта преобразуется по правилу
+        \[
+            \brackets{T^{ik}}' = {\alpha^i}_m{\alpha^k}_n T^{mn},
+        \]
+        то $T^{ik}$ называется \textit{контрвариантным тензором второго ранга}.
+    \end{Def}
+    Очевидным образом определени обобщается на тензоры высших рангов, например, $T^{ikl}$ --- тензор третьего ранга, если
+    $\brackets{T^{ikl}}' = {\alpha^i}_k{\alpha^k}_n {\alpha^l}_p T^{mnp}$.
+    Тензор может быть записан и в ковариантном виде:
+    \[
+        T'_{ik} = {\alpha_i}^m {\alpha_k}^nT_{mn}
+    \]
+    а также в смешанной форме:
+    \[
+        \brackets{{T_i}^k}' = {\alpha_i}^m{\alpha^k}_n {T_m}^n
+    \]
+    Компоненты контрвариантной, ковариантной и смешанной форм связаны между собой так же, как компоненты прямого произведения двух 4-векторов
+    в контрвариантной, ковариантной или двух разных формах записи соответственно. Например,
+    \[
+        A_0 = A^0,\: A_{\alpha} = -A^{\alpha} \: \Rightarrow \: T_{00} = T^{00},\: T_{0\alpha} = -T^{0\alpha},\: T_{\alpha\beta} = T^{\alpha\beta}.
+    \]
+    \begin{example}
+        Рассмотрим 4-вектор градиента:
+        \[
+            \nabla_i = \pard{}{x^i} = \brackets{\frac{1}{c}\pard{}{t}, \: \vec{\nabla}}
+        \]
+        Свёртки 4-вектора градиента с 4-вектором  $A^i$ дают контрвариантный, ковариантный и смешанные тензоры второго ранга 
+        $\nabla_iA_i, \: \nabla_iA^i,\: \nabla^iA_i,\: \nabla^iA^i$.
+    \end{example}
+    Существуют два инвариантных тензора второго ранга:
+    \begin{enumerate}
+        \item Метрический тензор:
+            \[
+                g_{ik} = \begin{bmatrix}
+                    1 & 0 & 0 & 0  \\
+                    0 & -1 & 0 & 0\\
+                    0 & 0 & -1 & 0 \\
+                    0 & 0 & 0 & -1
+                \end{bmatrix} = g^{ik}, \:\:
+                {g_i}^k = \begin{bmatrix}
+                    1 & 0 & 0 & 0  \\
+                    0 & 1 & 0 & 0  \\
+                    0 & 0 & 1 & 0  \\
+                    0 & 0 & 0 & 1 
+                \end{bmatrix} = \delta_i^k.
+            \]
+            Проверим инвариантность метрического тензора:
+            \[
+                \brackets{{g_i}^k}' = {\alpha_i}^m{\alpha^k}_n {g_m}^n = {\alpha_i}^m{\alpha^k}_n\delta_m^n =
+                {\alpha_i}^m{\alpha^k}_m = \delta_i^k = {g_i}^k.
+            \]
+        \item Абсолютно антисимметричный тензор $e^{iklm}$ --- аналог символа Леви-Чивиты для четырёхмерного пространства.
+            \[
+                e^{iklm} = \begin{cases}
+                    \pm 1, \:\: i \not= k \not= l \not=m, \: i \not= l, \: k \not= m \\
+                    0 \: \textrm{ в остальных случаях}
+                \end{cases}
+            \]
+            
+                Как и в трёхмерном случае, $e^{0123} = 1, \: e^{1023} = -1$ а циклические перестановки индексов не меняют знак. Всего
+                тензор содержит $4! = 24$ ненулевых компоненты. Покажем, что абсолютно антисимметричный тензор является инвариантом:
+                \[
+                    \brackets{e^{iklm}}' = {\alpha^i}_p {\alpha^k}_q {\alpha^l}_r {\alpha^m}_s e^{pqrs}.
+                \]
+                Рассмотрим один элемент преобразованного тензора, например, $e^{0123}$:
+                \[
+                    \brackets{e^{0123}}' = {\alpha^0}_p {\alpha^1}_q {\alpha^2}_r {\alpha^3}_s e^{pqrs},
+                \]
+                а это выражение в точности представляет собой определитель матрицы преобразования Лоренца ${\alpha^i}_k$:
+                \[
+                    \brackets{e^{0123}}' = \det\begin{Vmatrix}
+                        {\alpha^i}_k
+                    \end{Vmatrix} = \det\begin{Vmatrix}
+                        \ch\psi & -\sh\psi & 0 & 0\\
+                        -\sh\psi & \ch\psi & 0 & 0 \\
+                        0 & 0 & 1 & 0 \\
+                        0 & 0 & 0 & 1
+                    \end{Vmatrix} = 1 = e^{0123}
+                \]
+                При перестановке индексов мы переставляем строки в матрице под знаком определителя. Как известно из курса линейной алгебры, при перестановке строк
+                матрицы её определитель меняется точно так же, как при перестановках индексов тензора $e^{iklm}$, то есть, циклические перестановки сохраняют знак, а прочие --- нет.
+                Значит, для любых $i, k, l, m$ верно
+                \[
+                    \brackets{e^{iklm}}' = e^{iklm}.
+                \]
+                \begin{note}
+                    Можно ввести ковариантный тензор $e_{iklm}$. В случае с произвольными тензорами действует следующее правило: каждое <<опускание>> индекса, не равного нулю,
+                    меняет знак тензора. В случае тензора $e^{iklm}$ все ненулевые элементы имеют ровно один ненулевой индекс, поэтому $e_{iklm} = -e^{iklm}$.
+                \end{note}
+                \begin{note}
+                    $e^{0\alpha\beta\gamma} = e_{\alpha\beta\gamma}$ --- при $i=0$ тензор совпадает с трёхмерным символом Леви-Чивиты.
+                    Напоминаем, что в трёхмерном пространстве нет различия между ковариантной и контрвариантной формами записи.
+                \end{note}
+    \end{enumerate}
+
+    Ещё одна инвариантная величина, хотя и не являющаяся тензором --- \textit{четырёхмерный объём}:
+    \[
+        d^4x = dx^0dx^1dx^2dx^3 = \begin{vmatrix}
+            \pard{\brackets{x^0,\ x^1,\ x^2,\ x^3}}{\brackets{x^{0'},\ x^{1'},\ x^{2'},\ x^{3'}}}
+        \end{vmatrix} d^4x',
+    \]
+    где $x^i = {\alpha_k}^i x^{k'}$. Так как $\displaystyle \pard{x^i}{x^{k'}} = {\alpha_k}^i$, то
+    \[
+        \begin{vmatrix}
+            \pard{\brackets{x^0,\ x^1,\ x^2,\ x^3}}{\brackets{x^{0'},\ x^{1'},\ x^{2'},\ x^{3'}}}
+        \end{vmatrix} = \det\begin{Vmatrix}
+            {\alpha_k}^i
+        \end{Vmatrix}
+    \]
+    (якобиан преобразования равен определителю матрицы преобразования, т.к. преобразования Лоренца линейные).
+    \[
+        \det\begin{Vmatrix}
+            {\alpha_k}^i
+        \end{Vmatrix} = 1 \: \Rightarrow \: d^4x = d^4x'
+    \]
+
+\subsection{Структура тензора второго ранга}
+    Рассмотрим произвольный четырёхмерный тензор второго ранга:
+    \[
+        F^{ik} = 
+        \begin{bmatrix}
+            F^{00} & \vdots & F^{01} & F^{02} & F^{03} \\
+            \dots & \dots & \dots & \dots & \dots \\
+            F^{10} & \vdots & F^{11} & F^{12} & F^{13} \\
+            F^{20} & \vdots & F^{21} & F^{22} & F^{23} \\
+            F^{30} & \vdots & F^{31} & F^{32} & F^{33} \\
+        \end{bmatrix}
+    \]
+    Величина $F^{00}$ не связана с пространственными координатами и является пространственным скаляром (не изменяется
+    при замене координат, но преобразуется при смене системы отсчёта).
+    Величины $F^{01}, F^{02}, F^{03} = F_{0x}, F_{0y}, F_{0z}$ образуют пространственный (трёхмерный) вектор, как и величины $F^{10}, F^{20}, F^{30}$.
+    Оставшиеся 9 компонент образуют пространственный тензор.
+
+    \begin{Def}
+        Тензор \Romannum{2} ранга называют \textit{симметричным}, если для всех $i, k$ верно $F^{ik} = F^{ki}$.
+        Тензор \Romannum{2} ранга называют \textit{антисимметричным}, если $F^{ik} = -F^{ki}, \: i \not= k$.
+    \end{Def}
+    \begin{prop}
+        Свойство антисимметричности абсолютно: если тензор антисимметричен  водной системе отсчёта, то он будет антисимметричным и в любой другой
+        систее отсчёта.
+    \end{prop}
+
+    Антисимметричный тензор \Romannum{2} ранга можно записать в виде
+    \[
+        F^{ik} = \begin{bmatrix}
+            0 & -P_x & -P_y & -P_z \\
+            P_x & 0 & -a_z & a_y \\
+            P_y & a_z & 0 & -a_x \\
+            P_z & -a_y & a_x & 0
+        \end{bmatrix} \equiv \begin{Vmatrix}
+            \vec{P} & \vec{a}
+        \end{Vmatrix}
+    \]
+    Вектор $P_{\alpha} = F^{\alpha 0}$ называют \textit{полярным}, а вектор $a_{\alpha} = -\frac 12 e_{\alpha\beta\gamma} F^{\beta\gamma}$ --- \textit{аксиальным}.
+    Ковариантный тензор, очевидно, имеет вид
+    \[
+        F_{ik} = \begin{bmatrix}
+            0 & P_x & P_y & P_z \\
+            -P_x & 0 & -a_z & a_y \\
+            -P_y & a_z & 0 & -a_x \\
+            -P_z & -a_y & a_x & 0
+        \end{bmatrix}
+    \]
+\subsection{Структура тензора электромагнитного поля}
+    В случае электромагнитного поля $\vec{P} = \vec{E}$, а $\vec{a} = \vec{H}$:
+    \[
+        F_{ik} = \begin{bmatrix}
+            0 & E_x & E_y & E_z \\
+            -E_x & 0 & -H_z & H_y \\
+            -E_y & H_z & 0 & -H_x \\
+            -E_z & -H_y & H_x & 0 \\
+        \end{bmatrix} = \begin{bmatrix}
+            0 & \vec{E} \\
+            -\vec{E} & -e_{\alpha\beta\gamma}H_{\gamma}
+        \end{bmatrix}
+    \]
+    Рассмотрим вопрос о преобразовании тензора $F_{ik}$ при смене системы отсчёта. Для 4-вектора верно:
+    \begin{gather*}
+        \brackets{A^0}' = \gamma\brackets{A^0 - \beta A^1}, \:
+        \brackets{A^1}' = \gamma\brackets{A^1 - \beta A^0} \\
+        \brackets{A^2}' = A^2, \:
+        \brackets{A^3}' = A^3, \\
+        F^{ik} = \begin{bmatrix}
+            0 & -\vec{E} \\
+            \vec{E} & -e_{\alpha\beta\gamma}H_{\gamma}
+        \end{bmatrix} \cdot F^{\alpha 0} = E_{\alpha}.
+    \end{gather*}
+    Для примера возьмём элемент $F^{20}$. По индексу $2$ преобразования нет, поэтому этот элемент преобразуется так же, как нулевая компонента 4-вектора:
+    \[
+        \brackets{F^{20}}' = \gamma\brackets{F^{20} - \beta F^{21}}.
+    \]
+    Аналогичным образом можно легко написать преобразования следующих элементов:
+    \begin{gather*}
+        \brackets{F^{30}}' = \gamma\brackets{F^{30} - \beta F^{31}}, \\
+        \brackets{F^{21}}' = \gamma\brackets{F^{21} - \beta F^{20}}, \\
+        \brackets{F^{31}}' = \gamma\brackets{F^{31} - \beta F^{30}}.
+    \end{gather*}
+    Эти же преобразования в обозначениях тензора электромагнитного поля:
+    \begin{gather*}
+        E_y' = \gamma\brackets{E_y - \beta H_z}, \\
+        E_z' = \gamma\brackets{E_z + \beta H_y}, \\
+        H_y' = \gamma\brackets{H_y + \beta E_z}, \\
+        H_z' = \gamma\brackets{H_z - \beta E_y}.
+    \end{gather*}
+    Так как индексы $2$ и $3$ не преобразуются, $\brackets{F^{23}}' = F^{23}$, откуда $H_z' = H_z$. Наконец, элемент $F^{01}$ преобразуется
+    сразу по двум индексам:
+    \begin{gather*}
+        \brackets{F^{01}}' = F^{0'1'} = \gamma\brackets{F^{0'1} -\beta F^{0'0}} =
+        \gamma\brackets{\gamma\brackets{F^{01} - \beta F^{11}} - \beta\gamma\brackets{F^{00} - \beta F^{10}}} = \\
+        = \gamma^2\brackets{F^{01} + \beta^2F^{10}} = \gamma^2\brackets{1 - \beta^2}F^{01} = F^{01} \: \Rightarrow \: E_x' = E_x.
+    \end{gather*}
+    Полученные законы преобразования полей запишем в инвариантной по отношению к вектору $\vec{V}$ скорости $K'$-системы в $K$-системе форме:
+    \[
+        \boxed{
+            \begin{matrix}
+                \displaystyle \vec{E_{\parallel}}' = \vec{E_{\parallel}} \\
+                \displaystyle \vec{H_{\parallel}}' = \vec{H_{\parallel}} \\
+                \displaystyle \vec{E_{\perp}}' = \gamma\brackets{\vec{E_{\perp}} + \frac 1c \sqbrk{\vec{V}\times\vec{H}}} \\
+                \displaystyle \vec{H_{\perp}}' = \gamma\brackets{\vec{H_{\perp}} - \frac 1c \sqbrk{\vec{V}\times\vec{E}}}
+            \end{matrix}
+        }
+    \]
+\subsection{Инварианты электромагнитного поля}
+    Изучим вопрос инвариантных комбинаций полей $\vec{E}$ и $\vec{H}$. Попытаемся найти линеные инварианты:
+    \[
+        F^{ik} = \begin{bmatrix}
+            0 & -\vec{E} \\
+            \vec{E} & -e_{\alpha\beta\gamma}H_{\gamma}
+        \end{bmatrix} \: \Rightarrow \: {F_i}^i = g_{ik}F^{ik} = 0
+    \]
+    Это значит, что линейных инвариантов нет. Зато есть квадратичные:
+        \begin{gather*}
+            F_{ik}F^{ik} = -2\brackets{\vec{E}}^2 + e_{\alpha\beta\gamma}H_{\gamma}\cdot e_{\alpha\beta\delta}H_{\delta} = 
+            -2\brackets{\vec{E}}^2 + \brackets{e_{\alpha\beta\gamma} e_{\alpha\beta\delta}}H_{\gamma}H_{\delta} = \\
+            = -2\brackets{\vec{E}}^2 + 2\delta_{\gamma}^{\delta}H_{\gamma}H_{\delta} = -2\brackets{\vec{E}}^2 + 2H_{\delta}H_{\delta}
+            = 2\brackets{H^2 - E^2}.
+        \end{gather*}
+        \begin{gather*}
+            e^{iklm}F_{ik}F_{lm} =
+            e^{0\alpha\beta\gamma}F_{0\alpha}F_{\beta\gamma} +
+            e^{\alpha 0\beta\gamma}F_{\alpha 0}F_{\beta\gamma} +
+            e^{\alpha\beta 0\gamma}F_{\alpha\beta}F_{0\gamma} +
+            e^{\alpha\beta\gamma 0}F_{\alpha\beta}F_{\gamma 0} = \\
+            = 4e^{0\alpha\beta\gamma}F_{0\alpha}F_{\beta\gamma} =
+            4e_{\alpha\beta\gamma} \brackets{-E_{\alpha}}\brackets{-e_{\beta\gamma\nu}H_{\nu}} =
+            4e_{\alpha\beta\gamma}E_{\alpha}e_{\beta\gamma\nu}H_{\nu} = 4E_{\alpha}e_{\alpha\beta\gamma}e_{\nu\beta\gamma}H_{\nu} = \\
+            = 8E_{\alpha}\delta_{\alpha}^{\nu}H_{\nu} = 8E_{\alpha}H_{\alpha} = 8\brackets{\vec{E}\cdot\vec{H}}.
+        \end{gather*}
+
+    Второй инвариант можно выразить через так называемый \textit{дуальный тензор} электромагнитного поля
+    $\tilde{F}_{ik} = \frac 12 e_{iklm}F^{lm}$:
+    \[
+        \tilde{F}_{ik} = \begin{bmatrix}
+            0 & \vec{H} \\
+            -\vec{H} & e_{\alpha\beta\gamma}E_{\gamma}
+        \end{bmatrix} = \begin{bmatrix}
+            0 & H_x & H_y & H_z \\
+            -H_x & 0 & E_z & -E_y \\
+            -H_y & -E_z & 0 & E_x \\
+            -H_z & E_y & -E_x & 0
+        \end{bmatrix}, \:\: \tilde{F}^{ik} = \begin{bmatrix}
+            0 & -\vec{H} \\
+            \vec{H} & e_{\alpha\beta\gamma}E_{\gamma}
+        \end{bmatrix}
+    \]
+    Тогда $\tilde{F}_{ik}F^{ik} = -4\brackets{\vec{E}\cdot\vec{H}} = inv$
+    
+    Перечислим основные следствия из наличия этих инвариантов:
+    \begin{itemize}
+        \item Если в какой-либо системе отсчёта $\abs{\vec{H}} = \abs{\vec{E}}$, то это верно для любой другой системы отсчёта.
+        \item Аналогично, неравенства $\abs{\vec{H}} > \abs{\vec{E}}, \: \abs{\vec{H}} < \abs{\vec{E}}$ сохраняются во
+            всех системах отсчёта.
+        \item Если в какой-либо системе $\vec{H} \perp \vec{E}$, $\angle\brackets{\vec{H}, \vec{E}} > 90\degree$ или $\angle\brackets{\vec{H}, \vec{E}} < 90\degree$,
+            то эти утверждения верны во всех системах отсчёта.
+        \item Если $\brackets{\vec{E}\cdot\vec{H}} \not= 0$, то $\exists K' : \brackets{\vec{E}} \parallel \brackets{\vec{H}}'$.
+        \item Если $\brackets{\vec{E}\cdot\vec{H}} = 0$, то
+            \begin{enumerate}
+                \item $ H^2 - E^2 > 0 \: \rightarrow \: \exists K' : \brackets{\vec{E}}' = \vec{0} $;
+                \item $ H^2 - E^2 < 0 \: \rightarrow \: \exists K' : \brackets{\vec{H}}' = \vec{0} $
+            \end{enumerate}
+    \end{itemize}
+    \begin{example}
+        Для случая (1) найдём скорость такой $K'$-системы. Выберем направление движения так, чтобы $\vec{V} \perp \vec{H}, \: \vec{V} \perp \vec{E}$ (см. рисунок).
+        \begin{figure} [h]
+            \centering
+            \input{figures/figSimpleElmag.tex}
+        \end{figure}
+        \begin{gather*}
+           \brackets{\vec{E}}' = \gamma\brackets{\vec{E} + \frac 1c \sqbrk{\vec{V}\times\vec{H}}}; \\
+           \brackets{\vec{E}}' = 0 \: \Rightarrow \: \vec{E} + \frac 1c \vecp{V}{H} = 0. \\
+        \end{gather*}
+        Домножим полученное уравнение векторно на $\vec{H}$:
+        \[
+           \vecp{H}{E} + \frac 1c \sqbrk{\vec{H}\times\vecp{V}{H}} = \vecp{H}{E} + \frac{\vec{V}}{c^2}H^2 - \frac{\vec{H}}{c}\dotp{V}{H}.
+        \]
+        Учитывая, что $\vec{V} \perp \vec{H}$, получаем:
+        \[
+            \vec{V} = -\frac{c}{H^2}\vecp{H}{E} = \frac{c}{H^2}\vecp{E}{H}.
+        \]
+        Проделаем аналогичные рассуждения для случая (2):
+        \begin{gather*}
+            \brackets{\vec{H}}' = \gamma\brackets{\vec{H} - \frac{1}{c}\vecp{V}{E}} = 0; \\
+            \vecp{E}{H} - \frac 1c \sqbrk{\vec{E}\times\vecp{V}{E}} = \vecp{E}{H} - \frac{\vec{V}}{c}E^2 = 0; \\
+            \vec{V} = \frac{c\vecp{E}{H}}{E^2}.
+        \end{gather*}
+    \end{example}
+

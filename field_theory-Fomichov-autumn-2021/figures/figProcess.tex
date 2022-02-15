@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+    \filldraw [black] (-2, 0) circle (1.5pt);
+    \filldraw [black] (2, 0) circle (1.5pt);
+    \draw [->] (-2, 0) -- (0,0) node [midway, below] {$\mathcal{E}_1$};
+    \draw [thin, dashed] (0,0) -- (2,0);
+    \node [above] at (-2, 0.1) {$m_1,\:\vec{p}_1$};
+    \node [anchor = south west] at (2, 0.1) {$m_2,\:\vec{p}_2 = \vec{0},\: \mathcal{E}_2 = m_2c^2$};
+    
+    \draw [->] (1, -1) -- (1, -2) node [midway, anchor = east] {результат:};
+    
+    \filldraw [black] (0, -4) circle (2pt);
+    \filldraw [black] (2, -3) circle (1.5pt) node [anchor = west] {$m$};
+    \filldraw [black] (2, -5) circle (1.5pt) node [anchor = west] {$m$};
+    \filldraw [black] (2.5, -3.5) circle (1.5pt) node [anchor = west] {$m$};
+    \filldraw [black] (2.5, -4.5) circle (1.5pt) node [anchor = west] {$m$};
+    \draw [dashed, ->] (0, -4) -- (2, -3);
+    \draw [dashed, ->] (0, -4) -- (2, -5);
+    \draw [dashed, ->] (0, -4) -- (2.5, -3.5);
+    \draw [dashed, ->] (0, -4) -- (2.5, -4.5);
+\end{tikzpicture}

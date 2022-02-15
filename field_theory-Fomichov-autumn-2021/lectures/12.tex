@@ -1,0 +1,421 @@
+\newpage
+\section{Излучение движущихся зарядов}
+\subsection{Неоднородные волновые уравнения}
+    В общем случае потенциалы $\phee$ и $\vec{A}$ подчияются уравнениям
+    \begin{gather*}
+        \Box \phee = 4\pi\rho(\vec{r}, t),
+        \Box \vec{A} = \frac{4\pi}{c}\vec{j}(\vec{r}, t).
+    \end{gather*}
+    Для полноты описания к этим уравнениям необходимо добавить уравнения движения заряженных частиц, так как в общем случае поле, создаваемое
+    частицами влияет на их движения и, таким образом, на создаваемое ими поле. Мы будем считать это влияние пренебрежимо малым и рассматривать 
+    уравнения, считая правые части $\rho$ и $\vec{j}$ заданными.
+
+    Введём функцию Грина:
+    \[
+        G(\vec{r}, \vec{r}', t, t') : \frac 1{c^2}\pardd{G}{t} - \Delta_{\vec{r}}G = 4\pi\delta(\vec{r} - \vec{r}')\delta(t - t').
+    \]
+    Если функцию, удовлетворяющую этим условиям, удастся найти, решения уравнений будут иметь вид
+    \begin{gather*}
+        \phee(\vec{r}, t) = \int G(\vec{r}, \vec{r}', t, t') \rho(\vec{r}', t') d\vol'dt',\\
+        \vec{A}(\vec{r}, t) = \frac 1c \int G(\vec{r}, \vec{r}', t, t') \vec{j}(\vec{r}', t') d\vol'dt'.
+    \end{gather*}
+    Легко проверить, что эти решения удовлетворяют волновым уравнениям, например
+    \[
+        \Box\phee = \int \Box G \cdot\rho(\vec{r}', t')d\vol'dt' = 
+        \int 4\pi\delta(\vec{r} - \vec{r}')\delta(t - t') \rho(\vec{r}', t')d\vol'dt' = 4\pi\rho(\vec{r}, t).
+    \]
+
+    Ещё одно необходимое условие --- выполнение условий калибровки Лоренца. Чтобы его проверить, необходимо сделать упрощение. Условимся работать
+    в однородном неограниченном пространстве, где нет краевых эффектов и областей с разными свойствами среды. В таких условиях разные положения в
+    пространстве эквивалентны, и функция Грина может быть функцией не четырёх переменных, а только двух разностей $\vec{r} - \vec{r}'$ и $t - t'$,
+    которые мы обозначим как $\vec{R}$ и $\tau$ соответственно:
+    \[
+        G(\vec{R}, \tau) : \frac 1{c^2} \pardd{G}{\tau} - \Delta_{\vec{R}}G = 4\pi\delta(\vec{R})\delta\brackets{\tau}.
+    \]
+    Вычислим производную $\pard{\phee}{\tau} = \int \pard{G}{t}\rho(\vec{r}', t')d\vol'dt'$. Так как $\pard{G}{t} = -\pard{G}{t'}$, имеем
+    \[
+        \pard{\phee}{t} = -\iiiint\limits_{-\infty}^{+\infty} \pard{G}{t'}\rho(\vec{r}', t')d\vol'dt' = 
+        -\iiiint\limits_{-\infty}^{+\infty} \pard{\brackets{G\rho}}{t'}d\vol'dt' + \iiiint\limits_{-\infty}^{+\infty} G\pard{\rho}{t'}d\vol'dt'
+    \]
+    (Мы прибывили и вычли интеграл от $G\pard{\rho}{t'}$). Первое слагаемое при интегрировании по времени сведётся к нулю, так как скорость
+    распространения отклика конечна (помним, что функция Грина есть отклик на единичное воздействие), и сигнал от бесконечно удалённого во времени
+    события никогда не достигнет точки наблюдения:
+    \[
+        \iiiint\limits_{-\infty}^{+\infty}\pard{\brackets{G\rho}}{t'}d\vol'dt' = 
+        \iiint\limits_{-\infty}^{+\infty} \brackets{G\rho\Bigm|_{t=-\infty}^{t=+\infty}}d\vol' = 0.
+    \]
+    С учётом сказанного, получаем, что
+    \[
+        \pard{\phee}{t} = \int G\pard{\rho}{t'}d\vol'dt'.
+    \]
+    Теперь вычислим дивергенцию векторного потенциала:
+    \begin{gather*}
+        \Div\vec{A} = \ynt \nabla_{\vec{r}} G \vec{j}(\vec{r}', t')d\vol'dt' =
+        -\frac 1c \ynt \nabla_{\vec{r'}} G\vec{j}(\vec{r}', t')d\vol'dt' = \\ =
+        -\frac 1c \ynt \Div_{\vec{r'}}\brackets{G\vec{j}}d\vol'dt' + \frac{1}{c}\ynt G\Div_{\vec{r'}}\vec{j}(\vec{r}', t')d\vol'dt'.
+    \end{gather*}
+    По теореме Гаусса-Острограского сводим первое слагаемо к интегралу по бесконечно удалённой поверхности, который равен нулю. 
+    Окончательно получаем
+    \[
+        \Div\vec{A} = \frac{1}{c}\ynt G\cdot\Div_{\vec{r'}}\vec{j}(\vec{r}', t')d\vol'dt'.
+    \]
+    Сложим то, что получилось:
+    \[
+        \frac 1c \pard{\phee}{t} + \Div\vec{A} =
+        \frac{1}{c}\ynt G\cdot\brackets{\pard{\rho}{t'} + \Div_{\vec{r'}}\vec{j}}d\vol'dt' = 0
+    \]
+    в силу уравнения непрерывности (\ref{charge_cons}). Условие калибровки Лоренца выполнено.
+
+    Для решения уравнений осталось найти функцию Грина. Вместо самой функции будем искать её Фурье-образ $\tilde{G}$, из которого можно найти и саму функцию как
+    \begin{equation}
+        G(\vec{R}, \tau) = \eent \tilde{G}(\vec{R}, \omega)e^{i\omega\tau} \frac{d\omega}{2\pi}. \label{Zeleny_Kozhevennick}
+    \end{equation}
+    Подействуе оператором Даламбера на уравнение (\ref{Zeleny_Kozhevennick}):
+    \begin{gather*}
+        -\Box G(\vec{R}, \tau) = \eent \brackets{\Delta\tilde{G} + \frac{\omega^2}{c^2}\tilde{G}}e^{i\omega\tau}\frac{d\omega}{2\pi} = \\ =
+        -4\pi\delta(\tau)\delta(\vec{R}) = -4\pi\delta(\vec{R})\eent e^{i\omega\tau}\frac{d\omega}{2\pi}.
+    \end{gather*}
+    Было использовано преобразование Фурье дельта-функции $\delta(\tau) = \int_{-\infty}^{+\infty} e^{-i\omega\tau} \frac{d\omega}{2\pi}$.
+    Сравнивая выражения под интегралами, приходим к уравнению Хельмхольца
+    \begin{equation}
+        \Delta\tilde{G} + \frac{\omega^2}{c^2}\tilde{G} = -4\pi\delta(\vec{R}). \label{Helmholtz}
+    \end{equation}
+    Так как правая часть уравнения сферически симметрична, таковы и решения уравнения:
+    \[
+        \tilde{G}(\omega, \vec{R}) = \tilde{G}(\omega, R). 
+    \]
+    Лапласиан сферически симметричной функции $f$, как известно, равен
+    \[
+        \Delta f(R) = \frac 1R \pardd{\brackets{f\cdot R}}{R}.
+    \]
+    Тогда для точек $\vec{R} \not= \vec{0}$ имеем
+    \[
+        \frac 1R \pardd{\brackets{\tilde{G}R}}{R} +  \frac{\omega^2}{c^2}\tilde{G} = 0, \:\:\text{или}
+    \]
+    \[
+        \pardd{\brackets{\tilde{G}R}}{R} +  \frac{\omega^2}{c^2}\brackets{\tilde{G}R} = 0,
+    \]
+    откуда легко получаем решения:
+    \[
+        \tilde{G}(\omega, R) = \frac{C_1e^{\frac{i\omega R}{c}} + C_2e^{-\frac{i\omega R}{c}}}{R}
+    \]
+    При $R \rightarrow 0$ функция Грина стремится к сингулярной функции:
+    \[
+        \tilde{G}(\omega, R) \: \rightarrow \: \tilde{G}_s(\omega, R) = \frac{C_1 + C_2}{R}.
+    \]
+    Лапласиан такой функции, согласно формуле (\ref{ImportantEquation}), равен
+    \[
+        \Delta\tilde{G}_s(\omega, R) = -4\pi(C_1 + C_2)\delta(\vec{R}).
+    \]
+    Сравнивая с (\ref{Helmholtz}), делаем вывод, что $C_1 + C_2 = 1$.
+
+    Вернёмся к временному представлению функции Грина:
+    \begin{gather*}
+        G(\vec{R}, \tau) = \eent \frac{C_1e^{\frac{i\omega R}{c}} + C_2e^{-\frac{i\omega R}{c}}}{R} e^{i\omega\tau} \frac{d\omega}{2\pi} = \\ =
+        \frac 1R \eent \braces{C_1e^{-i\omega\brackets{\tau - \frac{R}{c}}} + C_2e^{-i\omega\brackets{\tau + \frac{R}{c}}}}
+        \frac{d\omega}{2\pi} = \\ =
+        \frac{C_1\delta\brackets{\tau - \frac Rc} + C_2\delta\brackets{\tau + \frac Rc}}{R}.
+    \end{gather*}
+
+    Воспользуемся физическими соображениями: время $t'$ соответствует моменту действия источника, когда он находился в точке $\vec{r}'$.
+    Это действие фиксируется в точке $\vec{r}$ в момент времени $t$. В силк принципа причинности $t > t'$, то есть,
+    $t - t' = \tau > 0$. Естественно потребовать, чтобы при $\tau < 0$ функция Грина обращалась в ноль:
+    \[
+        G = G^R(\vec{R}, \tau) \: : \: G^R(\vec{R}, \tau)\Bigm|_{\tau < 0} = 0.
+    \]
+    Функцию $G^R$ называют \textit{запаздывающей} (retarded) функцией Грина.
+    У нашей функции Грина слагаемое $C_1\delta\brackets{\tau - \frac Rc}$ может быть ненулевым при $\tau < 0$,
+    поэтому необходимо потребовать $C_2 = 0$. Отсюда $C_1 = 1$, и, следовательно,
+    \begin{equation}
+        \boxed{G^R(\vec{R}, \tau) = \frac 1R \delta\brackets{\tau - \frac Rc}} \label{Retarded_func}
+    \end{equation}
+
+    В обычных координатах:
+    \[
+        G^R(\vec{r}, \vec{r}', t, t') = \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}.
+    \]
+    Теперь мы можем вычислить потенциалы:
+    \begin{gather*}
+        \phee(\vec{r}, t) = \ynt G^R(\vec{r} - \vec{r}', t - t')\rho(\vec{r}', t')d\vol'dt' = \\ =
+        \ynt \frac{\delta\brackets{t - t' - \frac{\abs{\vec{r} - \vec{r}'}}{c}}}{\abs{\vec{r} - \vec{r}'}}\rho(\vec{r}', t')d\vol'dt' = \\ =
+        \iiint\limits_{-\infty}^{+\infty} \frac{\rho(\vec{r}', t - \frac{\abs{\vec{r} - \vec{r}'}}{c})}{\abs{\vec{r} - \vec{r}'}}d\vol'.
+    \end{gather*}
+    \begin{equation}
+        \vec{A}(\vec{r}, t) = \frac 1c \iiint\limits_{-\infty}^{+\infty} \frac{\vec{j}(\vec{r}', t - \frac{\abs{\vec{r} - \vec{r}'}}{c})}{\abs{\vec{r} - \vec{r}'}}d\vol'. \label{RetardedPotent}
+    \end{equation}
+    
+\subsection{Поле ограниченной системы зарядов на большом расстоянии}
+    Рассмотрим уже классический случай: система имеет размер порядка $l$, малый по сравнению с расстоянием до точки наблюдения:
+    $\abs{\vec{r}'} \sim l \ll \abs{\vec{r}}$. Разложим разность расстояний до первого порядка:
+    \[
+        \abs{\vec{r} - \vec{r}'} = \sqrt{r^2 - 2\brackets{\vec{r}\cdot\vec{r}'} + (\vec{r}')^2}
+        \approx r - \brackets{\vec{n}\cdot\vec{r}'}.
+    \]
+    В знаменателе формулы (\ref{RetardedPotent}) примем $\abs{\vec{r} - \vec{r}'} \approx r$:
+    \begin{equation}
+        \vec{A}(\vec{r}, t) \approx \frac{1}{cr}\iiint\limits_{-\infty}^{+\infty}
+        \vec{j}\brackets{\vec{r}', t - \frac rc + \frac{\brackets{\vec{n}\cdot\vec{r}'}}{c}} \label{ApproxPotent}
+    \end{equation}
+    Поправкой $\frac{\brackets{\vec{n}\cdot\vec{r}'}}{c} \sim \frac lc$ можно пренебречь, если выполнено условие
+    \begin{equation}
+        \frac lc \ll T = \frac{2\pi}{\omega}, \label{Criterion}
+    \end{equation}
+    где $T$ --- характерное время изменения тока $\vec{j}$ или, если движение зарядов периодическое с частотой $\omega$, период колебаний тока.
+    Критерий (\ref{Criterion}) можно трактовать двояко:
+    \begin{enumerate}
+        \item $\frac lT \ll c \: \Rightarrow \: v \ll c$ --- движение зарядов в системе нерелятивистское.
+        \item $l \ll T\cdot c = \frac{2\pi c}{\omega} = \lambda$ --- длина волны излучения велика по сравнению с размерами системы.
+    \end{enumerate}
+    При выполнении условия (\ref{Criterion}) потенциал можно разложить по малому параметру $\frac l{\lambda}$:
+    \[
+        \vec{A}(\vec{r}, t) = \frac{1}{cr} \iiint\limits_{-\infty}^{+\infty} \vec{j}(\vec{r}', t') d\vol' + 
+        \frac{1}{c^2r} \iiint\limits_{-\infty}^{+\infty} \brackets{\vec{n}\cdot\vec{r}'}\dot{\vec{j}}(\vec{r}', t')d\vol' + \ldots
+    \]
+    где $t'(\vec{r}) \equiv t - \frac{r}{c}$ --- запаздывающее время.
+
+\subsection{Дипольное излучение}
+    Рассмотрим разложение потенциала $\vec{A}$ в нулевом приближении:
+    \begin{equation}
+        \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint\limits_{-\infty}^{+\infty} \vec{j}(\vec{r}', t')d\vol' \label{ZeroOrderA}
+    \end{equation}
+    Подставим в (\ref{ZeroOrderA}) выражение для плотности тока в виде суммы по точечным зарядам (частицам):
+    \begin{gather}
+        \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint\limits_{-\infty}^{+\infty}
+        \sum_a e_a \vec{v}_a(t')\cdot\delta\brackets{\vec{r}' - \vec{r}_a(t')}d\vol' = \\ =
+        \frac{1}{cr}\sum_a e_a\vec{v}_a(t') = \frac{1}{cr} \frac{d}{dt}\brackets{\sum_ae_a\vec{r}_a(t')}. \label{ZeroOrderS}
+    \end{gather}
+    Дипольный момент такой системы будет функцией времени:
+    \[
+        \vec{d} = \vec{d}(t) = \sum_ae_a\vec{r}_a(t).
+    \]
+    Подставляя дипольный момент в (\ref{ZeroOrderS}), получаем
+    \[
+        \boxed{\vec{A}(\vec{r}, t) = \frac{\dot{\vec{d}} \bigm|_{t'}}{cr}}
+    \]
+    Нулевое приближение иногда также называют дипольным.
+
+    Потенциал $\phee$ проще найти из условий калибровки Лоренца:
+    \begin{gather*}
+        \frac 1c \pard{\phee}{t} + \Div\frac{\dot{\vec{d}}\vt}{cr} = 0, \: \textrm{или},\\
+        \frac{1}{c}\pard{}{t}\brackets{\phee +  \Div\frac{\vec{d}\vt}{r}} = 0 \: \Rightarrow \\
+        \Rightarrow\: \phee(\vec{r}, t) = \phee_0(\vec{r}) - \Div\frac{\vec{d} \vt}{r}.
+    \end{gather*}
+    Постоянное поле $\phee_0$ просто не будем учитывать --- оно нас не интересует:
+    \[
+        \boxed{\phee(\vec{r}, t) = -\Div\frac{\vec{d} \vt}{r}}
+    \]
+    Теперь можем найти силовые характеристики поля:
+    \begin{gather*}
+        \vec{H}(\vec{r}, t) = \rot\vec{A}(\vec{r}, t) = \rot\frac{\dot{\vec{d}}\vt}{cr} =
+        \frac{1}{cr} \rot\dot{\vec{d}}\vt + \frac 1c \sqbrk{\nabla\frac 1r \times \dot{\vec{d}}\vt} = \\ =
+        \frac{1}{cr}\sqbrk{\nabla\brackets{t - \frac rc} \times \ddot{\vec{d}}\vt} -
+        \frac{1}{cr^3}\sqbrk{\vec{r} \times \dot{\vec{d}}\vt}.
+    \end{gather*}
+    Используя соотношение $\nabla r = \vec{n}$, получим окончательное выражение:
+    \[
+        \boxed{\vec{H}(\vec{r}, t) = \frac{\sqbrk{\ddot{\vec{d}}\vt \times \vec{n}}}{c^2r} + 
+        \frac{\sqbrk{\dot{\vec{d}}\vt \times \vec{n}}}{cr^2}}
+    \]
+    Слагаемое с $\ddot{\vec{d}}$ доминируем над слагаемым с $\dot{\vec{d}}$, когда $r \ll Tc \sim \frac{2\pi c}{\omega} = \lambda$ --- 
+    в так называемой \textit{волновой зоне}. Область $\lambda \gg r$ называется \textit{квазистационарной зоной}.
+
+    Найдём электрическое поле:
+    \begin{gather*}
+        \vec{E}(\vec{r}, t) = -\frac 1c \pard{\vec{A}}{t} - \grad\phee = 
+        -\frac{1}{c^2}\frac{\ddot{\vec{d}}\vt}{r} + \grad\Div\frac{\vec{d}\vt}{r}.
+    \end{gather*}
+    Прибавим и вычтем $\Delta\frac{\vec{d}\vt}{r}$:
+    \begin{gather}
+        \vec{E}(\vec{r}, t) = \grad\Div\frac{\vec{d}\vt}{r} - \Delta\frac{\vec{d}\vt}{r} + \Delta\frac{\vec{d}\vt}{r}
+        - -\frac{1}{c^2}\frac{\ddot{\vec{d}}\vt}{r}
+    \end{gather}
+    Учтём следующие соотношения:
+    \begin{gather*}
+        \grad\Div\frac{\vec{d}}{r} - \Delta\frac{\vec{d}}{r} = \rot\rot\frac{\vec{d}}{r};\\
+        \pard{\vec{d}\brackets{t - \frac{r}{c}}}{t} = \pard{\vec{d}\brackets{t - \frac{r}{c}}}{\brackets{-r / c}} \: \Rightarrow \\
+        \Rightarrow \: \Delta\frac{\vec{d}}{r} - \frac{\vec{d}}{r} - \frac{1}{c^2r}\ddot{\vec{d}} =
+        \frac 1r \pardd{\vec{d}\brackets{t - \frac{r}{c}}}{r} - \\ - \frac{1}{c^2r}\pardd{\vec{d}\brackets{t - \frac{r}{c}}}{t}=
+        \frac 1r \pardd{\vec{d}}{r} - \frac 1r \pardd{\vec{d}}{r} = 0.
+    \end{gather*}
+    Окончательный результат (опустим громоздкие вычисления, предложенные в качестве задачи для семинара):
+    \[
+        \boxed{\vec{E}(\vec{r}, t) = \frac{\sqbrk{\sqbrk{\ddot{\vec{d}}\vt \times \vec{n}} \times \vec{n}}}{c^2 r} +
+        \frac{3\tilde{\vec{d}}\brackets{\vec{n} \cdot \tilde{\vec{d}}} - \tilde{\vec{d}}}{cr^2}}
+    \]
+    где $\displaystyle \tilde{\vec{d}} = \vec{d} + \frac{r}{c}\dot{\vec{d}}$. Слагаемое с векторным произведением отвечает
+    электрическому полю в волновой зоне.
+
+    Зная, что поле в волновой зоне должно иметь наименьший порядок убывания, выражение для поля в волновой зоне можно получить более простым
+    способом: при взятии ротора следует отбросить слагаемые, в которых происходит дифференцирование знаменателя:
+    \[
+        \vec{E}(\vec{r}, t) \approx \frac 1r \rot\rot \vec{d}\vt = \frac 1r \sqbrk{\nabla t' \times \sqbrk{\nabla t' \times \ddot{\vec{d}}\vt}} = 
+        \frac{\sqbrk{\sqbrk{\ddot{\vec{d}}\vt \times \vec{n}} \times \vec{n}}}{c^2r}.
+    \]
+    То же самое можно проделать и для магнитного поля. Отметим соотношение, справедливое в волновой зоне:
+    \[
+        \vec{E}(\vec{r}, t) = \sqbrk{\vec{H}(\vec{r}, t) \times \vec{n}}.
+    \]
+    Такая же связь наблюдалась в поле плоской электромагнитной волны.
+
+\subsection{Интенсивность излучения}
+    По определению интенчивность $I$ равна интегралу от вектора Пойнтинга по полному телесному углу:
+    \begin{gather}
+        \vec{S} = \frac{c\vecp{E}{H}}{4\pi} = \frac{c\sqbrk{\vecp{H}{n} \times \vec{H}}}{4\pi} = \notag \\ =
+        \vec{n}\frac{c\abs{H}^2}{4\pi} = \vec{n}\frac{c\sqbrk{\ddot{\vec{d}}_{t'} \times \vec{n}}^2}{4\pi c^4r^2}; \notag \\
+        dI = \vec{S}\cdot d\vec{f}, \:\: \textrm{где} \:\: d\vec{f} = \vec{n}r^2d\Omega, \:\: \textrm{то есть}, \notag \\
+        dI = \frac{c\sqbrk{\ddot{\vec{d}}_{t'} \times \vec{n}}^2}{4\pi c^3}d\Omega. \label{Intensity}
+    \end{gather}
+    Формулу (\ref{Intensity}) можно записать в виде формулы углового распределения:
+    \[
+        \frac{dI}{d\Omega} = \frac{c\sqbrk{\ddot{\vec{d}}_{t'} \times \vec{n}}^2}{4\pi c^3} = \frac{\abs{\ddot{\vec{d}}_{t'}}^2 \sin^2\theta}{4\pi c^3},
+    \]
+    где $\theta$ --- угол между вектором $\ddot{\vec{d}}$ и направлением от системы к наблюдателю (вектором $\vec{r}$).
+
+    Проинтегрируем формулу (\ref{Intensity}):
+    \begin{gather*}
+        I = \int \frac{c\sqbrk{\ddot{\vec{d}}_{t'} \times \vec{n}}^2}{4\pi c^3}d\Omega = 
+        \int\limits_0^{2\pi} \int\limits_0^{\pi} \frac{\abs{\ddot{\vec{d}}_{t'}}^2 \sin^2\theta}{4\pi c^3} d\phee \sin\theta d\theta =
+        \frac 1{2c^3} \abs{\ddot{\vec{d}}_{t'}}^2 \int\limits_0^{\pi} \sin^2\theta \cdot \sin\theta d\theta = \\ =
+        \frac 1{2c^3} \abs{\ddot{\vec{d}}_{t'}}^2 \int\limits_0^{\pi} \brackets{1 - \cos^2\theta} d\brackets{\cos\theta} =
+        \frac 1{2c^3} \abs{\ddot{\vec{d}}_{t'}}^2 \int\limits_{-1}^1 \brackets{1 - z^2}dz = \frac{2\brackets{\ddot{\vec{d}}_{t'}}^2}{3c^3}.
+    \end{gather*}
+
+    Другой способ: воспользоваться усреднением вектора по единичной сфере:
+    \[
+        \frac{1}{c^3}\langle \left[ \ddot{\vec{d}}_{t'} \times \vec{n} \right]^2 \rangle,
+    \]
+    где $\langle \ldots \rangle \equiv \int \frac{d\Omega}{4\pi}(\ldots)$. Для любого вектора $\vec{a}$, имеем:
+    \[
+        \langle \vecp{a}{n}^2 \rangle = \langle a^2 - \dotp{a}{n}^2 \rangle = a^2 - a_{\alpha}a_{\beta}n_{\alpha}n_{\beta} = 
+        a^2 - a_{\alpha}a_{\beta}\frac 13 \delta_{\alpha\beta} = a^2 - \frac{1}{3}a_{\alpha}a_{\alpha} = \frac 23 a^2.
+    \]
+    Откуда и получается формула
+    \begin{equation}
+        \boxed{I = \frac{2\brackets{\ddot{\vec{d}}_{t'}}^2}{3c^3}} \label{Dipole_intensity}
+    \end{equation}
+
+    Предположим, что дипольный момент изменяется по гармоническому закону:
+    \[
+        \vec{d}(t) = \vec{d}_0\cos\brackets{\omega t + \phee}.
+    \]
+    Тогда для интенсивности имеем
+    \begin{gather*}
+        I(t) = \frac{2}{3c^3} d_0^2 \omega^4 \cos^2\brackets{\omega t + \phee};\\
+        \overline{I(t)} = \frac{2}{3c^3} d_0^2 \omega^4 \cdot \overline{\cos^2\brackets{\omega t + \phee}} = \frac{d_0^2\omega^4}{3c^3},
+    \end{gather*}
+    --- интенсивность периодического дипольного излучения (формула Рэлея).
+
+\subsection{Магнитно-дипольное и квадрупольное излучение}
+    Бывают системы, в которых дипольное излучение обращается в ноль. В качестве примера можно рассмотреть систему частиц с одинаковым
+    отношением заряда к массе $\frac{e_a}{m_a} = \eta = const$ (см. <<Прецессия Лармора>>):
+    \begin{gather*}
+        \vec{d} = \sum_a e_a\vec{r}_a = \sum_a \frac{e_a}{m_a}m_a\vec{r}_a = \eta\sum_ae_a\vec{r}_a = \eta M \vec{R},
+    \end{gather*}
+    где $ \vec{R} = \frac{\sum_am_a\vec{r}_a}{\sum_am_a}$ --- центр масс системы. В отсутствие внешних сил центр масс движется
+    равномерно и прямолинейно, $\ddot{\vec{R}} = 0$ и $\ddot{\vec{d}} = 0$.
+
+    Обратимся к следующему порядку разложения:
+    \begin{gather*}
+        \vec{A}(\vec{r}, t) = \frac{1}{cr}\iiint \vec{j}\brackets{\vec{r}',\: t - \frac{r}{c} + \frac{\brackets{\vec{n}\cdot \vec{r}'}}{c}}d\vol = \\ =
+        \frac{1}{cr}\iiint \vec{j}(\vec{r}', t') d\vol + \frac 1{c^2r}\iiint \brackets{\vec{n}\cdot \vec{r}'}\dot{\vec{j}}(\vec{r}', t')d\vol + \ldots = \\ =
+        \frac{1}{c^2r}\iiint \brackets{\vec{n}\cdot \vec{r}'}\dot{\vec{j}}(\vec{r}', t')d\vol, 
+    \end{gather*}
+    --- вместо общего случая разложения до второго порядка ограничимся рассмотрением случая с нулевым дипольным слагаемым.
+    Подставляя формулу плотности тока
+    \[
+        \vec{j}(\vec{r}', t') = \sum_ae_a\vec{v}_a(t')\delta(\vec{r}' - \vec{r}(t'))
+    \]
+    в полученное уравнения, получаем
+    \begin{gather}
+        \vec{A}(\vec{r}, t) = \frac{1}{c^2r}\frac{d}{dt}\sum_a e_a\vec{v}_a(t') \cdot \brackets{\vec{n}\cdot\vec{r}_a(t')} \label{qpole_rariation1}
+    \end{gather}
+    Используем соотношение
+    \begin{gather*}
+        \frac 12 \frac{d}{dt}\vec{r}_a \sotp{n}{r_a} + \frac 12 \sqbrk{\wecp{r_a}{v_a} \times \vec{n}} =
+        \frac 12 \vec v_a \sotp{n}{r_a} + \\ + \frac 12 \vec{r}_a \sotp{n}{v_a} + \frac 12 \vec{v}_a \sotp{n}{r_a} - 
+        \frac 12 \vec{r}_a\sotp{n}{v_a} = \vec{v}_a \sotp{n}{r_a},
+    \end{gather*}
+    а также определение магнитного момента системы
+    \[
+        \vec{m} = \frac{1}{2c}\sum_ae_a\wecp{r_a}{v_a},
+    \]
+    чтобы преобразовать уравнение (\ref{qpole_rariation1}):
+    \begin{gather*}
+        \vec{A}(\vec{r}, t) = \frac{1}{2c^2r} \frac{d}{dt} \sum_a e_a \brackets{ \sqbrk{\wecp{r_a}{v_a} \times \vec{n}} + 
+        \frac{d}{dt} \vec{r}_a\sotp{n}{r_a}} = \\ =
+        \frac{\sqbrk{\dot{\vec{m}}_{t'} \times \vec{n}}}{cr} + \frac{1}{2c^2r}\sum_ae_a\vec{r}_a\sotp{n}{r_a}.
+    \end{gather*}
+    Преобразуем второе слагаемое используя тензор квадрупольного момента. Введём вектор $\Dh_{\alpha} \equiv D_{\alpha\beta}n_{\beta}$:
+    \begin{gather*}
+        \Dh_{\alpha} = \sum_a e_a\brackets{3x_{\alpha}^{(a)} \cdot \sotp{n}{r_a} - n_{\alpha}r_a^2},\:\: \textrm{или}\\
+        \vec{\Dh} = \sum_ae_a\brackets{3\vec{r}_a\sotp{n}{r_a} - \vec{n}r_a^2}.\:\: \textrm{Тогда}\\
+        \sum_ae_a\vec{r}_a\sotp{n}{r_a} = \frac 13 \vec{\Dh} + \frac{\vec{n}}{3}\sum_ae_ar^2_a(t').
+    \end{gather*}
+    Все $\vec{r}_a$ здесь берутся в момент времени $t'$.
+    \begin{gather}
+        \vec{A}(\vec{r}, t) = \frac{\sqbrk{\dot{\vec{m}}_{t'} \times \vec{n}}}{cr} + \frac{\ddot{\vec{\Dh}}_{t'}}{6c^2r} +
+        \frac{\vec{n}}{6c^2r} \frac{d^2}{dt^2}\sum_a e_ar_a^2 \Biggm|_{t'}. \label{hren}
+    \end{gather}
+    \begin{gather*}
+        \vec{H}(\vec{r}, t) = \rot\vec{A}(\vec{r}, t) \xlongequal{\textrm{в волновой зоне}}
+        \sqbrk{\vec{\nabla}t' \times \dot{\vec{A}}}, \:\: \vec{\nabla} = - \frac{\vec{n}}{c}. \\
+        \vec{H}_{w}(\vec{r}, t) = \frac{\sqbrk{\sqbrk{\ddot{\vec{m}}_{t'} \times \vec{n} } \times \vec{n}}}{c^2r}
+        + \frac{\sqbrk{\dddot{\vec{\Dh}}_{t'} \times \vec{n}}}{6c^3r}.
+    \end{gather*}
+    Последний член в формуле (\ref{hren}) есть $\vec{n} \cdot f(\vec{r}) \sim \vec{r} \cdot f(\vec{r})$, а как известно,
+    $\rot\braces{\vec{r}\cdot f(\vec{r})}  \equiv 0$.
+    \begin{gather*}
+        \vec{E}_{w}(\vec{r}, t) = \wecp{H(\vec{r}, t)}{n} =
+        \frac{\sqbrk{\vec{n} \times \ddot{\vec{m}}_{t'}}}{c^2r} +
+        \frac{\sqbrk{\sqbrk{\dddot{\vec{\Dh}}_{t'} \times \vec{n}} \times \vec{n}}}{6c^3r}.
+    \end{gather*}
+    Так же, как и для дипольного приближения, верно:
+    \[
+        \vec{S} = c\vec{n}\frac{H^2}{4\pi}.
+    \]
+    Получим формулу для углового распределения:
+    \begin{gather*}
+        \frac{dI}{d\Omega} = \frac{1}{4\pi c^3}\braces{\sqbrk{\vec{n} \times \ddot{\vec{m}}_{t'}}^2 + 
+        \frac{\sqbrk{\dddot{\vec{\Dh}}_{t'} \times \vec{n}}^2 }{36c^2} -
+        \frac{\brackets{\ddot{\vec{m}}_{t'} \cdot \sqbrk{\dddot{\vec{\Dh}}_{t'} \times \vec{n}}}}{3c}}
+    \end{gather*}
+    Воспользуемся усреднением по сфере, чтобы найти интенсивность:
+    \begin{gather*}
+        \langle \brackets{\ddot{\vec{m}}_{t'} \cdot \sqbrk{\dddot{\vec{\Dh}}_{t'} \times \vec{n}}} \rangle = 
+        \langle \ddot{m}_{\alpha} e_{\alpha\beta\gamma} \dddot{D}_{\beta\mu} n_{\mu}n_{\gamma} \rangle = 
+        \ddot{m}_{\alpha} e_{\alpha\beta\gamma} \dddot{D}_{\beta\mu} \cdot \frac 13 \delta_{\mu\gamma} = \\ =
+        \frac 13 \ddot{m}_{\alpha} e_{\alpha\beta\gamma} \dddot{D}_{\beta\gamma} \equiv 0,
+    \end{gather*}
+    --- смешанное слагаемое равно нулю, так как содержит свёртку симметричного тензора $D_{\alpha\beta}$ с 
+    антисимметричным $e_{\alpha\beta\gamma}$.
+    \begin{gather}
+        \langle \sqbrk{\dddot{\vec{\Dh}} \times \vec{n}}^2 \rangle = \langle \dddot{{\Dh}}^2 - \brackets{\vec{b} \cdot \dddot{\vec{\Dh}}}\rangle =
+        \langle \dddot{D}_{\alpha\beta} n_{\beta} \dddot{D}_{\alpha\gamma} n_{\gamma} \rangle - \\ -
+        \langle \dddot{D}_{\alpha\beta} n_{\beta} n_{\alpha} \dddot{D}_{\mu\nu} n_{\mu} n_{\nu} \rangle =
+        \frac 13 \dddot{D}_{\alpha\beta}\dddot{D}_{\alpha\beta} - \\ -
+        \dddot{D}_{\alpha\beta} \dddot{D}_{\mu\nu} \cdot \frac 1{15}
+        \brackets{\delta_{\alpha\beta}\delta_{\mu\nu} + \delta_{\alpha\mu}\delta_{\beta\nu} + \delta_{\alpha\nu}\delta_{\beta\mu}} = \\ =
+        \frac{1}{3} \dddot{D}_{\alpha\beta}\dddot{D}_{\alpha\beta} - \frac{1}{15}
+        \brackets{\dddot{D}_{\alpha\alpha}\dddot{D}_{\mu\mu} + \dddot{D}_{\alpha\beta}\dddot{D}_{\alpha\beta} + \dddot{D}_{\alpha\beta}\dddot{D}_{\alpha\beta}} = \\ =
+        \brackets{\frac{1}{3} - \frac{2}{15}}\dddot{D}_{\alpha\beta}\dddot{D}_{\alpha\beta} = \frac 15 \brackets{\dddot{D}_{\alpha\beta}}^2.
+    \end{gather}
+
+    Вклад магнитного момента по виду аналогичен дипольному излучению, поэтому и интенсивность магнитно-дипольного излучения имеет тот же вид, что и
+    интенсивность дипольного излучения. Окончательно:
+    \[
+        \boxed{I = \frac{\brackets{\dddot{D}_{\alpha\beta} \bigm|_{t'}}^2}{180c^5} + \frac{2\brackets{\ddot{\vec{m}}\bigm|_{t'}}^2}{3c^3}}
+    \]
+
+    \begin{note}
+        Полученное выражение верно только в том случае, когда дипольное излучение равно нулю.
+    \end{note}
+
+    Для системы частиц с равным отношением заряда к массе имеем:
+    \begin{gather*}
+        \vec{m} = \frac{1}{2c}\sum_ae_a\wecp{r_a}{v_a} = \frac{1}{2c}\sum_a\frac{e_a}{m_a}m_a\wecp{r_a}{v_a} = \\ =
+        \frac{\nu}{2c} \sum_a m_a\wecp{r_a}{v_a} \sim \vec{M}.
+    \end{gather*}
+    Механический момент замкнутой системы постоянен, $\ddot{\vec{M}} = 0$, значит $I_{md} = 0$, и
+    \[
+        I = \frac{\brackets{\dddot{D}_{\alpha\beta} \bigm|_{t'}}^2}{180c^5}
+    \]
