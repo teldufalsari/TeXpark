@@ -12,13 +12,13 @@
               {\prt^{\alpha_1}x_1 \prt^{\alpha_2}x_2 \ldots \prt^{\alpha_n}x_n},\:\:
               u = u\brackets{x_1, x_2, \dots x_n}.
           \]
-    \item Если не оговорено, символы $\Omega, G \in \R^n$ обычно обозначают области, $x \in \Omega$ --- переменные,
-          $u = u(x)$ --- функцию нескольких переменных (решения уравнения).
+    \item Если не оговорено, символы $\Omega, G \subset \R^n$ обычно обозначают области, $x \in \Omega$ --- переменные,
+          $u = u(x)$ --- функцию нескольких переменных (решение уравнения).
     \item $C^0(\Omega),\: C^1(\Omega),\: C^k(\Omega)$\: --- множества функций, непрерывных, гладких, $k$ раз гладких на
           области $\Omega$ соответственно. $A(\Omega)$ --- множество аналитичных на $\Omega$ функций, то есть представимых
           степенным рядом:
           \[
-              A(\Omega) := \braces{f : \forall x \in \Omega \: \rightarrow \: f(x) = \sum_{k = 0}^{\infty} f_k \brackets{x - x_0}^k,\: x_0 \in \Omega}
+              A(\Omega) := \braces{f : \forall x \in \Omega \:\ \: f(x) = \sum_{k = 0}^{\infty} f_k \brackets{x - x_0}^k,\: x_0 \in \Omega}
           \]
     \item $L$ --- линейный дифференциальный оператор. Например,
           \[
@@ -45,7 +45,7 @@
         \end{vmatrix}
         \not= 0.
     \end{equation*}
-    Кроме того, потребуем $\xi\, \eta \in C^2(\Omega)$. Посмотрим, как преобразуются коэффициенты при старших производных при
+    Кроме того, потребуем $\xi,\eta \in C^2(\Omega)$. Посмотрим, как преобразуются коэффициенты при старших производных при
     такой замене. Первые производные:
     \begin{align*}
         & u_x = u_{\xi}\xi_x + \uet \eta_x,\\
@@ -65,7 +65,7 @@
     Аналогично нетрудно получить остальные выражения:
     \begin{align*}
         & u_{yy} = \xi_y^2 \uxx + \eta_y^2 \uee + 2 \xi_y\eta_y \uxe + \cdots,\\
-        & u_{xy} = \xi_x\xi_y \uxx + \brackets{\xi_x\eta_y + \xi_y\eta_x}\uxe + \eta_x\eta_y\uee.
+        & u_{xy} = \xi_x\xi_y \uxx + \brackets{\xi_x\eta_y + \xi_y\eta_x}\uxe + \eta_x\eta_y\uee + \cdots
     \end{align*}
     Таким образом, после подстановки $\xi$ и $\eta$ в (\ref{lin2}) получаем следующее уравнение:
     \begin{equation*}
