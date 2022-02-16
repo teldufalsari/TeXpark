@@ -1,0 +1,61 @@
+
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\author{Made by timattt}
+\title{Лекции по квантовой механике}
+\setlength{\leftskip}{-7em}
+\setlength{\rightskip}{-7em}
+
+\begin{document} % Конец преамбулы, начало текста.
+
+\maketitle
+\newpage
+
+\subsubsection*{Волновая функция} Это комплекснозначная функция, вида $ \Psi = \Psi(\vec r, t) $
+
+\subsubsection*{Плотность верояности}
+
+Квадрат модуля $\Psi$-функции есть вероятность обнаружить частицу в заданной точке в заданное время
+
+\subsubsection*{Условие нормировки}
+
+\[
+\int\limits^{\infty} \Psi(\vec r, t) \Psi^*(\vec r, t) dV = 1
+\]
+
+\subsubsection*{Волновая функция основного состояния атома водорода}
+
+\[
+\Psi(\vec r, t) = \frac{1}{\sqrt{\pi a_b^3}} e^{-\frac{r}{a_b}}
+e^{-\frac{i E_1 t}{\hbar}  }
+\]
+
+где $a_b$ - боровский радиус, $E_1$ - энергия первого уровня
+
+\subsubsection*{Квантовый оператор}
+Это функция, которая ставит в соответствие волновой функции какую-нибудь другую функцию
+
+\[
+\widehat{F} [\psi(\vec r, t)] = \Phi(\vec r, t)
+\]
+
+\subsubsection*{Среднее значение оператора}
+
+\[
+\overline{f} = \langle \psi | \Phi \rangle = \int \psi^*(\vec r, t) \Phi(\vec r, t) dV
+\]
+
+\subsubsection*{Постулаты квантовой механики}
+\begin{itemize}
+\item Значение волновой функции однозначно описывает состояние системы
+\item Физическим величинам сопоставляеются линейные операторы, которые действуют на волновую функцию и в общем случае изменяют ее
+\item {\bf (Принцип суперпозиции)} Если $\psi_1$ и $\psi_2$ - описывают физически реализуемые состояния квантовой системы, то $C_1\psi_1 + C_2\psi_2$ - тоже описывает физически реализуемое состояние такой системы.
+\end{itemize}
+
+\end{document} % Конец текста.
