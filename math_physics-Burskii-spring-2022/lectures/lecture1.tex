@@ -102,7 +102,7 @@
 
     Рассмотрим отдельно каждый случай.
 
-    \textit{Гиперболический тип}. В этом случае характеристическое уравнение имеет два решения
+    \subsubsection{Гиперболический тип} В этом случае характеристическое уравнение имеет два решения
     \begin{equation*}
         \lambda_{1,2} = \frac{-b \pm \sqrt{D}}{a},
     \end{equation*}
@@ -156,3 +156,18 @@
         u(x, y) = f\brackets{\phee(x,y)} + g\brackets{\psi(x, y)}, \label{waveform_gen_sol}
     \end{equation}
     где $f,g$ --- произвольные дважды гладкие функции одной переменной.
+
+    \subsubsection{Параболический тип}
+    Условие $D = b^2 - ac = 0$ равносильно условию $b = \sqrt{ac}$. Исключим $b$ из системы уравнений на преобразованные коэффициенты
+    (\ref{char_xi}) --- (\ref{char_eta}):
+    \begin{align}
+        & \tilde{a} = \brackets{\sqrt{a}\xi_x + \sqrt{c}\xi_y}^2,\\
+        & \tilde{b} = \brackets{\sqrt{a}\xi_x + \sqrt{c}\xi_y }\cdot\brackets{\sqrt{a}\eta_x + \sqrt{c}\eta_y},\\
+        & \tilde{c} = \brackets{\sqrt{a}\eta_x + \sqrt{c}\eta_y}^2.
+    \end{align}
+    Приравняем $\tilde{a}$ к нулю, что равносильно $\brackets{\sqrt{a}\xi_x + \sqrt{c}\xi_y} = 0$, но тогда автоматически $\tilde{b} = 0$
+    после выбора только одной функции $\xi$. В качестве $\eta$ можно взять любую замену, лишь бы она удовлетворяла условиям гладкости и обратимости.
+    Уравнение (\ref{lin2}) в новых переменных принимает (\textit{канонический}) вид
+    \begin{equation}
+        \uee = \Phi\brackets{\xi, \eta, u, \nabla_{\xi\eta}u}. \label{par_canon}
+    \end{equation}
