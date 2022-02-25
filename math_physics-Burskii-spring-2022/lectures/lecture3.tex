@@ -1,0 +1,159 @@
+\newpage
+\section{Уравнение колебаний струны}
+\subsection{Однородная задача}
+    \begin{Def}
+        Оператором Д'Аламбера называют следующий формальный оператор:
+        \begin{equation*}
+            \Box_a := \pardd{}{t} - a^2\pardd{}{x}.
+        \end{equation*}
+        При $a = 1$ индекс опускают:
+        \begin{equation*}
+            \Box_1 = \Box = \pardd{}{t} - \pardd{}{x}.
+        \end{equation*}
+    \end{Def}
+
+    \begin{Def}
+        Уравнением колебания струны называют следующее уравнение второго порядка:
+        \begin{align*}
+            u_{tt} - a^2 u_{xx} = f(t, x), \\
+            f \in C^1,\: a \in \R,\: u \in C^2.
+        \end{align*}
+    \end{Def}
+    Вначале ограничимся рассмотрением задачи Коши для однородного уравнения и для неограниченной ($x \in \R$) струны:
+    \begin{align*}
+        & u_{tt} - a^2 u_{xx} = 0,\: x \in \R;\\
+        & u_{t=0} = \phee(x),\\
+        & u'_t|_{t=0} = \psi(x).
+    \end{align*}
+    Характеристическое уравнение (\ref{char_2ord}) в нашем случае выглядит как
+    \begin{equation*}
+        dx^2 - a^2\cdot dt^2 = 0 \: \leftrightarrow \: \brackets{dx - a\cdot dt}\brackets{dx + a\cdot dt} = 0.
+    \end{equation*}
+    Решения этого уравнения:
+    \begin{equation*}
+        x = \pm at + C;
+    \end{equation*}
+    Семейства характеристик:
+    \begin{equation*}
+        x + at = C_1,\:\: x - at = C_2.
+    \end{equation*}
+    Наконец, искомая замена переменных:
+    \begin{equation*}
+        \begin{cases}
+            \xi = x + at,\\
+            \eta = x - at.
+        \end{cases}
+    \end{equation*}
+    Преобразованные производные равны
+    \begin{align*}
+        & u_x = \uxi \xi_x + \uet \eta_x = \uxi + \uet,\\
+        & u_t = a\uxi - a\uet,\\
+        & u_{xx} = \prt_x\brackets{\uxi + \uet} = \uxx \xi_x + \uxe \eta_x + \uxe \xi_x + \uee \eta_x = \uxx + 2\uxe + \uee,\\
+        & u_{tt} = a\prt_t \brackets{\uxi - \uet} = a^2\brackets{\uxx - 2\uxe + \uee}.
+    \end{align*}
+    Преобразованное уравнение:
+    \begin{equation*}
+        4a^2\uxe = 0 \: \Leftrightarrow \: \uxe = 0.
+    \end{equation*}
+    Как было показано ранее, общее решение этого уравнения имеет вид (\ref{waveform_gen_sol}):
+    \begin{equation*}
+        u(t,x) = f(\xi) + g(\eta) = f(x + at) + g(x - at).
+    \end{equation*}
+
+    Теперь найдём решение задачи Коши:
+    \begin{numcases}{}
+        f (x) + g (x) = \phee(x),\notag \\ 
+        af' (x) - ag' (x) = \psi (x).\label{kluvik}   
+    \end{numcases}
+    Интегрируя (\ref{kluvik}) по $x$:
+    \begin{equation*}
+        f(x) - g(x) = \frac 1a \int\limits_0^x \psi(s)ds + C.
+    \end{equation*}
+    Тогда, вместе с первым уравнением системы, находим решение:
+    \begin{align*}
+        & f(x) = \frac 12 \phee(x) + \frac{1}{2a} \int\limits_0^x \psi(s)ds + C,\\
+        & g(x) = \frac 12 \phee(x) - \frac{1}{2a} \int\limits_0^x \psi(s)ds - C.
+    \end{align*}
+    Тогда
+    \begin{align}
+        & u(t, x) = \frac{1}{2}\brackets{\phee(x + at) + \phee(x - at)} + 
+        \frac{1}{2a}\brackets{\int\limits_0^{x + at} \psi(s)ds - \int\limits_0^{x - at} \psi(s)ds} = \notag \\
+        & = \frac{1}{2}\brackets{\phee(x + at) + \phee(x - at)} + \frac{1}{2a} \int\limits_{x - at}^{x + at} \psi(s)ds \label{DAlembert_homogenous}
+    \end{align}
+    Соотношение (\ref{DAlembert_homogenous}) называется \textit{формулой Д'Аламбера} для однородного уравнения.
+
+\if 0 %##################################################################################################
+    Докажем, что найденное решение задачи Коши единственное: предположим, что нашлись две функции $u_1, u_2 \in C^2$, удовлетворяющие
+    условиям
+    \begin{equation*}
+        \begin{cases}
+            \Box_a u_1 = 0\\
+            u_1|_{t=0} = \phee(x)\\
+            u_1'|_{t=0} = \psi(x)
+        \end{cases}
+        \:\:
+        \begin{cases}
+            \Box_a u_2 = 0\\
+            u_2|_{t=0} = \phee(x)\\
+            u_2'|_{t=0} = \psi(x).
+        \end{cases}
+    \end{equation*}
+    Возьмём $u = u_1 - u_2,\: u \in C^2$. Тогда
+    \begin{align*}
+        & \Box_a u = \Box_a u_1 - \Box_a u_2 = 0,\\
+        & u|_{t = 0} = \phee - \phee = 0,\\
+        & u'|_{t=0} = \psi - \psi = 0.
+    \end{align*}
+\fi %####################################################################################################
+\newpage
+\subsection{Неоднородное уравнение. Принцип Дюамеля}
+    \begin{theorem}
+        (принцип Дюамеля) Задача Коши для неоднородного волнового уравнения
+        \begin{equation*}
+            \begin{cases}
+                u_{tt} - a^2 u_{xx} = f(t,x) \\
+                u|_{t=0} = 0,\: u'_{t=0} = 0
+            \end{cases}
+        \end{equation*}
+        имеет решение вида
+        \begin{equation}
+            u(t,x) = \int\limits_0^t v(\tau, t, x) d\tau, \label{DuhamelSolution}
+        \end{equation}
+        где $v(t,x)$ --- решение следующей задачи Коши для однородного уравнения:
+        \begin{equation}
+            \begin{cases}
+                v_{tt} - a^2 v_{xx} = 0\\
+                v|_{t = \tau} = 0,\: v'_t|_{t = \tau} = f(\tau, x). \label{CauchyDuhamel}
+            \end{cases}
+        \end{equation}
+    \end{theorem}
+    \begin{proof}
+        Найдём производные решения (\ref{DuhamelSolution}):
+        \begin{align*}
+            & u_t = \pard{}{t} \int\limits_0^t v(\tau, t, x) d\tau = \underbrace{v(t, t, x)}_{= v|_{\tau = t} = 0} + \int\limits_0^t v_t(\tau, t, x) d\tau,\\
+            & u_{tt} = v_t(t, t, x) + \int\limits_0^t v_{tt}(\tau, t, x) d\tau = f(t, x) + \int\limits_0^t v_{tt}(\tau, t, x) d\tau,\\
+            & u_{xx} = \int\limits_0^t v_{xx}(\tau, t ,x) d\tau.
+        \end{align*}
+        Проверим, удовлетворяет ли это решение уравнению колебаний:
+        \begin{gather*}
+            u_{tt} - a^2 u_{xx} = f(t, x) + \int\limits_0^t v_{tt}(\tau, t, x) d\tau - a^2 \int\limits_0^t v_{xx}(\tau, t ,x) d\tau = \\
+            = f(t, x) + \int\limits_0^t \brackets{\Box_a u(\tau, t, x)} d\tau = f(t, x).
+        \end{gather*}
+        Условия Коши в таком случае выполнены очевидным образом.
+        \textbf{А единственность Коши доказывать будет?}
+    \end{proof}
+    Обозначим $\hat{t} := t - \tau$, и сделаем замену переменных в (\ref{CauchyDuhamel}):
+    \begin{equation*}
+        \begin{cases}
+            v_{\hat{t}\hat{t}} - a^2 v_{xx} = 0\\
+            v|_{\hat{t} = 0} = 0,\: v'_{\hat{t}}|_{\hat{t} = 0} = f(\tau, x).
+        \end{cases}
+    \end{equation*}
+    Решение такой задачи находится по формуле Д'Аламбера (\ref{DAlembert_homogenous}):
+    \begin{equation*}
+        v(\hat{t}, x) = \frac{1}{2a} \int\limits_{x - a\hat{t}}^{x + a\hat{t}} f(\tau, s) ds.
+    \end{equation*}
+    Переходя к старым переменным и подставляя решение в формулу (\ref{DuhamelSolution}), получаем это же решение, но уже в явном виде:
+    \begin{equation*}
+        u(t,x) = \frac{1}{2a} \int\limits_0^t d\tau \int \limits_{x - a(t - \tau)}^{x + a(t - \tau)} f(\tau, s) ds.
+    \end{equation*}

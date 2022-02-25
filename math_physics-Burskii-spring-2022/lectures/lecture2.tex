@@ -31,11 +31,11 @@
     Поэтому мы можем выбрать $A_{ji} = A_{ij}$, чтобы матрица $A$ оказалась симметричной и задавала бы некоторую квадратичную форму
     $\sum_{i, j = 1}^n A_{ij} y_i y_j = \brackets{Ay,\ y}$. Вспомним теоремы из линейной алгебры о приведении квадратичной формы к каноническому виду.
 
-    \begin{theorem}
+    \begin{prop}
         Пусть задана квадратичная форма $k(y) = \brackets{Ay,\ y}$. При замене координат $y_k = \sum_{i=1}^n b_{ki}\eta_i$, или, в матричном виде,
-        $y = B\eta$, квадратичная форма принимает вид $\tilde{k}(\eta) = \brackets{AB\eta,\ \eta} = \brackets{B^T AB\eta,\ \eta}$. Матрица $A$ переходит
+        $y = B\eta$, квадратичная форма принимает вид $\tilde{k}(\eta) = \brackets{AB\eta,\ B\eta} = \brackets{B^T AB\eta,\ \eta}$. Матрица $A$ переходит
         в матрицу $\tilde{A} = B^T AB$.
-    \end{theorem}
+    \end{prop}
 
     \begin{theorem}
         Для всякой квадратичной формы $k(y) = \brackets{Ay,\ y}$ существует единственное \textit{ортогональное} преобразование $B: \: y = B\eta$, которое
@@ -92,4 +92,120 @@
             \item Параболический тип, если $p + m \not= n$ (есть хотя бы одно нулевое слагаемое);
             \item Ультрагиперболический тип, если $p + m = n$, но и $p > 1$, и $m > 1$ --- есть несколько слагаемых разных знаков.
         \end{itemize}
+    \end{Def}
+
+\section{Начальные и граничные задачи}
+\subsection{Задача Коши}
+    В курсе дифференциальных уравнений \textit{задачей Коши} называлась следующая задача:
+    \begin{align}
+        & \frac{d^m u}{dt^m} = f\brackets{t, u, u',\ldots u^{(m-1)}}, \label{Cauchy_general} \\
+        & u |_{t=t_0} = u_{0},\: u' |_{t = t0} = u_1,\:\ldots,\: u^{(m-1)} |_{t = t_0} = u_{m-1}. \notag
+    \end{align}
+    Была доказана теорема о том, что при некоторых условиях на функцию $f$ задача Коши имеет решение, и притом единственное.
+    \begin{theorem}
+        Задача (\ref{Cauchy_general}) имеет единственное решение, если $f$ как функция $m+1$ аргумента непрервына и удовлетворяет
+        условию Липшица в точке $x_0 \in \R^{m+1}$:
+        \begin{equation*}
+            f \in C(x_0),\: f \in Lip(x_0),\: x_0 = \brackets{t_0, u_0, u_1,\ldots u_{m-1}}.
+        \end{equation*}
+    \end{theorem}
+
+    Похожее постановка задачи может быть сформулирована для уравнений в частных производных. Среди $x = \brackets{x_1,\ldots x_n}$
+    выделим одну из переменных и обозначим её как $t$. Без ограничения общности можно считать $x_1 = t$, тогда $x = \brackets{t, x'_1,\ldots x'_{n-1}} = \brackets{t, x'}$.
+    \begin{Def}
+        Задачей Коши для уравнения в частных производных $n$ переменных называется задача вида
+        \begin{align}
+            & \frac{\prt^m u}{\prt t^m} = f\brackets{t, x', u, \prt_t u, \nabla_{x'} u, \ldots \prt^{\alpha} u,\ldots},\: \abs{\alpha} < m; \label{Caucy_partial}\\
+            & u|_{t = 0} = u_0\brackets{x'},\: \prt_t u|_{t=0} := \pard{u}{t} \bigm|_{t=0} = u_1\brackets{x'},\ldots,\: \prt_t^{(m-1)} u|_{t=0} = u_{m-1}\brackets{x'}. \notag
+        \end{align}
+    \end{Def}
+
+    Задача Коши для случая $m = 2$:
+    \begin{align}
+        & \pardd{u}{t} = f\brackets{t, x', u, \prt_t u, \nabla_{x'} u}, \label{Cauchy_2ord} \\
+        & u_{t=0} = u_0\brackets{x'},\: \pard{u}{t} \bigm|_{t=0} = u_1\brackets{x'}. \notag
+    \end{align}
+    Обозначим $\hat{x}_0' := \brackets{0, x_0', u_0\brackets{x_0'}, \brackets{\nabla_{x'}u_0}\brackets{x_0'}} \in \R^{2n+1}$.
+    \textit{Это переменные функции $f$, взятые в точке $x_0'$}.
+    \begin{theorem}
+        (Коши-Ковалевской): если
+        \begin{enumerate}
+            \item В некоторой $\epsilon$-окрестности точки $x_0'$ верно $u_0, u_1 \in A\brackets{U_{\epsilon}\brackets{x_0'}}$;
+            \item В некоторой $\delta$-окрестности точки $\hat{x}_0'$ верно $f \in A\brackets{U_{\delta}\brackets{\hat{x}_0'}}$;
+        \end{enumerate}
+        то существует единственное решение $u = u\brackets{t,x'}$ задачи (\ref{Cauchy_2ord}), заданное в $U_{\epsilon}\brackets{x_0'}$ и аналитичное:
+        \begin{equation*}
+            \exists! u = u\brackets{t, x'} \::\: u \in A\brackets{U_{\epsilon}\brackets{x_0'}}.
+        \end{equation*}
+    \end{theorem}
+
+\subsection{Краевые задачи}
+    Пусть $G \in \R^n$ --- ограниченная область с кусочно-гладкой границей $\prt G$. Напомним определение ($k$ раз) гладкой границы:
+    \begin{equation*}
+        \textrm{а что напоминать?}
+    \end{equation*}
+
+    Пусть дано уравнение второго порядка
+    \begin{equation*}
+        L_2 u = F\brackets{x, u, \nabla u},\: x \in G.
+    \end{equation*}
+    Краевая (граничная) задача на $\prt G$ может быть поставлена тремя способами:
+    \begin{enumerate}
+        \item $u|_{\prt G} = u_0(s),\: s \in \prt G$  --- Задача Дирихле, или краевая задача \Romannum{1} рода. $s$ --- 
+        переменная параметр, пробегающая значения на границе.
+        \item $u'_{\nu} |_{\prt G} = u_1(s),\: s \in \prt G$ --- задача Неймана, краевая задача \Romannum{2} рода. $\nu$ --- \textit{внешняя}
+        нормаль к границе, $u'_{\nu}$ --- производная по нормали:
+        \begin{equation*}
+            \vec{\nu} = \frac{\vec{\nabla} h}{\abs{\vec{\nabla} h}},\: u'_{\nu} = \dotp{\nu}{\nabla}u.
+        \end{equation*}
+        Решения при такой постановке задачи дифференцируется по нормали, продолженной внутрь, и само продолжается на $\prt G$ (по умолчанию оно задано только 
+        в области $G$ без границы).
+        \item $\brackets{u'_{\nu} + \alpha(s)u}|_{\prt G} = u_2(s),\: s \in \prt G $ --- задача Рабена, или краевая задача \Romannum{3} рода. На границе
+        задана линейная комбинация решения и его производной по нормали.
+    \end{enumerate}
+
+\subsection{Задача Коши на поверхности}
+    Рассмотрим уравнение
+    \begin{equation}
+        L_2 u = \sum_{i,j = 1}^n A_{ij}(x)\mixd{u}{x_i}{x_j} = F\brackets{x, u, \nabla u}, \label{lin_2ord_again}
+    \end{equation}
+    заданное, в частности на некоторой поверхности с краем $S \subset \R^n$.
+    \begin{Def}
+        Направление $\vec{k} = \brackets{k_1,\ldots k_n}$ называется \textit{характеристическим} в точке $x$, если
+        \begin{equation*}
+            \sum_{i,j = 1}^n A_{ij}(x) k_i k_j = 0.
+        \end{equation*}
+    \end{Def}
+    \begin{Def}
+        Поверхность $S$ с нормалью $\vec{\nu} = \brackets{\nu_1,\ldots \nu_n}$ называется \textit{характеристической} поверхностью уравнения 
+        (\ref{lin_2ord_again}), если
+        \begin{equation*}
+            \forall x \in S \:\: \sum_{i,j = 1}^n A_{ij}(x) \nu_i(x) \nu_j(x) = 0.
+        \end{equation*}
+    \end{Def}
+    \begin{note}
+        Покажем, что характеристические линии уравнения (\ref{lin2}) являются его характеристическими поверхностями. Если принять, например,
+        \begin{gather*}
+            \xi_x \rightarrow \nu_1,\: \xi_y = \nu_2,\\
+            \vec{\nu} = \frac{\vec{\nabla}\xi}{\abs{\nabla \xi}} = \frac{\vec{\nabla}\brackets{\xi(x,y) - C}}{\abs{\nabla \xi}},
+        \end{gather*}
+        то уравнение $\xi(x,y) = C$ задаёт семейство характеристических поверхностей (кривых) в $\R^2$. Уравнение $\eta(x,y) = C$ задаёт второе
+        семейство.
+    \end{note}
+
+    \begin{Def}
+        Пусть $S \in \R^n$ --- поверхность с нормалью $\vec{\nu}$, и ни в одной точке $x \in S$ нормаль не является характеристическим направлением
+        уравнения (\ref{lin_2ord_again}):
+        \begin{equation*}
+            \forall x \in S \:\: \sum_{i,j = 1}^n A_{ij}(x) \nu_i(x) \nu_j(x) \not= 0.
+        \end{equation*}
+        Тогда система уравнений
+        \begin{equation*}
+            \begin{cases}
+                L_2 u = F\brackets{x, u, \nabla u}, \\
+                u|_S = u_0(s),\: s \in S, \\
+                u'_{\nu}|_S = u_1(s)
+            \end{cases}
+        \end{equation*}
+        ставит задачу Коши на поверхности для уравнения (\ref{lin_2ord_again}).
     \end{Def}
